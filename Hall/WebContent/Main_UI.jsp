@@ -1,12 +1,12 @@
 <%@page import="java.sql.DriverManager"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>·¹ÀÌ¾Æ¿ô</title>
+    <title>ë ˆì´ì•„ì›ƒ</title>
     <link rel="stylesheet" href="main_login.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
@@ -16,37 +16,37 @@
       src="https://kit.fontawesome.com/77e29b57dd.js"
       crossorigin="anonymous"
     ></script>
-    <!-- defer¶õ ¹«¾ùÀÎ°¡?!!!! -->
+    <!-- deferëž€ ë¬´ì—‡ì¸ê°€?!!!! -->
     <script src="index.js" defer></script>
   </head>
   <style>
     * {
-    box-sizing: border-box; /* ±æÀÌ °è»êÀ» ÆíÇÏ°Ô ÇÏ±âÀ§ÇÔ. box-sizing¿¡ °üÇÑ ¼³¸íÀº ¾Æ·¡ ¸µÅ©¸¦ Âü°íÇØÁÖ¼¼¿ä */
+    box-sizing: border-box; /* ê¸¸ì´ ê³„ì‚°ì„ íŽ¸í•˜ê²Œ í•˜ê¸°ìœ„í•¨. box-sizingì— ê´€í•œ ì„¤ëª…ì€ ì•„ëž˜ ë§í¬ë¥¼ ì°¸ê³ í•´ì£¼ì„¸ìš” */
   }
   body {
-    margin: 0; /* bodyÀÇ ±âº»¸¶ÁøÀ» ¾ø¾ÖÁÝ´Ï´Ù(¼±ÅÃ»çÇ×) */
+    margin: 0; /* bodyì˜ ê¸°ë³¸ë§ˆì§„ì„ ì—†ì• ì¤ë‹ˆë‹¤(ì„ íƒì‚¬í•­) */
     font-family: sans-serif;
   }
-  /* ±âº» ¹ØÁÙÀ» Á¦°ÅÇÕ´Ï´Ù */
+  /* ê¸°ë³¸ ë°‘ì¤„ì„ ì œê±°í•©ë‹ˆë‹¤ */
   /* a {
     text-decoration: none; 
     color: #888;
   }
-  /* ¸¶¿ì½º Ä¿¼­°¡ ¿Ã¶ó°¬À» ¶§ ¹ØÁÙÀ» »ý¼ºÇÕ´Ï´Ù*/
+  /* ë§ˆìš°ìŠ¤ ì»¤ì„œê°€ ì˜¬ë¼ê°”ì„ ë•Œ ë°‘ì¤„ì„ ìƒì„±í•©ë‹ˆë‹¤*/
   /* a:hover {
     text-decoration: underline; 
   }  */
 
   header {
     
-    margin: auto; /* headerÀÇ ¾çÂÊ ¿©¹é(margin)À» µ¿µîÇÏ°Ô ¸ÂÃã -> ¼öÆò°¡¿îµ¥Á¤·Ä */
+    margin: auto; /* headerì˜ ì–‘ìª½ ì—¬ë°±(margin)ì„ ë™ë“±í•˜ê²Œ ë§žì¶¤ -> ìˆ˜í‰ê°€ìš´ë°ì •ë ¬ */
     width: 100%;
     height: 160px;
     display: flex;
-    align-items: center; /* ÇÏÀ§ ¿ä¼Òµé ¼öÁ÷ °¡¿îµ¥Á¤·Ä */
+    align-items: center; /* í•˜ìœ„ ìš”ì†Œë“¤ ìˆ˜ì§ ê°€ìš´ë°ì •ë ¬ */
     position: relative;
   }
-    /* ±âº» border ¾ø¾Ö±â(ÀÌ ÄÚµå¸¦ Áö¿ì°í ±âº» border¸¦ È®ÀÎÇØº¸¼¼¿ä) */
+    /* ê¸°ë³¸ border ì—†ì• ê¸°(ì´ ì½”ë“œë¥¼ ì§€ìš°ê³  ê¸°ë³¸ borderë¥¼ í™•ì¸í•´ë³´ì„¸ìš”) */
   fieldset {
     border: none;
     display: inline-block;
@@ -63,7 +63,7 @@
     padding-top: 30px;
   }
   
-  .visually-hidden { /* legend ¾Èº¸ÀÌ°Ô ¼³Á¤. ÀÌ·¸°ÔÇÏ¸é Á¢±Ù¼ºÀ» ÁØ¼öÇÏ¸é¼­ µðÀÚÀÎÀ» ÇØÄ¡Áö ¾Ê½À´Ï´Ù. */
+  .visually-hidden { /* legend ì•ˆë³´ì´ê²Œ ì„¤ì •. ì´ë ‡ê²Œí•˜ë©´ ì ‘ê·¼ì„±ì„ ì¤€ìˆ˜í•˜ë©´ì„œ ë””ìžì¸ì„ í•´ì¹˜ì§€ ì•ŠìŠµë‹ˆë‹¤. */
     position: absolute !important;
     height: 1px;
     width: 1px;
@@ -72,7 +72,7 @@
     clip: rect(1px, 1px, 1px, 1px);
     white-space: nowrap;
   }
-  /* ¸µÅ©µéÀ» »ó´Ü ¿ìÃø¿¡ À§Ä¡½ÃÅµ´Ï´Ù. */
+  /* ë§í¬ë“¤ì„ ìƒë‹¨ ìš°ì¸¡ì— ìœ„ì¹˜ì‹œí‚µë‹ˆë‹¤. */
   /* .links {
     position: absolute;
     top: 0;
@@ -105,7 +105,7 @@
     align-items: center;
   }
   .search_box input {
-    flex: 9; /* search-box³»ºÎ¿¡¼­ 9¸¸Å­ÀÇ Å©±â¸¦ Â÷Áö(ºñÀ²) */
+    flex: 9; /* search-boxë‚´ë¶€ì—ì„œ 9ë§Œí¼ì˜ í¬ê¸°ë¥¼ ì°¨ì§€(ë¹„ìœ¨) */
     height: 46px;
     padding-left: 12px;
     padding-right: 12px;
@@ -114,7 +114,7 @@
     font-size: 18px;
   }
   .search_box button {
-    flex: 1; /* search-box³»ºÎ¿¡¼­ 1¸¸Å­ÀÇ Å©±â¸¦ Â÷Áö(ºñÀ²) */
+    flex: 1; /* search-boxë‚´ë¶€ì—ì„œ 1ë§Œí¼ì˜ í¬ê¸°ë¥¼ ì°¨ì§€(ë¹„ìœ¨) */
     height: 46px;
     padding: 0;
     border: none;
@@ -192,7 +192,7 @@
     margin-left: 10px;
   } 
 
-  /* <ul>ÇÏÀ§ 7¹øÂ° <li>±îÁö °¢°¢ ³»ºÎÀÇ <a> ÅÂ±× Á¢±Ù */
+  /* <ul>í•˜ìœ„ 7ë²ˆì§¸ <li>ê¹Œì§€ ê°ê° ë‚´ë¶€ì˜ <a> íƒœê·¸ ì ‘ê·¼ */
   /* .nav_items ul > li:nth-child(-n + 7) > a { 
     color: #58b4cd;
   } */
@@ -203,7 +203,7 @@
   }
   
  
-  /* Àç»ç¿ë Å¬·¡½º */
+  /* ìž¬ì‚¬ìš© í´ëž˜ìŠ¤ */
   /* .color_naver {
     color: #03cf5d;
   } */
@@ -245,7 +245,7 @@
         margin: 0px;
         border: 3px solid rgba(11, 26, 192, 0.395)
     }
-        /* ¸ðµç¹æ */
+        /* ëª¨ë“ ë°© */
     /* .gesipan{
         background-color: crimson;
         padding: 5px;
@@ -356,7 +356,7 @@
   } */
 
 
-  /* ÇªÅÍ */
+  /* í‘¸í„° */
 
 
   footer {
@@ -380,7 +380,7 @@
   }
   .area_user {
     flex: 4;
-    line-height: 1em; /* ÁÙ°£°Ý */
+    line-height: 1em; /* ì¤„ê°„ê²© */
   }
   .area_user_row {
     display: flex;
@@ -396,7 +396,7 @@
     font-weight: bold;
   } */
   .area_user_row ul > li {
-    display: inline-block; /* li ¼öÆòÁ¤·ÄÇÏ´Â ¹æ¹ý */
+    display: inline-block; /* li ìˆ˜í‰ì •ë ¬í•˜ëŠ” ë°©ë²• */
     margin-left: 8px;
   }
   
@@ -407,13 +407,13 @@
     text-align: center;
   }
   .bottom_box ul > li {
-    display: inline-block; /* ¼öÆòÁ¤·Ä */
+    display: inline-block; /* ìˆ˜í‰ì •ë ¬ */
     margin-left: 8px;
   }
-  .bottom_box ul > li:last-child { /* ¸¶Áö¸· li¿ä¼Ò (±ÂÀâ Corp.) ±½°Ô */
+  .bottom_box ul > li:last-child { /* ë§ˆì§€ë§‰ liìš”ì†Œ (êµ¿ìž¡ Corp.) êµµê²Œ */
     font-weight: bold;
   }
-  /* Àç»ç¿ë Å¬·¡½º */
+  /* ìž¬ì‚¬ìš© í´ëž˜ìŠ¤ */
   
   .text_bold-13 {
     font-weight: bold;
@@ -430,11 +430,11 @@
       <div class="search">
       <form name="search" action="Search_UI.jsp" method="post" >
         <fieldset>
-          <legend class="visually-hidden">°Ë»ö</legend>
+          <legend class="visually-hidden">ê²€ìƒ‰</legend>
           <div class="search_box">
             <input name="_keyword" type="text" maxlength="225" tabindex="1" />
             <button type="submit" tabindex="2">
-              °Ë»ö
+              ê²€ìƒ‰
             </button>
             
           </div>
@@ -445,13 +445,13 @@
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="/" class="link_text_name"><%= (String)session.getAttribute("__ID") %></a>´Ô</li>
-            <li><a href="Main.jsp" class="link_text" >·Î±×¾Æ¿ô</a></li> 
+            <li><a href="/" class="link_text_name"><%= (String)session.getAttribute("__ID") %></a>ë‹˜</li>
+            <li><a href="Main.jsp" class="link_text" >ë¡œê·¸ì•„ì›ƒ</a></li> 
         </ul>
         <div class="member">
         
         <%
-	//ÃÑ È¸¿ø¼ö ¹Þ¾Æ¿À±â, ¼º°ø..!
+	//ì´ íšŒì›ìˆ˜ ë°›ì•„ì˜¤ê¸°, ì„±ê³µ..!
 		
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -468,7 +468,7 @@
 	      
 	       } 
 	      
-	      out.println("<p style='text-align: center;'>"+"ÃÑ È¸¿ø¼ö : <b>"+ Countrun + "¸í</b></p>");
+	      out.println("<p style='text-align: center;'>"+"ì´ íšŒì›ìˆ˜ : <b>"+ Countrun + "ëª…</b></p>");
 	      
 		rs.close();
 		stmt.close();
@@ -487,12 +487,12 @@
     <div class="nav_items">
         <ul>
           
-          <li><a href="">ÀüÃ¼±Û</a></li>
-          <li><a href="">ÀÚÀ¯°Ô½ÃÆÇ</a></li>
-          <li><a href="">Áú¹®°Ô½ÃÆÇ</a></li>
-          <li><a href="">¸éÁ¢°Ô½ÃÆÇ</a></li>
-          <li><a href="">Ãë¾÷ÈÄ±â°Ô½ÃÆÇ</a></li>
-          <li><a href="">Ã¤¿ë°Ô½ÃÆÇ</a></li>
+          <li><a href="">ì „ì²´ê¸€</a></li>
+          <li><a href="">ìžìœ ê²Œì‹œíŒ</a></li>
+          <li><a href="">ì§ˆë¬¸ê²Œì‹œíŒ</a></li>
+          <li><a href="">ë©´ì ‘ê²Œì‹œíŒ</a></li>
+          <li><a href="">ì·¨ì—…í›„ê¸°ê²Œì‹œíŒ</a></li>
+          <li><a href="">ì±„ìš©ê²Œì‹œíŒ</a></li>
 
         </ul>
         <!-- <div class="keyword">
@@ -507,17 +507,17 @@
         <article class="container">
             <article class="area1">
                 <div class="gesipan">
-                    <P style="text-align: center; font-size: 10px;">ÀÚÀ¯°Ô½ÃÆÇ</P>
+                    <P style="text-align: center; font-size: 10px;">ìžìœ ê²Œì‹œíŒ</P>
                     <div class = "gesipan_in">
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>±èÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ê¹€ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä. ÀÌ°ÍÀº ÀÚÀ¯°Ô½ÃÆÇÀÔ´Ï´Ù. ±Û³»¿ëÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä</td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”. ì´ê²ƒì€ ìžìœ ê²Œì‹œíŒìž…ë‹ˆë‹¤. ê¸€ë‚´ìš©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”</td>
                                    
                                 </tr>
                             </table>
@@ -525,12 +525,12 @@
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>¹ÚÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ë°•ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä. ÀÌ°ÍÀº ÀÚÀ¯°Ô½ÃÆÇÀÔ´Ï´Ù. ±Û³»¿ëÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä</p></td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”. ì´ê²ƒì€ ìžìœ ê²Œì‹œíŒìž…ë‹ˆë‹¤. ê¸€ë‚´ìš©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”</p></td>
                                     
                                 </tr>
                             </table>
@@ -538,17 +538,17 @@
                     </div>
                 </div>
                 <div class="question">
-                    <P style="text-align: center; font-size: 10px;">Áú¹®°Ô½ÃÆÇ</P>
+                    <P style="text-align: center; font-size: 10px;">ì§ˆë¬¸ê²Œì‹œíŒ</P>
                     <div class = "gesipan_in">
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>±èÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ê¹€ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä. ÀÌ°ÍÀº Áú¹®°Ô½ÃÆÇÀÔ´Ï´Ù. ±Û³»¿ëÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä</td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”. ì´ê²ƒì€ ì§ˆë¬¸ê²Œì‹œíŒìž…ë‹ˆë‹¤. ê¸€ë‚´ìš©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”</td>
                                    
                                 </tr>
                             </table>
@@ -556,12 +556,12 @@
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>¹ÚÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ë°•ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä. ÀÌ°ÍÀº Áú¹®°Ô½ÃÆÇÀÔ´Ï´Ù. ±Û³»¿ëÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä</p></td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”. ì´ê²ƒì€ ì§ˆë¬¸ê²Œì‹œíŒìž…ë‹ˆë‹¤. ê¸€ë‚´ìš©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”</p></td>
                                     
                                 </tr>
                             </table>
@@ -572,17 +572,17 @@
 
             <article class="area2">
                 <div class="interview">
-                    <P style="text-align: center; font-size: 10px;">¸éÁ¢°Ô½ÃÆÇ</P>
+                    <P style="text-align: center; font-size: 10px;">ë©´ì ‘ê²Œì‹œíŒ</P>
                     <div class = "gesipan_in">
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>±èÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ê¹€ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä. ÀÌ°ÍÀº ¸éÁ¢°Ô½ÃÆÇÀÔ´Ï´Ù. ±Û³»¿ëÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä</td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”. ì´ê²ƒì€ ë©´ì ‘ê²Œì‹œíŒìž…ë‹ˆë‹¤. ê¸€ë‚´ìš©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”</td>
                                    
                                 </tr>
                             </table>
@@ -590,12 +590,12 @@
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>¹ÚÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ë°•ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä. ÀÌ°ÍÀº ¸éÁ¢°Ô½ÃÆÇÀÔ´Ï´Ù. ±Û³»¿ëÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä</p></td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”. ì´ê²ƒì€ ë©´ì ‘ê²Œì‹œíŒìž…ë‹ˆë‹¤. ê¸€ë‚´ìš©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”</p></td>
                                     
                                 </tr>
                             </table>
@@ -603,17 +603,17 @@
                     </div>
                 </div>
                 <div class="job_review">
-                    <P style="text-align: center; font-size: 10px;">Ãë¾÷ÈÄ±â°Ô½ÃÆÇ</P>
+                    <P style="text-align: center; font-size: 10px;">ì·¨ì—…í›„ê¸°ê²Œì‹œíŒ</P>
                     <div class = "gesipan_in">
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>±èÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ê¹€ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä. ÀÌ°ÍÀº Ãë¾÷ÈÄ±â°Ô½ÃÆÇÀÔ´Ï´Ù. ±Û³»¿ëÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä</td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”. ì´ê²ƒì€ ì·¨ì—…í›„ê¸°ê²Œì‹œíŒìž…ë‹ˆë‹¤. ê¸€ë‚´ìš©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”</td>
                                    
                                 </tr>
                             </table>
@@ -621,12 +621,12 @@
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>¹ÚÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ë°•ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä. ÀÌ°ÍÀº Ãë¾÷ÈÄ±â°Ô½ÃÆÇÀÔ´Ï´Ù. ±Û³»¿ëÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä</p></td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”. ì´ê²ƒì€ ì·¨ì—…í›„ê¸°ê²Œì‹œíŒìž…ë‹ˆë‹¤. ê¸€ë‚´ìš©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”</p></td>
                                     
                                 </tr>
                             </table>
@@ -637,17 +637,17 @@
             </article>
             <article class="area3">
                 <div class="hire">
-                    <P style="text-align: center; font-size: 20px;">Ã¤¿ëÁ¤º¸</P>
+                    <P style="text-align: center; font-size: 20px;">ì±„ìš©ì •ë³´</P>
                     <div class = "gesipan_in">
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>±èÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ê¹€ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä. ÀÌ°ÍÀº Ã¤¿ë°Ô½ÃÆÇÀÔ´Ï´Ù.</td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”. ì´ê²ƒì€ ì±„ìš©ê²Œì‹œíŒìž…ë‹ˆë‹¤.</td>
                                    
                                 </tr>
                             </table>
@@ -655,12 +655,12 @@
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>¹ÚÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ë°•ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä.ÀÌ°ÍÀº Ã¤¿ë°Ô½ÃÆÇÀÔ´Ï´Ù.</p></td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”.ì´ê²ƒì€ ì±„ìš©ê²Œì‹œíŒìž…ë‹ˆë‹¤.</p></td>
                                     
                                 </tr>
                             </table>
@@ -668,12 +668,12 @@
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>¹ÚÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ë°•ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä.ÀÌ°ÍÀº Ã¤¿ë°Ô½ÃÆÇÀÔ´Ï´Ù.</p></td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”.ì´ê²ƒì€ ì±„ìš©ê²Œì‹œíŒìž…ë‹ˆë‹¤.</p></td>
                                     
                                 </tr>
                             </table>
@@ -681,12 +681,12 @@
                         <div class = "room">
                             <table>
                                 <tr>
-                                    <td><b>±ÛÁ¦¸ñ</b></td>
-                                    <td>¹ÚÀÎÇÏ</td>
+                                    <td><b>ê¸€ì œëª©</b></td>
+                                    <td>ë°•ì¸í•˜</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td colspan="2"><p width="10" height="10">¾È³çÇÏ¼¼¿ä.ÀÌ°ÍÀº Ã¤¿ë°Ô½ÃÆÇÀÔ´Ï´Ù.</p></td>
+                                    <td colspan="2"><p width="10" height="10">ì•ˆë…•í•˜ì„¸ìš”.ì´ê²ƒì€ ì±„ìš©ê²Œì‹œíŒìž…ë‹ˆë‹¤.</p></td>
                                     
                                 </tr>
                             </table>
@@ -707,27 +707,27 @@
             <div class="area_user_row">
               <span class="text_bold-13">Creators</span>
               <ul>
-                <li><p>Å©¸®¿¡ÀÌÅÍ</p></li>
-                <li><p>½º¸ôºñÁî´Ï½º</p></li>
+                <li><p>í¬ë¦¬ì—ì´í„°</p></li>
+                <li><p>ìŠ¤ëª°ë¹„ì¦ˆë‹ˆìŠ¤</p></li>
               </ul>
             </div>
             <div class="area_user_row">
               <span class="text_bold-13">Partners</span>
               <ul>
-                <li><p>ºñÁî´Ï½º ±¤°í</p></li>
-                <li><p>½ºÅä¾î °³¼³</p></li>
-                <li><p>Áö¿ª¾÷Ã¼ µî·Ï</p></li>
+                <li><p>ë¹„ì¦ˆë‹ˆìŠ¤ ê´‘ê³ </p></li>
+                <li><p>ìŠ¤í† ì–´ ê°œì„¤</p></li>
+                <li><p>ì§€ì—­ì—…ì²´ ë“±ë¡</p></li>
               </ul>
             </div>
             <div class="area_user_row">
               <span class="text_bold-13">Developers</span>
               <ul>
-                <li><p>±ÂÀâ °³¹ßÀÚ¼¾ÅÍ</p></li>
-                <li><p>¿ÀÇÂAPI</p></li>
-                <li><p>¿ÀÇÂ¼Ò½º</p></li>
-                <li><p>±ÂÀâ D2</p></li>
-                <li><p>±ÂÀâ D2SF</p></li>
-                <li><p>±ÂÀâ ·¦½º</p></li>
+                <li><p>êµ¿ìž¡ ê°œë°œìžì„¼í„°</p></li>
+                <li><p>ì˜¤í”ˆAPI</p></li>
+                <li><p>ì˜¤í”ˆì†ŒìŠ¤</p></li>
+                <li><p>êµ¿ìž¡ D2</p></li>
+                <li><p>êµ¿ìž¡ D2SF</p></li>
+                <li><p>êµ¿ìž¡ ëž©ìŠ¤</p></li>
               </ul>
               
             </div>
@@ -735,15 +735,15 @@
         </div>
         <div class="bottom_box">
             <ul>
-              <li><p>È¸»ç¼Ò°³</p></li>
-              <li><p>ÀÎÀçÃ¤¿ë</p></li>
-              <li><p>Á¦ÈÞÁ¦¾È</p></li>
-              <li><p>ÀÌ¿ë¾à°ü</p></li>
-              <li><p>°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</p></li>
-              <li><p>¹®ÀÇÇÏ±â</p></li>
-              <li><p>±ÂÀâ Á¤Ã¥</p></li>
-              <li><p>°í°´¼¾ÅÍ</p></li>
-              <li><p>&copy; ±ÂÀâ Corp.</p></li>
+              <li><p>íšŒì‚¬ì†Œê°œ</p></li>
+              <li><p>ì¸ìž¬ì±„ìš©</p></li>
+              <li><p>ì œíœ´ì œì•ˆ</p></li>
+              <li><p>ì´ìš©ì•½ê´€</p></li>
+              <li><p>ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</p></li>
+              <li><p>ë¬¸ì˜í•˜ê¸°</p></li>
+              <li><p>êµ¿ìž¡ ì •ì±…</p></li>
+              <li><p>ê³ ê°ì„¼í„°</p></li>
+              <li><p>&copy; êµ¿ìž¡ Corp.</p></li>
             </ul>
           </div>
       </footer> 

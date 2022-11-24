@@ -1,11 +1,11 @@
 <%@page import="java.sql.DriverManager"%>
 
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>총 회원수 받아오기</title>
 </head>
 <body>
