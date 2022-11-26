@@ -55,7 +55,7 @@
   .logo{
     width: 30%;
     height: 150px;
-    background-color: #acbfe1;
+    background-color: #c2cfe6;
     padding-left: 180px;
   }
   .logo img {
@@ -72,29 +72,14 @@
     clip: rect(1px, 1px, 1px, 1px);
     white-space: nowrap;
   }
-  /* 링크들을 상단 우측에 위치시킵니다. */
-  /* .links {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-  .link_text {
-    font-size: 10px;
-    margin-left: 5px;
-  }
-  .img_logo {
-    margin-bottom: 12px;
-    width: 220px;
-    height: 65px;
-  } */
+ 
 
-  
   .search {
     width : 40%;
     height: 150px;
     padding-top: 60px;
     padding-left: 40px;
-    background-color: #acbfe1;
+    background-color: #c2cfe6;
   }
 
   .search_box {
@@ -127,7 +112,7 @@
   .login {
     width: 30%;
     height: 150px;
-    background-color: #acbfe1;
+    background-color: #c2cfe6;
     padding: 10px;
   }
 
@@ -136,7 +121,7 @@
     margin: auto;
     width: 200px;
     height: 70px;
-    background-color: #93abf4;
+    background-color: #c2cfe6;
     padding: 5px;
   }
 
@@ -152,7 +137,7 @@
     margin: auto;
     width: 200px;
     height: 30px;
-    background-color: #93abf4;
+    background-color: #c2cfe6;
     padding: 5px;
   }
 
@@ -165,7 +150,7 @@
     width: 250px;
     height: 46px;
     /* background-color: #8361d4; */
-    padding-left: 80px;
+    padding-left: 30px;
     padding-top: 0px;
   }
 
@@ -176,7 +161,7 @@
     text-align: center;
     justify-content: center;
     bottom: 0;
-    background-color: rgb(187, 224, 215);
+    background-color: #dee4ed;
   }
   .nav_items {
     width: 100%;
@@ -211,18 +196,18 @@
   } */
 
   section {
-    background-color: rgb(215, 230, 230);	 
+    background-color: #dee4ed;	 
     height: 450px;
     float:left;
     width:100%;
-    padding: 10px;
+    padding: 5px;
   }
 
    article {
     display: flex;
     /* margin-top: 10px; */
     padding: 2px;
-    background-color:  rgb(215, 230, 230);
+    background-color:  #dee4ed;
   }
 
   .container{
@@ -233,35 +218,28 @@
 
     .area1{
         width: 35%;
-        height: 430px;
-        background-color: #ca0e94;
+        height: 460px;
+        background-color: #ffffff;
         display: block;
         padding: 3px;
     }
 
     /* .area1> .free */
     .area1> .gesipan{
-        background-color: rgb(222, 130, 179);
+        background-color: #c2cfe6;
         width: 100%;
         height: 48%;
         padding: 0px;
         margin: 0px;
-        border: 3px solid rgba(11, 26, 192, 0.395)
+        border: 3px solid rgba(126, 131, 141, 0.395)
     }
-        /* 모든방 */
-    /* .gesipan{
-        background-color: crimson;
-        padding: 5px;
-        width: 100%;
-        height: 50%;
-        padding-top: 0;
-    } */
+     
     .gesipan > b {
         padding-top: 0;
         font-weight: bold;
     }
     .gesipan_in{
-        background-color: #a3bde1;
+        background-color: #cdeaf1;
         height: 185px;
         /* padding: 10px;
         display: grid;
@@ -275,57 +253,67 @@
     .room {
         width: 100%;
         height: 100%;
-        border: 3px solid rgba(180, 184, 228, 0.742)
+        border: 3px solid #e0eaec
     }
     
     .area1> .question{
-        background-color: rgb(198, 152, 177);
-        
-        width: 100%;
-        height: 48%;
-        padding: 0px;
-        margin: 0px;
-        border: 3px solid rgba(11, 26, 192, 0.395)
-    }
-
+      background-color: #dae2f0;
+      width: 100%;
+      height: 48%;
+      padding: 0px;
+      margin: 0px;
+      border: 3px solid rgba(126, 131, 141, 0.395)
+  }
     .area2 {
-        width: 35%;
-        height: 430px;
-        background-color: rgb(193, 157, 207);
-        display: block;
-        padding: 5px;
+      width: 35%;
+      height: 460px;
+      background-color: #ffffff;
+      display: block;
+      padding: 3px;
     }
 
     .area2 > .interview{
-        background-color: rgb(131, 237, 188);
-        width: 100%;
-        height: 48%;
-        padding: 0px;
-        border: 3px solid rgba(11, 26, 192, 0.395)
+      background-color: #dae2f0;
+      width: 100%;
+      height: 48%;
+      padding: 0px;
+      margin: 0px;
+      border: 3px solid rgba(126, 131, 141, 0.395)
     }
+    
     .area2 > .job_review{
-        background-color: rgb(118, 180, 141);
-        width: 100%;
-        height: 48%;
-        padding: 0px;
-        border: 3px solid rgba(11, 26, 192, 0.395)
+      background-color: #c2cfe6;
+      width: 100%;
+      height: 48%;
+      padding: 0px;
+      margin: 0px;
+      border: 3px solid rgba(126, 131, 141, 0.395)
     }
 
     
 
     .area3{
         width: 30%;
-        height: 430px;
-        background-color: rgb(230, 225, 99);
+        height: 440px;
+        background-color: #ffffff;
+        padding: 3px;
     }
 
     .area3> .hire {
-        background-color: rgb(118, 180, 141);
+        background-color: #c2cfe6;
         width: 100%;
-        height: 100%;
+        height: 440px;
         padding: 0px;
-        border: 3px solid rgba(11, 26, 192, 0.395)
+        border: 3px solid rgba(126, 131, 141, 0.395)
     }
+  
+    .gesipan_in2{
+      background-color: #cdeaf1;
+      width: 100%;
+      height: 355px;
+      border: 3px solid #e0eaec
+      
+  }
   
 
   /* 푸터 */
@@ -333,44 +321,15 @@
 
   footer {
     color: black;   
-    /* height: 110px; */
+    height: 90px;
     font-size: 12px;
-    background-color: rgb(176, 176, 229);
+    background-color: rgb(236, 236, 244);
     position: relative;
     clear: both;
     width:100%;
     bottom: 0;
   }
   
-  .aside_box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #91acd6;
-    padding: 0;
-    margin: 0;
-  }
-  .area_user {
-    flex: 4;
-    line-height: 1em; /* 줄간격 */
-  }
-  .area_user_row {
-    display: flex;
-  }
-  .area_user_row span {
-    flex: 1;
-  }
-  .area_user_row ul {
-    flex: 6;
-  }
-  /* .aur_title {
-    font-size: 13px;
-    font-weight: bold;
-  } */
-  .area_user_row ul > li {
-    display: inline-block; /* li 수평정렬하는 방법 */
-    margin-left: 8px;
-  }
   
   .bottom_box {
     
@@ -382,7 +341,7 @@
     display: inline-block; /* 수평정렬 */
     margin-left: 8px;
   }
-  .bottom_box ul > li:last-child { /* 마지막 li요소 (굿잡 Corp.) 굵게 */
+  .bottom_box >p { /* 마지막 li요소 (굿잡 Corp.) 굵게 */
     font-weight: bold;
   }
   /* 재사용 클래스 */
@@ -393,7 +352,7 @@
   }
   </style>
 <body>
-<% session.invalidate(); %>
+
     <header>
 
       <div class="logo">
@@ -413,11 +372,14 @@
      
       <div class="login">
       <form action="LoginCheck.jsp" method="post">
-		<table>
-		<tr><td><input type="text" name="_id" placeholder="아이디"></td></tr>
-		<tr><td><input type="password" name="_pw" placeholder="비밀번호"></td></tr>	
-		<tr><td><input type="submit" value="로그인"><input type="button" value="회원가입"></td></tr>
-		</table>
+		<div class="login_idpw">
+            <input type="text" placeholder="아이디" >
+            <input type="password" placeholder="비밀번호">
+        </div>
+        <div class="login_button">
+            <input type="button" value="로그인">
+            <input type="button" value="회원가입">
+        </div>
 	</form>
        
         <div class="member">
@@ -439,7 +401,7 @@
 	      
 	       } 
 	      
-	      out.println("<p style='text-align: center;'>"+"총 회원수 : <b>"+ Countrun + "명</b></p>");
+	      out.println("<p>"+"총 회원수 : <b>"+ Countrun + "명</b></p>");
 	      
 		rs.close();
 		stmt.close();
@@ -744,51 +706,22 @@
     </section>
     
     <footer>
-   
-        <div class="aside_box">
-          <div class="area_user">
-            <div class="area_user_row">
-              <span class="text_bold-13">Creators</span>
-              <ul>
-                <li><p>크리에이터</p></li>
-                <li><p>스몰비즈니스</p></li>
-              </ul>
-            </div>
-            <div class="area_user_row">
-              <span class="text_bold-13">Partners</span>
-              <ul>
-                <li><p>비즈니스 광고</p></li>
-                <li><p>스토어 개설</p></li>
-                <li><p>지역업체 등록</p></li>
-              </ul>
-            </div>
-            <div class="area_user_row">
-              <span class="text_bold-13">Developers</span>
-              <ul>
-                <li><p>굿잡 개발자센터</p></li>
-                <li><p>오픈API</p></li>
-                <li><p>오픈소스</p></li>
-                <li><p>굿잡 D2</p></li>
-                <li><p>굿잡 D2SF</p></li>
-                <li><p>굿잡 랩스</p></li>
-              </ul>
-              
-            </div>
-          </div>
-        </div>
-        <div class="bottom_box">
-            <ul>
-              <li><p>회사소개</p></li>
-              <li><p>인재채용</p></li>
-              <li><p>제휴제안</p></li>
-              <li><p>이용약관</p></li>
-              <li><p>개인정보처리방침</p></li>
-              <li><p>문의하기</p></li>
-              <li><p>굿잡 정책</p></li>
-              <li><p>고객센터</p></li>
-              <li><p>&copy; 굿잡 Corp.</p></li>
-            </ul>
-          </div>
-      </footer> 
+   <div class="bottom_box">
+        <ul>
+        <li><p>회사소개</p></li>
+        <li><p>인재채용</p></li>
+        <li><p>제휴제안</p></li>
+        <li><p>이용약관</p></li>
+        <li><p>개인정보처리방침</p></li>
+        <li><p>청소년보호정책</p></li>
+        <li><p>굿잡 정책</p></li>
+        <li><p>고객센터</p></li>
+        
+        </ul>
+    </div>
+     <div class="bottom_box">
+     <p>&copy; 굿잡 Corp.</p>
+     </div>
+</footer>
   </body>
   </html>

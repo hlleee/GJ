@@ -423,9 +423,10 @@
       <div class="login">
         <ul class="myinfo">
             <li><a href="/" class="link_text_name"><%= (String)session.getAttribute("__ID") %></a>님</li>
-            <li><a href="Main.jsp" class="link_text" >로그아웃</a></li> 
+            <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
+       
         
         <%
 	//총 회원수 받아오기, 성공..!
