@@ -8,7 +8,8 @@
 </head>
 <body>
 <h1>로그아웃</h1>
-<% session.invalidate(); %>
+<% session.invalidate();
+document.location.href="list.jsp";%>
 
 </body>
 </html>

@@ -60,7 +60,7 @@
   }
   .logo img {
     right: 20px;
-    padding-top: 30px;
+    
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -202,14 +202,15 @@
     cursor: pointer;
   }
   
+  
  
   /* 재사용 클래스 */
   /* .color_naver {
     color: #03cf5d;
   } */
 
-  section {
-    background-color: green;	 
+   section {
+    background-color: rgb(215, 230, 230);	 
     height: 450px;
     float:left;
     width:100%;
@@ -219,18 +220,19 @@
    article {
     display: flex;
     /* margin-top: 10px; */
-    padding: 5px;
-    background-color: #999;
+    padding: 2px;
+    background-color:  rgb(215, 230, 230);
   }
 
   .container{
-    padding: 5px;
+    padding: 3px;
     height: 100%;
     width: 100%;
     }
 
     .area1{
         width: 35%;
+        height: 440px;
         background-color: #ca0e94;
         display: block;
         padding: 3px;
@@ -238,9 +240,9 @@
 
     /* .area1> .free */
     .area1> .gesipan{
-        background-color: rgb(245, 170, 210);
+        background-color: rgb(222, 130, 179);
         width: 100%;
-        height: 50%;
+        height: 48%;
         padding: 0px;
         margin: 0px;
         border: 3px solid rgba(11, 26, 192, 0.395)
@@ -258,7 +260,8 @@
         font-weight: bold;
     }
     .gesipan_in{
-        background-color: #03cf5d;
+        background-color: #afe2ef;
+        height: 185px;
         /* padding: 10px;
         display: grid;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; */
@@ -270,15 +273,15 @@
 
     .room {
         width: 100%;
-        height: 80px;
-        border: 3px solid rgba(11, 26, 192, 0.395)
+        height: 100%;
+        border: 3px solid rgba(9, 122, 82, 0.888)
     }
     
     .area1> .question{
         background-color: rgb(198, 152, 177);
         
         width: 100%;
-        height: 50%;
+        height: 48%;
         padding: 0px;
         margin: 0px;
         border: 3px solid rgba(11, 26, 192, 0.395)
@@ -286,7 +289,8 @@
 
     .area2 {
         width: 35%;
-        background-color: aqua;
+        height: 440px;
+        background-color: rgb(193, 157, 207);
         display: block;
         padding: 5px;
     }
@@ -294,14 +298,14 @@
     .area2 > .interview{
         background-color: rgb(131, 237, 188);
         width: 100%;
-        height: 50%;
+        height: 48%;
         padding: 0px;
         border: 3px solid rgba(11, 26, 192, 0.395)
     }
     .area2 > .job_review{
         background-color: rgb(118, 180, 141);
         width: 100%;
-        height: 50%;
+        height: 48%;
         padding: 0px;
         border: 3px solid rgba(11, 26, 192, 0.395)
     }
@@ -310,6 +314,7 @@
 
     .area3{
         width: 30%;
+        height: 440px;
         background-color: rgb(230, 225, 99);
     }
 
@@ -320,41 +325,13 @@
         padding: 0px;
         border: 3px solid rgba(11, 26, 192, 0.395)
     }
-  /*
-  .container1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    background-color: rgb(216, 157, 84);
-    padding: 10px;
-    width: 35%;
-    height: 100%;
-    margin: 10px;
-    
-  } */
   
-  /* .container2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    background-color: rgb(208, 208, 102);
-    padding: 10px;
-    width: 35%;
-    height: 100%;
-    margin: 10px;
+	
+    .gesipan_in2{
+      background-color: #afe2ef;
+      height: 355px;
+      
   }
-
-  .container3 {
-    display: block;
-    justify-content: space-between;
-    align-items: stretch;
-    background-color: rgb(208, 208, 102);
-    padding: 10px;
-    width: 30%;
-    height: 100%;
-    margin: 10px;
-  } */
-
 
   /* 푸터 */
 
@@ -425,7 +402,7 @@
     <header>
 
       <div class="logo">
-     <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
+     <img src="GJ_Logo.png" class="img_logo" herf="Main_UI.jsp" style="display: block; width:300px; "/>
       </div>
       <div class="search">
       <form name="search" action="Search_UI.jsp" method="post" >
@@ -495,77 +472,115 @@
           <li><a href="">채용게시판</a></li>
 
         </ul>
-        <!-- <div class="keyword">
-          <span class="color_naver">1</span>
-          <span>Eoldam spark</span></span>
-        </div> -->
       </div>
     </nav>
-    
-    
-    <section>
+     <section>
         <article class="container">
             <article class="area1">
                 <div class="gesipan">
                     <P style="text-align: center; font-size: 10px;">자유게시판</P>
                     <div class = "gesipan_in">
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>김인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요. 이것은 자유게시판입니다. 글내용을 작성해주세요</td>
-                                   
-                                </tr>
-                            </table>
-                        </div>
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>박인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요. 이것은 자유게시판입니다. 글내용을 작성해주세요</p></td>
-                                    
-                                </tr>
-                            </table>
-                        </div>
+                        <%
+	
+	request.setCharacterEncoding("UTF-8");	
+	String keyword = request.getParameter("_keyword");
+	String id = request.getParameter("_id");	
+
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
+		
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(
+				"Select * from post where btype = '자유'LIMIT 3");
+		//postit = '" + keyword + "'"
+		//WHERE [컬럼명] LIKE '%특정문자열%'
+		// AND views=
+		
+		%>
+		<table border="1">
+			
+		<% 
+		
+		
+		while(rs.next()){
+			
+			String postit = rs.getString("postit");
+			String poscon = rs.getString("poscon");
+			int views = rs.getInt("views");
+			String posdat = rs.getString("posdat");
+			
+			String posnic = rs.getString("posnic");
+			
+			
+			out.println("<tr>");
+			out.println("<td width='150' height='30'>" + postit + "</td>");
+			out.println("<td width='370'>" + poscon + "</td>");
+			out.println("<td width='60'>" + views + "</td>");
+			out.println("<td width='100'>" + posdat + "</td>");
+			out.println("<td width='70'>" + posnic + "</td>");
+			out.println("</tr>");
+		}
+		%> </table>
+		<%
+		
+	}catch (SQLException e){
+		
+		
+	}
+
+%>
                     </div>
                 </div>
                 <div class="question">
                     <P style="text-align: center; font-size: 10px;">질문게시판</P>
                     <div class = "gesipan_in">
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>김인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요. 이것은 질문게시판입니다. 글내용을 작성해주세요</td>
-                                   
-                                </tr>
-                            </table>
-                        </div>
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>박인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요. 이것은 질문게시판입니다. 글내용을 작성해주세요</p></td>
-                                    
-                                </tr>
-                            </table>
-                        </div>
+                        <%
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
+		
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(
+				"Select * from post where btype = '질문' LIMIT 3");
+	
+		
+		%>
+		<table border="1">
+			
+		<% 
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		while(rs.next()){
+			
+			String postit = rs.getString("postit");
+			String poscon = rs.getString("poscon");
+			int views = rs.getInt("views");
+			String posdat = rs.getString("posdat");
+
+			String posnic = rs.getString("posnic");
+			
+			
+			out.println("<tr>");
+			out.println("<td width='150' height='30'>" + postit + "</td>");
+			out.println("<td width='370'>" + poscon + "</td>");
+			out.println("<td width='60'>" + views + "</td>");
+			out.println("<td width='100'>" + posdat + "</td>");
+			out.println("<td width='70'>" + posnic + "</td>");
+			out.println("</tr>");
+		}
+		%> </table>
+		<%
+		
+	}catch (SQLException e){
+		
+		
+	}
+
+%>
                     </div>
                 </div>
             </article>
@@ -574,63 +589,101 @@
                 <div class="interview">
                     <P style="text-align: center; font-size: 10px;">면접게시판</P>
                     <div class = "gesipan_in">
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>김인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요. 이것은 면접게시판입니다. 글내용을 작성해주세요</td>
-                                   
-                                </tr>
-                            </table>
-                        </div>
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>박인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요. 이것은 면접게시판입니다. 글내용을 작성해주세요</p></td>
-                                    
-                                </tr>
-                            </table>
-                        </div>
+                         <%
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
+		
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(
+				"Select * from post where btype = '면접' LIMIT 3");
+	
+		
+		%>
+		<table border="1">
+			
+		<% 
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		while(rs.next()){
+			
+			String postit = rs.getString("postit");
+			String poscon = rs.getString("poscon");
+			int views = rs.getInt("views");
+			String posdat = rs.getString("posdat");
+
+			String posnic = rs.getString("posnic");
+			
+			
+			out.println("<tr>");
+			out.println("<td width='150' height='30'>" + postit + "</td>");
+			out.println("<td width='370'>" + poscon + "</td>");
+			out.println("<td width='60'>" + views + "</td>");
+			out.println("<td width='100'>" + posdat + "</td>");
+			out.println("<td width='70'>" + posnic + "</td>");
+			out.println("</tr>");
+		}
+		%> </table>
+		<%
+		
+	}catch (SQLException e){
+		
+		
+	}
+
+%>
                     </div>
                 </div>
                 <div class="job_review">
                     <P style="text-align: center; font-size: 10px;">취업후기게시판</P>
                     <div class = "gesipan_in">
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>김인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요. 이것은 취업후기게시판입니다. 글내용을 작성해주세요</td>
-                                   
-                                </tr>
-                            </table>
-                        </div>
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>박인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요. 이것은 취업후기게시판입니다. 글내용을 작성해주세요</p></td>
-                                    
-                                </tr>
-                            </table>
-                        </div>
+                         <%
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
+		
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(
+				"Select * from post where btype = '취업후기' LIMIT 3");
+	
+		
+		%>
+		<table border="1">
+			
+		<% 
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		while(rs.next()){
+			
+			String postit = rs.getString("postit");
+			String poscon = rs.getString("poscon");
+			int views = rs.getInt("views");
+			String posdat = rs.getString("posdat");
+
+			String posnic = rs.getString("posnic");
+			
+			
+			out.println("<tr>");
+			out.println("<td width='150' height='30'>" + postit + "</td>");
+			out.println("<td width='370'>" + poscon + "</td>");
+			out.println("<td width='60'>" + views + "</td>");
+			out.println("<td width='100'>" + posdat + "</td>");
+			out.println("<td width='70'>" + posnic + "</td>");
+			out.println("</tr>");
+		}
+		%> </table>
+		<%
+		
+	}catch (SQLException e){
+		
+		
+	}
+
+%>
                     </div>
                 </div>
         
@@ -638,59 +691,52 @@
             <article class="area3">
                 <div class="hire">
                     <P style="text-align: center; font-size: 20px;">채용정보</P>
-                    <div class = "gesipan_in">
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>김인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요. 이것은 채용게시판입니다.</td>
-                                   
-                                </tr>
-                            </table>
-                        </div>
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>박인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요.이것은 채용게시판입니다.</p></td>
-                                    
-                                </tr>
-                            </table>
-                        </div>
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>박인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요.이것은 채용게시판입니다.</p></td>
-                                    
-                                </tr>
-                            </table>
-                        </div>
-                        <div class = "room">
-                            <table>
-                                <tr>
-                                    <td><b>글제목</b></td>
-                                    <td>박인하</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td colspan="2"><p width="10" height="10">안녕하세요.이것은 채용게시판입니다.</p></td>
-                                    
-                                </tr>
-                            </table>
-                        </div>
+                    <div class = "gesipan_in2">
+                         <%
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
+		
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(
+				"Select * from post where btype = '채용' LIMIT 7");
+	
+		
+		%>
+		<table border="1">
+			
+		<% 
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		while(rs.next()){
+			
+			String postit = rs.getString("postit");
+			String poscon = rs.getString("poscon");
+			int views = rs.getInt("views");
+			String posdat = rs.getString("posdat");
+
+			String posnic = rs.getString("posnic");
+			
+			
+			out.println("<tr>");
+			out.println("<td width='150' height='30'>" + postit + "</td>");
+			out.println("<td width='370'>" + poscon + "</td>");
+			out.println("<td width='60'>" + views + "</td>");
+			out.println("<td width='100'>" + posdat + "</td>");
+			out.println("<td width='70'>" + posnic + "</td>");
+			out.println("</tr>");
+		}
+		%> </table>
+		<%
+		
+	}catch (SQLException e){
+		
+		
+	}
+
+%>
                     </div>
                 </div>
             </article>
@@ -699,6 +745,7 @@
         
         
     </section>
+    
     
     <footer>
    

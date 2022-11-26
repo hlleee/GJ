@@ -12,8 +12,8 @@
 
 <%
 	
-	
-	//String keyword = request.getParameter("_keyword");
+	request.setCharacterEncoding("UTF-8");	
+	String keyword = request.getParameter("_keyword");
 	String id = request.getParameter("_id");	
 
 	try{
@@ -47,12 +47,10 @@
 			
 			
 			out.println("<tr>");
-			//out.println("<td width='50' height='50'>" + posnum + "</td>");
 			out.println("<td width='150' height='30'>" + postit + "</td>");
 			out.println("<td width='370'>" + poscon + "</td>");
 			out.println("<td width='60'>" + views + "</td>");
 			out.println("<td width='100'>" + posdat + "</td>");
-			//out.println("<td width='60'>" + btype + "</td>");
 			out.println("<td width='70'>" + posnic + "</td>");
 			out.println("</tr>");
 		}

@@ -1,18 +1,15 @@
+
 <%@page import="java.sql.DriverManager"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*"%>
+    pageEncoding="utf-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>레이아웃</title>
-    <link rel="stylesheet" href="main_login.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <script
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script
       src="https://kit.fontawesome.com/77e29b57dd.js"
       crossorigin="anonymous"
     ></script>
@@ -60,7 +57,7 @@
   }
   .logo img {
     right: 20px;
-    padding-top: 30px;
+    
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -201,116 +198,15 @@
     text-decoration: none;
     cursor: pointer;
   }
-  
- 
-  /* 재사용 클래스 */
-  /* .color_naver {
-    color: #03cf5d;
-  } */
-
-  section {
-    background-color:  rgb(213, 245, 247);	 
-    height: 450px;
-    float:left;
-    width:100%;
-    padding: 10px;
-  }
-
-   article {
-    display: flex;
-    /* margin-top: 10px; */
-    padding: 5px;
-    background-color: rgb(235, 225, 225);
-  }
-
-  .container{
-    justify-content: center;
-    padding: 20px;
-    height: 100%;
-    width: 100%;
-    
-    }
-
-    .area{
-      
-        width: 60%;
-        background-color: #e6c3dc;
-        display: block;
-        padding: 3px;
-    }
-
-	table {border-collapse : collapse;} 
-
-  /* 푸터 */
-
-
-  footer {
-    color: black;   
-    /* height: 110px; */
-    font-size: 12px;
-    background-color: rgb(176, 176, 229);
-    position: relative;
-    clear: both;
-    width:100%;
-    bottom: 0;
-  }
-  
-  .aside_box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #91acd6;
-    padding: 0;
-    margin: 0;
-  }
-  .area_user {
-    flex: 4;
-    line-height: 1em; /* 줄간격 */
-  }
-  .area_user_row {
-    display: flex;
-  }
-  .area_user_row span {
-    flex: 1;
-  }
-  .area_user_row ul {
-    flex: 6;
-  }
-  /* .aur_title {
-    font-size: 13px;
-    font-weight: bold;
-  } */
-  .area_user_row ul > li {
-    display: inline-block; /* li 수평정렬하는 방법 */
-    margin-left: 8px;
-  }
-  
-  .bottom_box {
-    
-    flex: 2;
-    font-size: 14px;
-    text-align: center;
-  }
-  .bottom_box ul > li {
-    display: inline-block; /* 수평정렬 */
-    margin-left: 8px;
-  }
-  .bottom_box ul > li:last-child { /* 마지막 li요소 (굿잡 Corp.) 굵게 */
-    font-weight: bold;
-  }
-  /* 재사용 클래스 */
-  
-  .text_bold-13 {
-    font-weight: bold;
-    font-size: 13px;
-  }
   </style>
 <body>
 	
     <header>
 
       <div class="logo">
+      <a href="Main_UI.jsp">
      <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
+     </a>
       </div>
       <div class="search">
       <form name="search" action="Search_UI.jsp" method="post" >
@@ -380,118 +276,7 @@
           <li><a href="">채용게시판</a></li>
 
         </ul>
-       
       </div>
     </nav>
-    
-    <section>
-        <article class="container">
-            <article class="area" style="overflow-y:scroll">
-               
-<%
-	request.setCharacterEncoding("UTF-8");
-	
-	String keyword = request.getParameter("_keyword");
-	String id = request.getParameter("_id");	
-
-	try{
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
-		
-		Statement stmt = conn.createStatement();
-		
-		ResultSet rs = stmt.executeQuery(
-				"Select * from post where postit LIKE '%" + keyword + "%'");
-		
-		%>
-		<table border="1">
-		<tr><th>번호</th><th>제목</th><th>내용</th><th>조회수</th><th>게시일자</th><th>게시판</th><th>작성자</th></tr>
-			
-		<% 
-		
-		//request.setCharacterEncoding("UTF-8");
-		
-		while(rs.next()){
-			String posnum = rs.getString("posnum");
-			String postit = rs.getString("postit");
-			String poscon = rs.getString("poscon");
-			int views = rs.getInt("views");
-			String posdat = rs.getString("posdat");
-			String btype = rs.getString("btype");
-			String posnic = rs.getString("posnic");
-			
-			
-			out.println("<tr>");
-			out.println("<td width='50' height='50'>" + posnum + "</td>");
-			out.println("<td width='150'>" + postit + "</td>");
-			out.println("<td width='370'>" + poscon + "</td>");
-			out.println("<td width='60'>" + views + "</td>");
-			out.println("<td width='100'>" + posdat + "</td>");
-			out.println("<td width='60'>" + btype + "</td>");
-			out.println("<td width='70'>" + posnic + "</td>");
-			out.println("</tr>");
-		}
-		%> </table>
-		<%
-		
-	}catch (SQLException e){
-		
-		
-	}
-
-%>
-                
-            </article>  
-        </article>
-    </section>
-    
-    <footer>
-   
-        <div class="aside_box">
-          <div class="area_user">
-            <div class="area_user_row">
-              <span class="text_bold-13">Creators</span>
-              <ul>
-                <li><p>크리에이터</p></li>
-                <li><p>스몰비즈니스</p></li>
-              </ul>
-            </div>
-            <div class="area_user_row">
-              <span class="text_bold-13">Partners</span>
-              <ul>
-                <li><p>비즈니스 광고</p></li>
-                <li><p>스토어 개설</p></li>
-                <li><p>지역업체 등록</p></li>
-              </ul>
-            </div>
-            <div class="area_user_row">
-              <span class="text_bold-13">Developers</span>
-              <ul>
-                <li><p>굿잡 개발자센터</p></li>
-                <li><p>오픈API</p></li>
-                <li><p>오픈소스</p></li>
-                <li><p>굿잡 D2</p></li>
-                <li><p>굿잡 D2SF</p></li>
-                <li><p>굿잡 랩스</p></li>
-              </ul>
-              
-            </div>
-          </div>
-        </div>
-        <div class="bottom_box">
-            <ul>
-              <li><p>회사소개</p></li>
-              <li><p>인재채용</p></li>
-              <li><p>제휴제안</p></li>
-              <li><p>이용약관</p></li>
-              <li><p>개인정보처리방침</p></li>
-              <li><p>문의하기</p></li>
-              <li><p>굿잡 정책</p></li>
-              <li><p>고객센터</p></li>
-              <li><p>&copy; 굿잡 Corp.</p></li>
-            </ul>
-          </div>
-      </footer> 
-  </body>
-  </html>
-    
+</body>
+</html>
