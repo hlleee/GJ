@@ -27,15 +27,16 @@
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
   }
-  /* 기본 밑줄을 제거합니다 */
-  /* a {
+  
+ /* 기본 밑줄을 제거합니다 */
+   a {
     text-decoration: none; 
     color: #888;
   }
   /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
-  /* a:hover {
+   a:hover {
     text-decoration: underline; 
-  }  */
+  } 
 
   header {
     
@@ -241,52 +242,21 @@
 
 	table {border-collapse : collapse;} 
 
-  /* 푸터 */
+/* 푸터 */
 
 
   footer {
     color: black;   
-    /* height: 110px; */
+    height: 90px;
     font-size: 12px;
-    background-color: rgb(176, 176, 229);
+    background-color: rgb(236, 236, 244);
     position: relative;
     clear: both;
     width:100%;
     bottom: 0;
   }
   
-  .aside_box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #91acd6;
-    padding: 0;
-    margin: 0;
-  }
-  .area_user {
-    flex: 4;
-    line-height: 1em; /* 줄간격 */
-  }
-  .area_user_row {
-    display: flex;
-  }
-  .area_user_row span {
-    flex: 1;
-  }
-  .area_user_row ul {
-    flex: 6;
-  }
-  /* .aur_title {
-    font-size: 13px;
-    font-weight: bold;
-  } */
-  .area_user_row ul > li {
-    display: inline-block; /* li 수평정렬하는 방법 */
-    margin-left: 8px;
-  }
-  
   .bottom_box {
-    
     flex: 2;
     font-size: 14px;
     text-align: center;
@@ -295,7 +265,7 @@
     display: inline-block; /* 수평정렬 */
     margin-left: 8px;
   }
-  .bottom_box ul > li:last-child { /* 마지막 li요소 (굿잡 Corp.) 굵게 */
+  .bottom_box >p { /* 마지막 li요소 (굿잡 Corp.) 굵게 */
     font-weight: bold;
   }
   /* 재사용 클래스 */
@@ -304,13 +274,16 @@
     font-weight: bold;
     font-size: 13px;
   }
-  </style>
+  
+    </style>
 <body>
 	
     <header>
 
       <div class="logo">
+      <a href="Main_UI.jsp">
      <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
+     </a>
       </div>
       <div class="search">
       <form name="search" action="Search_UI.jsp" method="post" >
@@ -446,52 +419,24 @@
     </section>
     
     <footer>
-   
-        <div class="aside_box">
-          <div class="area_user">
-            <div class="area_user_row">
-              <span class="text_bold-13">Creators</span>
-              <ul>
-                <li><p>크리에이터</p></li>
-                <li><p>스몰비즈니스</p></li>
-              </ul>
-            </div>
-            <div class="area_user_row">
-              <span class="text_bold-13">Partners</span>
-              <ul>
-                <li><p>비즈니스 광고</p></li>
-                <li><p>스토어 개설</p></li>
-                <li><p>지역업체 등록</p></li>
-              </ul>
-            </div>
-            <div class="area_user_row">
-              <span class="text_bold-13">Developers</span>
-              <ul>
-                <li><p>굿잡 개발자센터</p></li>
-                <li><p>오픈API</p></li>
-                <li><p>오픈소스</p></li>
-                <li><p>굿잡 D2</p></li>
-                <li><p>굿잡 D2SF</p></li>
-                <li><p>굿잡 랩스</p></li>
-              </ul>
-              
-            </div>
-          </div>
-        </div>
-        <div class="bottom_box">
-            <ul>
-              <li><p>회사소개</p></li>
-              <li><p>인재채용</p></li>
-              <li><p>제휴제안</p></li>
-              <li><p>이용약관</p></li>
-              <li><p>개인정보처리방침</p></li>
-              <li><p>문의하기</p></li>
-              <li><p>굿잡 정책</p></li>
-              <li><p>고객센터</p></li>
-              <li><p>&copy; 굿잡 Corp.</p></li>
-            </ul>
-          </div>
-      </footer> 
+   <div class="bottom_box">
+        <ul>
+        <li><p>회사소개</p></li>
+        <li><p>인재채용</p></li>
+        <li><p>제휴제안</p></li>
+        <li><p>이용약관</p></li>
+        <li><p>개인정보처리방침</p></li>
+        <li><p>청소년보호정책</p></li>
+        <li><p>굿잡 정책</p></li>
+        <li><p>고객센터</p></li>
+        
+        </ul>
+    </div>
+     <div class="bottom_box">
+     <p>&copy; 굿잡 Corp.</p>
+     </div>
+</footer>
+
   </body>
   </html>
     

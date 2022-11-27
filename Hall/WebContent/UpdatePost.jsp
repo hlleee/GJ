@@ -26,24 +26,17 @@ text-align : right;
 	request.setCharacterEncoding("UTF-8");
 	String posnum = request.getParameter("_posnum");
 	String title = "", content = "", type = "";
-	String userID = "me";
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false","root","1234");
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("select * from post where comnic = '"+userID+"' and posnum = '"+posnum+"'");
+		ResultSet rs = stmt.executeQuery("select * from post where posnum = '"+posnum+"'");  	// 클릭한 게시글 번호 받아와서 조회수 받아옴
 		if(rs.next()){
-		rs = stmt.executeQuery("select * from post where posnum = '"+posnum+"'");  	// 클릭한 게시글 번호 받아와서 조회수 받아옴
-			if(rs.next()){
-		
-				title = rs.getString("postit");
-				content = rs.getString("poscon");
-				type = rs.getString("btype");
-			} 
-		} else{
-			out.println("<script>alert('권한이 없습니다.');</script>");	
-			out.println("<script>location.href='View.jsp?_posnum='"+posnum+"'';</script>");
-		}
+	
+			title = rs.getString("postit");
+			content = rs.getString("poscon");
+			type = rs.getString("btype");
+	} 
 	}catch(Exception e){
 		e.printStackTrace();
 	}

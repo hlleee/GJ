@@ -1,3 +1,4 @@
+<!-- 로그인 헤더를 가진 메인화면 -->
 <%@page import="java.sql.DriverManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*"%>
@@ -20,6 +21,7 @@
     <script src="index.js" defer></script>
   </head>
   <style>
+  table {border-collapse : collapse;} 
     * {
     box-sizing: border-box; /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
   }
@@ -27,15 +29,16 @@
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
   }
-  /* 기본 밑줄을 제거합니다 */
-  /* a {
+  
+ /* 기본 밑줄을 제거합니다 */
+   a {
     text-decoration: none; 
-    color: #888;
+    color: rgb(54, 50, 50);
   }
   /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
-  /* a:hover {
+   a:hover {
     text-decoration: underline; 
-  }  */
+  }  
 
   header {
     
@@ -354,7 +357,9 @@
     <header>
 
       <div class="logo">
-      <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
+      <a href="Main.jsp">
+     <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
+     </a>
       </div>
       <div class="search">
       <form name="search" action="Search.jsp" method="post" >
@@ -371,14 +376,15 @@
       <div class="login">
       <form action="LoginCheck.jsp" method="post">
 		<div class="login_idpw">
-            <input type="text" placeholder="아이디" >
-            <input type="password" placeholder="비밀번호">
+            <input type="text" name="_id" placeholder="아이디">
+            <input type="password" name="_pw" placeholder="비밀번호">
         </div>
         <div class="login_button">
-            <input type="button" value="로그인">
+            <input type="submit" value="로그인">
             <input type="button" value="회원가입">
         </div>
 	</form>
+	
        
         <div class="member">
         <%
@@ -435,7 +441,7 @@
         <article class="container">
             <article class="area1">
                 <div class="gesipan">
-                    <P style="text-align: center; font-size: 10px;">자유게시판</P>
+                    <P style="text-align: center; font-size: 10px;"><a href="자유게시판.jsp"><b>자유게시판</b></a></P>
                     <div class = "gesipan_in">
                         <%
 	
@@ -491,7 +497,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <P style="text-align: center; font-size: 10px;">질문게시판</P>
+                    <P style="text-align: center; font-size: 10px;"><a href="게시판.jsp"><b>질문게시판</b></a></P>
                     <div class = "gesipan_in">
                         <%
 	try{
@@ -544,7 +550,7 @@
 
             <article class="area2">
                 <div class="interview">
-                    <P style="text-align: center; font-size: 10px;">면접게시판</P>
+                    <P style="text-align: center; font-size: 10px ;"><a href="게시판.jsp"><b>면접게시판</b></a></P>
                     <div class = "gesipan_in">
                          <%
 	try{
@@ -594,7 +600,7 @@
                     </div>
                 </div>
                 <div class="job_review">
-                    <P style="text-align: center; font-size: 10px;">취업후기게시판</P>
+                    <P style="text-align: center; font-size: 10px;"><a href="자유게시판.jsp"><b>취업후기게시판</b></a></P>
                     <div class = "gesipan_in">
                          <%
 	try{
@@ -647,7 +653,7 @@
             </article>
             <article class="area3">
                 <div class="hire">
-                    <P style="text-align: center; font-size: 20px;">채용정보</P>
+                    <P style="text-align: center; font-size: 13px;"><a href="자유게시판.jsp"><b>채용정보</b></a></P>
                     <div class = "gesipan_in2">
                          <%
 	try{

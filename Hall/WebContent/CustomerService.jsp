@@ -34,14 +34,6 @@ text-align : right;
 </style>
 
 <body>
-<%
-	String userID = "me";   		//세션에서 로그인중인 id 받아옴
-
-	if(userID.isEmpty()){		//로그아웃상태면 오류메시지 로그인페이지로 이동
-		out.println("<script>alert('게시글 작성을 하려면 로그인을 하십시오.');</script>");		
-		out.println("<script>location.href='Login.jsp';</script>");
-	} 
-%>
 <form action = "CustomerServiceBack.jsp" method = "post">
     <div id = "text">
     				<p style = "font-size : 16px">문의사항 |</p>
