@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import = "java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -22,10 +22,8 @@
 	Statement stmt = conn.createStatement();
 	stmt.executeUpdate("delete from member where id = '"+id+"'");
 	
-	out.println("<p>ID : " + id);
-	out.println("<p>¾ÏÈ£ : " + pw);
-	out.println("<p>´Ð³×ÀÓ : " + nickname);
-	out.println("<h1>È¸¿øÁ¤º¸ »èÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.</h1>");
+	out.println("<script>alert('íƒˆí‡´ì™„ë£Œ!');</script>");
+	out.println("<script>location.href='Login.jsp';</script>");
 	
 	stmt.close();
 	conn.close();

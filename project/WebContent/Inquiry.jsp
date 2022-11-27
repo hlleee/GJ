@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	 <meta charset="UTF-8" />
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>·¹ÀÌ¾Æ¿ô</title>
+    <title>ë ˆì´ì•„ì›ƒ</title>
     <link rel="stylesheet" href="main.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
@@ -20,14 +19,14 @@
 	<style>
 		 #header {
     
-    margin: auto; /* headerÀÇ ¾çÂÊ ¿©¹é(margin)À» µ¿µîÇÏ°Ô ¸ÂÃã -> ¼öÆò°¡¿îµ¥Á¤·Ä */
+    margin: auto; /* headerì˜ ì–‘ìª½ ì—¬ë°±(margin)ì„ ë™ë“±í•˜ê²Œ ë§žì¶¤ -> ìˆ˜í‰ê°€ìš´ë°ì •ë ¬ */
     width: 100%;
     height: 160px;
     display: flex;
-    align-items: center; /* ÇÏÀ§ ¿ä¼Òµé ¼öÁ÷ °¡¿îµ¥Á¤·Ä */
+    align-items: center; /* í•˜ìœ„ ìš”ì†Œë“¤ ìˆ˜ì§ ê°€ìš´ë°ì •ë ¬ */
     position: relative;
   }
-    /* ±âº» border ¾ø¾Ö±â(ÀÌ ÄÚµå¸¦ Áö¿ì°í ±âº» border¸¦ È®ÀÎÇØº¸¼¼¿ä) */
+    /* ê¸°ë³¸ border ì—†ì• ê¸°(ì´ ì½”ë“œë¥¼ ì§€ìš°ê³  ê¸°ë³¸ borderë¥¼ í™•ì¸í•´ë³´ì„¸ìš”) */
   fieldset {
     border: none;
     display: inline-block;
@@ -44,7 +43,7 @@
     
   }
   
-  .visually-hidden { /* legend ¾Èº¸ÀÌ°Ô ¼³Á¤. ÀÌ·¸°ÔÇÏ¸é Á¢±Ù¼ºÀ» ÁØ¼öÇÏ¸é¼­ µðÀÚÀÎÀ» ÇØÄ¡Áö ¾Ê½À´Ï´Ù. */
+  .visually-hidden { /* legend ì•ˆë³´ì´ê²Œ ì„¤ì •. ì´ë ‡ê²Œí•˜ë©´ ì ‘ê·¼ì„±ì„ ì¤€ìˆ˜í•˜ë©´ì„œ ë””ìžì¸ì„ í•´ì¹˜ì§€ ì•ŠìŠµë‹ˆë‹¤. */
     position: absolute !important;
     height: 1px;
     width: 1px;
@@ -53,7 +52,7 @@
     clip: rect(1px, 1px, 1px, 1px);
     white-space: nowrap;
   }
-  /* ¸µÅ©µéÀ» »ó´Ü ¿ìÃø¿¡ À§Ä¡½ÃÅµ´Ï´Ù. */
+  /* ë§í¬ë“¤ì„ ìƒë‹¨ ìš°ì¸¡ì— ìœ„ì¹˜ì‹œí‚µë‹ˆë‹¤. */
   /* .links {
     position: absolute;
     top: 0;
@@ -86,7 +85,7 @@
     align-items: center;
   }
   .search_box input {
-    flex: 9; /* search-box³»ºÎ¿¡¼­ 9¸¸Å­ÀÇ Å©±â¸¦ Â÷Áö(ºñÀ²) */
+    flex: 9; /* search-boxë‚´ë¶€ì—ì„œ 9ë§Œí¼ì˜ í¬ê¸°ë¥¼ ì°¨ì§€(ë¹„ìœ¨) */
     height: 46px;
     padding-left: 12px;
     padding-right: 12px;
@@ -95,7 +94,7 @@
     font-size: 18px;
   }
   .search_box button {
-    flex: 1; /* search-box³»ºÎ¿¡¼­ 1¸¸Å­ÀÇ Å©±â¸¦ Â÷Áö(ºñÀ²) */
+    flex: 1; /* search-boxë‚´ë¶€ì—ì„œ 1ë§Œí¼ì˜ í¬ê¸°ë¥¼ ì°¨ì§€(ë¹„ìœ¨) */
     height: 46px;
     padding: 0;
     border: none;
@@ -150,7 +149,7 @@
   }
 		
 		#nav {
-		/* ¹®ÀÇ ³»¿ª */
+		/* ë¬¸ì˜ ë‚´ì—­ */
 			width: 80%;
 			float: center;
 			height: auto;
@@ -158,16 +157,21 @@
 			left:400px;
 		}
 		#section {
-			/* ¸Þ´º */
+			/* ë©”ë‰´ */
 			width: 200px;
 			float: center;
 			height: auto;
 			position: absolute;
-			top: 250px;
+			top: 160px;
 			left:100px;
 			
 		}
-		#footer {
+		.bd-sidebar {
+  background: #eee;
+  height:350px;
+  
+}
+	footer {
   color: black;   
   height: 110px;
   font-size: 12px;
@@ -185,7 +189,7 @@
 }
 .area_user {
   flex: 4;
-  line-height: 2em; /* ÁÙ°£°Ý */
+  line-height: 2em; /* ì¤„ê°„ê²© */
 }
 .area_user_row {
   display: flex;
@@ -201,7 +205,7 @@
   font-weight: bold;
 }
 .area_user_row ul > li {
-  display: inline-block; /* li ¼öÆòÁ¤·ÄÇÏ´Â ¹æ¹ý */
+  display: inline-block; /* li ìˆ˜í‰ì •ë ¬í•˜ëŠ” ë°©ë²• */
   margin-left: 8px;
 }
 .area_col {
@@ -222,18 +226,19 @@
   text-align: center;
 }
 .bottom_box ul > li {
-  display: inline-block; /* ¼öÆòÁ¤·Ä */
+  display: inline-block; /* ìˆ˜í‰ì •ë ¬ */
   margin-left: 8px;
 }
-.bottom_box ul > li:last-child { /* ¸¶Áö¸· li¿ä¼Ò (Naver Corp.) ±½°Ô */
+.bottom_box ul > li:last-child { /* ë§ˆì§€ë§‰ liìš”ì†Œ (Naver Corp.) êµµê²Œ */
   font-weight: bold;
 }
-/* Àç»ç¿ë Å¬·¡½º */
+/* ìž¬ì‚¬ìš© í´ëž˜ìŠ¤ */
 
 .text_bold-13 {
   font-weight: bold;
   font-size: 13px;
 }
+
 		
 		@media (max-width: 600px) {
 			#nav, #section {
@@ -249,13 +254,13 @@
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-<!-- ºÎ°¡ÀûÀÎ Å×¸¶ -->
+<!-- ë¶€ê°€ì ì¸ í…Œë§ˆ -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-<!-- Á¦ÀÌÄõ¸® -->
+<!-- ì œì´ì¿¼ë¦¬ -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<!-- ÇÕÃÄÁö°í ÃÖ¼ÒÈ­µÈ ÃÖ½Å ÀÚ¹Ù½ºÅ©¸³Æ® -->
+<!-- í•©ì³ì§€ê³  ìµœì†Œí™”ëœ ìµœì‹  ìžë°”ìŠ¤í¬ë¦½íŠ¸ -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 
@@ -268,11 +273,11 @@
       <div class="search">
       <form>
         <fieldset>
-          <legend class="visually-hidden">°Ë»ö</legend>
+          <legend class="visually-hidden">ê²€ìƒ‰</legend>
           <div class="search_box">
             <input type="text" maxlength="225" tabindex="1" />
             <button type="submit" tabindex="2">
-              °Ë»ö
+              ê²€ìƒ‰
             </button>
             
           </div>
@@ -283,14 +288,14 @@
       </div>
       <div class="login">
         <div class="login_idpw">
-            <input type="text" placeholder="¾ÆÀÌµð" >
-            <input type="password" placeholder="ºñ¹Ð¹øÈ£">
+            <input type="text" placeholder="ì•„ì´ë””" >
+            <input type="password" placeholder="ë¹„ë°€ë²ˆí˜¸">
         </div>
         <div class="login_button">
-            <input type="button" value="·Î±×ÀÎ">
-            <input type="button" value="È¸¿ø°¡ÀÔ">
+            <input type="button" value="ë¡œê·¸ì¸">
+            <input type="button" value="íšŒì›ê°€ìž…">
         </div>
-        <div class="member"><p>È¸¿ø¼ö 4¸í</p>
+        <div class="member"><p>íšŒì›ìˆ˜ 4ëª…</p>
         </div>
       </div>
       
@@ -298,19 +303,19 @@
 	<div id="nav">
 	
 		<block>
-		<h1>¹®ÀÇ ³»¿ª</h1>
-		<hr width="80%" align="left">
+		<h1>ë¬¸ì˜ ë‚´ì—­</h1>
+	
 		</block>
-	<div style="border: 1px solid black; height: 300px;width: 70%;">
+	<div style="border: 1px solid black; height: 250px;width: 70%;">
 	 <div style="overflow: auto; width:100%; height:300px;">
-	<table class="table table-striped">
+	<table class="table table-striped" style="overflow-x:scroll" >
       <thead>
           <tr>
-              <th style="background-color: #eeeeee; text-align: center; width:100px">¹®ÀÇ¹øÈ£</th>
-                <th style="background-color: #eeeeee; text-align: center; width:300px">Á¦¸ñ</th>
-                <th style="background-color: #eeeeee; text-align: center; width: 120px">ÀÛ¼ºÀÚ</th>
-                <th style="background-color: #eeeeee; text-align: center; width:200px">ÀÛ¼ºÀÏ</th>
-                <th style="background-color: #eeeeee; text-align: center; width:100px">Ã³¸®¿©ºÎ</th>
+              <th style="background-color: #eeeeee; text-align: center; width:100px">ë¬¸ì˜ë²ˆí˜¸</th>
+                <th style="background-color: #eeeeee; text-align: center; width:300px">ì œëª©</th>
+                <th style="background-color: #eeeeee; text-align: center; width: 120px">ìž‘ì„±ìž</th>
+                <th style="background-color: #eeeeee; text-align: center; width:200px">ìž‘ì„±ì¼</th>
+                <th style="background-color: #eeeeee; text-align: center; width:100px">ì²˜ë¦¬ì—¬ë¶€</th>
             </tr>
         </thead>
         <%
@@ -319,9 +324,18 @@
  		Connection conn = DriverManager.getConnection(
  				"jdbc:mysql://localhost/project","root","1234");
  		Statement stmt = conn.createStatement();
- 		ResultSet rs = stmt.executeQuery("select * from inquiry ");
- 		//Á¶°ÇÃß°¡ÇØ¼­ ÇØ´çÁ¤º¸¸¸ Ãâ·Â
+ 		ResultSet rs = stmt.executeQuery
+ 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"'"); 		//ì¡°ê±´ì¶”ê°€í•´ì„œ í•´ë‹¹ì •ë³´ë§Œ ì¶œë ¥
  		
+		if(rs.next()==false){%>
+
+</tr>	 			
+<tr align="center" bgcolor="#FFFFFF" height="30">
+	    <td colspan="5" >ë¬¸ì˜ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤.</td> 	
+	  </tr> 
+	<% 	}
+		rs = stmt.executeQuery
+ 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"'order by inquiry.inqnum asc"); 
  		while(rs.next()){
  			String inqnum = rs.getString("inqnum");
  			String inqtit = rs.getString("inqtit");
@@ -330,11 +344,11 @@
  			String process = rs.getString("process");
  			%>
  			
- 			<tr> <th style="text-align: center;"><% out.println(inqnum);%></th>
- 			<th style="text-align: center;"><% out.println(inqtit);%></th>
- 			<th style="text-align: center;"><%  out.println(inqnic);%></th>
- 			<th style="text-align: center;"><%out.println(inqdat);%></th>
- 			<th style="text-align: center;"><%out.println(process);%></th>
+ 			<tr> <th style="text-align: center;"><%=inqnum%></th>
+ 			<th style="text-align: center;"><%=inqtit%></th>
+ 			<th style="text-align: center;"><%=inqnic%></th>
+ 			<th style="text-align: center;"><%=inqdat%></th>
+ 			<th style="text-align: center;"><%=process%></th>
  			</tr>
  			<%
  		} 
@@ -348,24 +362,16 @@
 </div>
 	<div id="section">
 	<block>
-	<div class="menu">
-	<div align="left" style="border: 3px solid black; width: 170px;height: 170px;">
-      <ul>
-        <li class="item">
-           <p>
-           <a href="MyInfo.jsp">³» Á¤º¸</a><p>
-        </li>
-       
-        <li class="item">
-           <a href="MyPost.jsp">³»°¡ ¾´ ±Û</a><p>
-        </li>
-        <li class="item">
-           <a href="LikePost.jsp">ÁÁ¾Æ¿ä ´©¸¥ ±Û</a><p>
-        </li>
-        <li class="item">
-          <a href="Inquiry.jsp">¹®ÀÇ ³»¿ª</a><p>
-        </li>
-    </ul> 
+  <div class="row flex-nowrap" style="text-align:center">
+    <div class="col-3 bd-sidebar">
+      <ul class="nav"  >
+        <h3><li><a href = "MyInfo.jsp?">ë‚´ ì •ë³´<br></a></li></h3>
+        <h3><li><a href="MyPost.jsp">ë‚´ê°€ ì“´ ê¸€</a></li></h3>
+        <h3><li><a href="LikePost.jsp">ì¢‹ì•„ìš” ëˆ„ë¥¸ ê¸€</a></li></h3>
+        <h3><li><a href="Inquiry.jsp">ë¬¸ì˜ ë‚´ì—­</a></li></h3>
+        
+      </ul>
+      <br>
     </div>
    </div>
    </block>
@@ -377,27 +383,27 @@
         <div class="area_user_row">
           <span class="text_bold-13">Creators</span>
           <ul>
-            <li><p>Å©¸®¿¡ÀÌÅÍ</p></li>
-            <li><p>½º¸ôºñÁî´Ï½º</p></li>
+            <li><p>í¬ë¦¬ì—ì´í„°</p></li>
+            <li><p>ìŠ¤ëª°ë¹„ì¦ˆë‹ˆìŠ¤</p></li>
           </ul>
         </div>
         <div class="area_user_row">
           <span class="text_bold-13">Partners</span>
           <ul>
-            <li><p>ºñÁî´Ï½º ±¤°í</p></li>
-            <li><p>½ºÅä¾î °³¼³</p></li>
-            <li><p>Áö¿ª¾÷Ã¼ µî·Ï</p></li>
+            <li><p>ë¹„ì¦ˆë‹ˆìŠ¤ ê´‘ê³ </p></li>
+            <li><p>ìŠ¤í† ì–´ ê°œì„¤</p></li>
+            <li><p>ì§€ì—­ì—…ì²´ ë“±ë¡</p></li>
           </ul>
         </div>
         <div class="area_user_row">
           <span class="text_bold-13">Developers</span>
           <ul>
-            <li><p>±ÂÀâ °³¹ßÀÚ¼¾ÅÍ</p></li>
-            <li><p>¿ÀÇÂAPI</p></li>
-            <li><p>¿ÀÇÂ¼Ò½º</p></li>
-            <li><p>±ÂÀâ D2</p></li>
-            <li><p>±ÂÀâ D2SF</p></li>
-            <li><p>±ÂÀâ ·¦½º</p></li>
+            <li><p>êµ¿ìž¡ ê°œë°œìžì„¼í„°</p></li>
+            <li><p>ì˜¤í”ˆAPI</p></li>
+            <li><p>ì˜¤í”ˆì†ŒìŠ¤</p></li>
+            <li><p>êµ¿ìž¡ D2</p></li>
+            <li><p>êµ¿ìž¡ D2SF</p></li>
+            <li><p>êµ¿ìž¡ ëž©ìŠ¤</p></li>
           </ul>
           
         </div>
@@ -405,15 +411,15 @@
     </div>
     <div class="bottom_box">
         <ul>
-          <li><p>È¸»ç¼Ò°³</p></li>
-          <li><p>ÀÎÀçÃ¤¿ë</p></li>
-          <li><p>Á¦ÈÞÁ¦¾È</p></li>
-          <li><p>ÀÌ¿ë¾à°ü</p></li>
-          <li><p>°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</p></li>
-          <li><p>¹®ÀÇÇÏ±â</p></li>
-          <li><p>±ÂÀâ Á¤Ã¥</p></li>
-          <li><p>°í°´¼¾ÅÍ</p></li>
-          <li><p>&copy; ±ÂÀâ Corp.</p></li>
+          <li><p>íšŒì‚¬ì†Œê°œ</p></li>
+          <li><p>ì¸ìž¬ì±„ìš©</p></li>
+          <li><p>ì œíœ´ì œì•ˆ</p></li>
+          <li><p>ì´ìš©ì•½ê´€</p></li>
+          <li><p>ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</p></li>
+          <li><p>ë¬¸ì˜í•˜ê¸°</p></li>
+          <li><p>êµ¿ìž¡ ì •ì±…</p></li>
+          <li><p>ê³ ê°ì„¼í„°</p></li>
+          <li><p>&copy; êµ¿ìž¡ Corp.</p></li>
         </ul>
       </div>
   </footer>
