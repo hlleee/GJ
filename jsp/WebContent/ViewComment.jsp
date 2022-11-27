@@ -14,6 +14,8 @@
 	String comchk = request.getParameter("_comchk");
 	String comcon = request.getParameter("_content"); 
 	String fgnnum = request.getParameter("_fgnnum"); 
+	String posnum = request.getParameter("posnum");
+	String userID = "me2";
 	int comnum = 1;										// 세션으로 아이디도 받아와야함
 	LocalDate now = LocalDate.now();
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
@@ -28,12 +30,12 @@
 		while(rs.next())
 			++comnum;
 			
-			stmt.executeUpdate("insert into comment values ('"+comnum+"', '"+"me2"+"','"+comcon+"', '"+date+"', '"+comchk+"', '"+fgnnum+"')");	
+			stmt.executeUpdate("insert into comment values ('"+comnum+"', '"+userID+"','"+comcon+"', '"+date+"', '"+comchk+"', '"+fgnnum+"')");	
 			if(comchk.equals("1"))
 				out.println("<script>alert('댓글이 등록되었습니다.');</script>");	
 			else
 				out.println("<script>alert('답글이 등록되었습니다.');</script>");	
-			out.println("<script>location.href='View.jsp';</script>");
+				out.println("<script>location.href='View.jsp?_posnum='"+posnum+"'';</script>");
 			
 		
 	}catch(Exception e){

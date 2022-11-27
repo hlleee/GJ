@@ -22,6 +22,14 @@ text-align : right;
 </style>
 </head>
 <body>
+<%
+	String userID = "me";   		//세션에서 로그인중인 id 받아옴
+
+	if(userID.isEmpty()){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+		out.println("<script>alert('게시글 작성을 하려면 로그인을 하십시오.');</script>");		
+		out.println("<script>location.href='Login.jsp';</script>");
+	} 
+%>
 <form action = WritingBack.jsp method = "post">
 <div id = "input"><h3>글 작성</h3>
 						<select name = "_type" style = "width : 50%;" >

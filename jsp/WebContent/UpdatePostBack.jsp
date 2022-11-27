@@ -13,7 +13,6 @@
 	String posnum = request.getParameter("_posnum");
 	String type = request.getParameter("_type");
 	String title = request.getParameter("_title");
-	
 	String content = request.getParameter("_content");
 try{
 	 Class.forName("com.mysql.jdbc.Driver");
@@ -21,10 +20,13 @@ try{
 	Statement stmt = conn.createStatement();
 	
 		stmt.executeUpdate("update post set postit = '"+title+"', poscon = '"+content+"', btype = '"+type+"' where posnum = '"+posnum+"'");
+		
+		stmt.close();
+		conn.close();
+		
 		out.println("<script>alert('게시글 수정이 완료되었습니다.');</script>");	
-		out.println("<script>location.href='View.jsp';</script>");
-	stmt.close();
-	conn.close();
+		out.println("<script>location.href='View.jsp?_posnum='"+posnum+"'';</script>");
+	
  }catch(Exception e){
 	 e.printStackTrace();
  }

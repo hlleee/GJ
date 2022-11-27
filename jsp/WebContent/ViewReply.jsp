@@ -16,16 +16,17 @@ margin-left : 15%;
 <body>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String id = request.getParameter("_id");
+	String userID = "me";
 	String comchk = request.getParameter("_comchk");
 	String fgnnum = request.getParameter("_fgnnum");
+	String posnum = request.getParameter("_posnum");
 %>
 <div id="comment">
 	<h3>답글 작성</h3>
 	<form action = ViewComment.jsp method = "post">
-	<input type = "hidden" name = "_id" value = <%=id%>>
 	<input type = "hidden" name = "_comchk" value = <%=comchk%>>
 	<input type = "hidden" name = "_fgnnum" value = <%=fgnnum%>>
+	<input type = "hidden" name = "_posnum" value = <%=posnum%>>
 	<textarea style = "width : 700px; height : 50px;" name = "_content"></textarea>
 	<span style="float:right;"> 
 	<button type = "submit" style = "height : 56px; font-size : 12px;">답글 작성</button>

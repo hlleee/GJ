@@ -14,6 +14,7 @@
 	String title = request.getParameter("_title");
 	String date = request.getParameter("_date");
 	String content = request.getParameter("_content");
+	String userID = "id";
 try{
 	 Class.forName("com.mysql.jdbc.Driver");
 	 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp", "root", "1234");
@@ -22,7 +23,7 @@ try{
 	while(rs.next())
 		++inqnum;
 //		stmt.executeUpdate("insert into inquiry values ('"+inqnum+"', '"+ type +"', '" + title + "','"+session.getAttribute("__ID")+"', '" + date + "', '"+content+"', 0)"); //로그인 구현되면 id도 db에 넣는다.
-		stmt.executeUpdate("insert into inquiry values ('"+inqnum+"', '"+ type +"', '" + title + "','"+"me"+"', '" + date + "', '"+content+"', 0)");
+		stmt.executeUpdate("insert into inquiry values ('"+inqnum+"', '"+ type +"', '" + title + "','"+userID+"', '" + date + "', '"+content+"', 0)");
 		out.println("<script>alert('문의가 완료되었습니다.');</script>");	
 		out.println("<script>location.href='CustomerService.jsp';</script>");
 	stmt.close();
