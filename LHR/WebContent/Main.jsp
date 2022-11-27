@@ -330,9 +330,7 @@
     bottom: 0;
   }
   
-  
   .bottom_box {
-    
     flex: 2;
     font-size: 14px;
     text-align: center;
