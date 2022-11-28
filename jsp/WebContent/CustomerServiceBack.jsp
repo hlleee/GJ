@@ -22,7 +22,6 @@ try{
 	ResultSet rs = stmt.executeQuery("select inqnum from inquiry");
 	while(rs.next())
 		++inqnum;
-//		stmt.executeUpdate("insert into inquiry values ('"+inqnum+"', '"+ type +"', '" + title + "','"+session.getAttribute("__ID")+"', '" + date + "', '"+content+"', 0)"); //로그인 구현되면 id도 db에 넣는다.
 		stmt.executeUpdate("insert into inquiry values ('"+inqnum+"', '"+ type +"', '" + title + "','"+userID+"', '" + date + "', '"+content+"', 0)");
 		out.println("<script>alert('문의가 완료되었습니다.');</script>");	
 		out.println("<script>location.href='CustomerService.jsp';</script>");

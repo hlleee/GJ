@@ -25,7 +25,7 @@ try{
 		conn.close();
 		
 		out.println("<script>alert('게시글 수정이 완료되었습니다.');</script>");	
-		out.println("<script>location.href='View.jsp?_posnum='"+posnum+"'';</script>");
+		out.println("<script>location.href='View.jsp?_posnum="+posnum+"';</script>");
 	
  }catch(Exception e){
 	 e.printStackTrace();
