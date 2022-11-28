@@ -17,17 +17,17 @@
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false","root","1234");
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from comment where comnic = '"+userID+"' and comnum = '"+comnum+"' and comchk = '"+comchk+"'");
+			ResultSet rs = stmt.executeQuery("select * from comment where comnic = '"+userID+"' and comnum = '"+comnum+"' and comrepdiv = '"+comchk+"'");
 			if(rs.next()){
-			stmt.executeUpdate("delete from comment where comnic='"+userID+"' and comnum='"+comnum+"' and comchk='"+comchk+"'");
-			out.println("<script>alert('댓글 삭제가 완료되었습니다.');</script>");	
-			out.println("<script>location.href='View.jsp';</script>");
-			stmt.close();
-			conn.close();
-			rs.close();
+				stmt.executeUpdate("delete from comment where comnic='"+userID+"' and comnum='"+comnum+"' and comrepdiv='"+comchk+"'");
+				out.println("<script>alert('댓글 삭제가 완료되었습니다.');</script>");	
+				out.println("<script>location.href='View.jsp?_posnum='"+posnum+"'';</script>");
+				stmt.close();
+				conn.close();
+				rs.close();
 			}else {
 				out.println("<script>alert('권한이 없습니다.');</script>");	
-				out.println("<script>location.href='View.jsp';</script>");
+				out.println("<script>location.href='View.jsp?_posnum='"+posnum+"'';</script>");
 			}
 		} catch(Exception e){
 			e.printStackTrace();

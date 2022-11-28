@@ -30,7 +30,6 @@
 		ResultSet rs = stmt.executeQuery("select posnum from post");
 		while(rs.next())
 			++posnum;
-	//		stmt.executeUpdate("insert into post values ('"+inqnum+"', '"+ type +"', '" + title + "','"+session.getAttribute("__ID")+"', '" + date + "', '"+content+"', 0)"); //로그인 구현되면 id도 db에 넣는다.
 			stmt.executeUpdate("insert into post values ('"+posnum+"', '" + title + "','"+content+"', '" + date + "', '"+userID+"', 0, '"+type+"')");
 			out.println("<script>alert('게시글 작성이 완료되었습니다.');</script>");	
 			out.println("<script>location.href='View.jsp';</script>");

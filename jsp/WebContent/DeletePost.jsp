@@ -22,7 +22,7 @@
 		out.println("<script>location.href='View.jsp?_posnum='"+posnum+"'';</script>");
 		} else{
 			out.println("<script>alert('권한이 없습니다.');</script>");	
-			out.println("<script>location.href='View.jsp?_posnum='"+posnum+"'';</script>");
+			out.println("<script>location.href='View.jsp?_posnum="+posnum+"';</script>");
 		}
 		stmt.close();
 		conn.close();
