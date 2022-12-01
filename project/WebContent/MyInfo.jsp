@@ -6,10 +6,8 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8">
-	 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>레이아웃</title>
+    <title>내 정보</title>
     <link rel="stylesheet" href="main.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
@@ -17,9 +15,8 @@
     />
     <script
       src="https://kit.fontawesome.com/77e29b57dd.js"
-      crossorigin="anonymous"
     ></script>
-	<title>HTML Layouts</title>
+
 	<style>
 		 #header {
     
@@ -56,21 +53,6 @@
     clip: rect(1px, 1px, 1px, 1px);
     white-space: nowrap;
   }
-  /* 링크들을 상단 우측에 위치시킵니다. */
-  /* .links {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-  .link_text {
-    font-size: 10px;
-    margin-left: 5px;
-  }
-  .img_logo {
-    margin-bottom: 12px;
-    width: 220px;
-    height: 65px;
-  } */
 
   .search {
     width : 45%;
@@ -156,9 +138,9 @@
 			/* 내 정보 */
 			width: 70%;
 			float: center;
-			height: 400px;
+			height: 450px;
 			position: relative;
-			left:400px;
+			left:600px;
 			overflow-x:hidden;
 			overflow-y:hidden"
 			
@@ -168,10 +150,10 @@
 			/* 메뉴 */
 			width: 200px;
 			float: center;
-			height: 400px;
+			height: 450px;
 			position: absolute;
 			top: 160px;
-			left:100px;
+			left:200px;
 			
 		}
 		.bd-sidebar {
@@ -242,6 +224,22 @@ footer {
 }
 /* 재사용 클래스 */
 
+.hr-solid{
+	border:0px;
+	border-top: 3px solid ;
+}
+a:link, a:visited {
+     
+     color: maroon;
+     padding: 5px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+}
+ a:hover, a:active {
+s     display: inline-block;  
+}
+	
 .text_bold-13 {
   font-weight: bold;
   font-size: 13px;
@@ -255,7 +253,9 @@ footer {
 		*.box     { border:1px solid black; background-color:gold; } 
 		a{text-decoration:none}
 		ul{list-style:none;}
-		
+		form {
+	display: inline;
+}
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -307,17 +307,13 @@ footer {
         <div class="member"><p>회원수 4명</p>
         </div>
       </div>
-      
-   
-	
 	</div>
-	<div id="nav">
 	
-		<block>
+	<div id="nav" style="overflow: hidden;">
 		<h1>내 정보</h1>
-		<hr width="50%" align="left">
-		</block>
-	<block>
+		<hr class='hr-solid' width="50%" align="left" ></hr>
+			
+	
 	<!--  현재 로그인 사용자: <%= (String)session.getAttribute("__ID") %>  -->
 	 
 	<%
@@ -337,52 +333,41 @@ footer {
  			String ename = rs.getString("ename");
  			String joboffdiv = rs.getString("joboffdiv");
  			%>
- 			<h4>아이디: <%=id%></h4><p>
- 			<h4>닉네임: <%=nickname%></h4><p>
- 			<h4>이메일: <%=email%></h4><p>
- 			<h4>기업형태: <%=etype%></h4><p>
- 			<h4>기업명:	<%=ename%></h4><p>
- 			<h4>신분: <%=joboffdiv%></h4><p>
+ 			<h3>아이디: <%=id%></h3><p>
+ 			<h3>닉네임: <%=nickname%></h3><p>
+ 			<h3>이메일: <%=email%></h3><p>
+ 			<h3>기업형태: <%=etype%></h3><p>
+ 			<h3>기업명:	<%=ename%></h3><p>
+ 			<h3>신분: <%=joboffdiv%></h3><p>
  			<% 
  		} 
  		} catch(SQLException e){
  		e.printStackTrace();
  	}
-	// " + "'"+ session.getAttribute("id") + "'" 조건추가
+	
 %>
-	<td norwap align=center>
+	
    <div id="row1" style="float:left;">
-    <form method="post" action="Member_Update_List.jsp" style="width: 80px;">
-     <fieldset>
-      <input type="submit" value="수정하기">
-    </form>
-   </div>
+      <input class="btn btn-primary" type="button" value="수정하기" onclick="location.href='Member_Update_List.jsp'"> &nbsp;&nbsp;
+   </div> 
    <div id="row2" style="float:left;">
-    <form method="post" action="Member_Delete_List.jsp" style="width: 100px;">
-     <fieldset>
-     <input type="submit"  value="탈퇴하기">
-    </form>  
+      <input class="btn btn-primary" type="button" value="탈퇴하기" onclick="location.href='Member_Delete_List.jsp'">
    </div>
-  </td>
-	</block>
-		
 	</div>
 	
 	<div id="section">
-	<block>
   <div class="row flex-nowrap" style="text-align:center">
     <div class="col-3 bd-sidebar">
       <ul class="nav"  >
-        <h3><li><a href = "MyInfo.jsp?">내 정보<br></a></li></h3>
-        <h3><li><a href="MyPost.jsp?">내가 쓴 글</a></li></h3>
-        <h3><li><a href="LikePost.jsp">좋아요 누른 글</a></li></h3>
-        <h3><li><a href="Inquiry.jsp">문의 내역</a></li></h3>
+        <li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
         
       </ul>
       <br>
     </div>
    </div>
-   </block>
 	</div>
 	
 	<footer>

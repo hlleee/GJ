@@ -4,10 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8">
-	 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>레이아웃</title>
     <link rel="stylesheet" href="main.css" />
@@ -150,48 +146,29 @@
     padding-left: 80px;
     padding-top: 0px;
   }
-  #nav {
-			/* 내 정보 */
-			width: 70%;
-			float: center;
-			height: 450px;
-			position: relative;
-			left:600px;
-			overflow-x:hidden;
-			overflow-y:hidden"
-			
-		}
 		
+		#nav {
+		/* 문의 내역 */
+			width: 80%;
+			float: center;
+			height: 400px;
+			position: relative;
+			left:400px;
+		}
 		#section {
 			/* 메뉴 */
 			width: 200px;
 			float: center;
-			height: 450px;
+			height: 400px;
 			position: absolute;
 			top: 160px;
-			left:200px;
+			left:100px;
 			
 		}
 		.bd-sidebar {
   background: #eee;
   height:350px;
-}
-a:link, a:visited {
-     
-     color: maroon;
-     padding: 5px;
-     text-align: left;
-     text-decoration: none;
-     display: inline-block;
-}
- a:hover, a:active {
-     display: inline-block;  
-}.hr-solid{
-	border:0px;
-	border-top: 3px solid ;
-}
-.table-striped{
-	width:400px;
+  
 }
 	footer {
   color: black;   
@@ -255,7 +232,17 @@ a:link, a:visited {
   font-weight: bold;
 }
 /* 재사용 클래스 */
-
+a:link, a:visited {
+     
+     color: maroon;
+     padding: 5px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+}
+ a:hover, a:active {
+     display: inline-block;  
+}
 .text_bold-13 {
   font-weight: bold;
   font-size: 13px;
@@ -266,17 +253,14 @@ a:link, a:visited {
 				height: 100%;
 			}
 		}
-		*.box     { border:1px solid black; background-color:gold; } 
 		a{text-decoration:none}
 		ul{list-style:none;}
-		
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
@@ -286,11 +270,11 @@ a:link, a:visited {
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 
-	<div id="header">
-	
-      <div class="logo">
+<div id="header">
+	<div class="logo">
       <img src="images/Logo.png" class="img_logo" style="display: block; margin: 0 auto; width:150px; height:150px;"/>
       </div>
       <div class="search">
@@ -322,53 +306,69 @@ a:link, a:visited {
         </div>
       </div>
       
-   
-	
 	</div>
 	<div id="nav">
 
-		<h1>내 정보</h1>
-<hr class='hr-solid' width="50%" align="left" ></hr>	
-<h3><p style="color:red;">탈퇴하려면 회원삭제를 누르세요. </p> </h3>
+		<h1>문의 내역</h1>
 
-<%
-	try{
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection(
-				"jdbc:mysql://localhost/project","root","1234");
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("select * from member where id='"+(String)session.getAttribute("__ID")+"'");
-		%> 
-		<table border = "1" class="table-striped">
-			<tr><th>ID</th><th>암호</th><th>닉네임</th></tr>
-		<%
-		while(rs.next()){
-			String id = rs.getString("id");
-			String pw = rs.getString("pw");
-			String nickname = rs.getString("nickname");
+	<div style="border: 1px solid black; height: 250px;width: 70%;">
+	 <div style="overflow: auto; width:100%; height:100%;">
+	<table class="table table-striped" style="overflow-x:scroll" >
+      <thead>
+          <tr>
+              <th style="background-color: #eeeeee; text-align: center; width:100px">문의번호</th>
+                <th style="background-color: #eeeeee; text-align: center; width:300px">제목</th>
+                <th style="background-color: #eeeeee; text-align: center; width: 120px">작성자</th>
+                <th style="background-color: #eeeeee; text-align: center; width:200px">작성일</th>
+                <th style="background-color: #eeeeee; text-align: center; width:100px">처리여부</th>
+            </tr>
+        </thead>
+        <%
+ 	try{
+ 		Class.forName("com.mysql.jdbc.Driver");
+ 		Connection conn = DriverManager.getConnection(
+ 				"jdbc:mysql://localhost/project","root","1234");
+ 		Statement stmt = conn.createStatement();
+ 		ResultSet rs = stmt.executeQuery
+ 				("select * from inquiry order by inqnum asc"); 		//조건추가해서 해당정보만 출력
+ 		
+		if(rs.next()==false){%>
 			
-			out.println("<tr>");
-			out.println("<td width = '100'><h4>"+id+"</h4></td>");
-			out.println("<td width = '100'><h4>" + pw + "</h4></td>");
-			out.println("<td width = '100'><h4>" + nickname + "</h4></td>");
-			out.println("<h4><a href = 'Member_Delete_Query.jsp?id="+id+"&pw="+pw+"&nickname="+nickname+"'>" + "회원삭제" + "</h4></a>");
-			
-		}  
-		
-		} catch(SQLException e){
-		e.printStackTrace();
-	}
+<tr align="center" bgcolor="#FFFFFF" height="30">
+	    <td colspan="5" >문의내역이 없습니다.</td> 	
+	  </tr> 
+	<% 	}
+		rs = stmt.executeQuery
+ 				("select * from inquiry order by inqnum asc"); 
+ 		while(rs.next()){
+ 			String inqnum = rs.getString("inqnum");
+ 			String inqtit = rs.getString("inqtit");
+ 			String inqnic = rs.getString("inqnic");
+ 			String inqdat = rs.getString("inqdat");
+ 			String process = rs.getString("process");
+ 			%>
+ 			
+ 			<tr> <th style="text-align: center;"><%=inqnum%></th>
+ 			<th style="text-align: center;"><%=inqtit%></th>
+ 			<th style="text-align: center;"><%=inqnic%></th>
+ 			<th style="text-align: center;"><%=inqdat%></th>
+ 			<th style="text-align: center;"><%=process%></th>
+ 			</tr>
+ 			<%
+ 		} 
+ 		} catch(SQLException e){
+ 		e.printStackTrace();
+ 	}
 %>
-
-</table>
-	</div>
-	
+        </table>
+        </div>
+</div>
+</div>
 	<div id="section">
-
   <div class="row flex-nowrap" style="text-align:center">
     <div class="col-3 bd-sidebar">
       <ul class="nav"  >
-    	<li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
         <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
         <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
         <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
@@ -378,7 +378,6 @@ a:link, a:visited {
     </div>
    </div>
 	</div>
-	
 	<footer>
    
     <div class="aside_box">
@@ -426,9 +425,6 @@ a:link, a:visited {
         </ul>
       </div>
   </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-    <script src="js/bootstrap.min.js"></script>
-</body>
 
+</body>
 </html>

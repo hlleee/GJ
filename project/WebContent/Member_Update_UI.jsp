@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*"%>
+    <%@page import="java.util.ArrayList"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +19,6 @@
     />
     <script
       src="https://kit.fontawesome.com/77e29b57dd.js"
-      crossorigin="anonymous"
     ></script>
 	<title>HTML Layouts</title>
 	<style>
@@ -156,9 +157,9 @@
 			/* 내 정보 */
 			width: 70%;
 			float: center;
-			height: 400px;
+			height: 450px;
 			position: relative;
-			left:400px;
+			left:600px;
 			overflow-x:hidden;
 			overflow-y:hidden"
 			
@@ -168,10 +169,10 @@
 			/* 메뉴 */
 			width: 200px;
 			float: center;
-			height: 400px;
+			height: 450px;
 			position: absolute;
 			top: 160px;
-			left:100px;
+			left:200px;
 			
 		}
 		.bd-sidebar {
@@ -179,7 +180,17 @@
   height:350px;
   
 }
-
+a:link, a:visited {
+     
+     color: maroon;
+     padding: 5px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+}
+ a:hover, a:active {
+     display: inline-block;  
+}
 	footer {
   color: black;   
   height: 110px;
@@ -242,7 +253,10 @@
   font-weight: bold;
 }
 /* 재사용 클래스 */
-
+.hr-solid{
+	border:0px;
+	border-top: 3px solid ;
+}
 .text_bold-13 {
   font-weight: bold;
   font-size: 13px;
@@ -313,42 +327,35 @@
 	
 	</div>
 	<div id="nav">
-	
-		<block>
+
 		<h1>내 정보</h1>
-		<hr width="50%" align="left">
-		</block>
-	<block>
-<h3>회원정보를 수정하세요</h3>
+		<hr class='hr-solid' width="50%" align="left" ></hr>
+<h3>닉네임을 수정하세요.</h3>
 <%
-	String id = request.getParameter("id");
 	String nickname = request.getParameter("nickname");
 %>
 <form action = "Member_Update_Query.jsp" method = "post">
 <table>
-<tr> <td>ID</td> <td> <input type = "text" name = "id" value = <%=id %>> </td> </tr>
-<tr> <td>닉네임</td> <td> <input type = "text" name = "nickname" value = <%=nickname %>> </td> </tr>
-<tr> <td> <input type = "submit" value = "수정"> </td> </tr>
+<tr> <td><h3>닉네임: </h3></td> <td> <input type = "text" name = "nickname" value = <%=nickname %>> </td> </tr><br>
+<tr> <td> <br>
+<input class="btn btn-primary" type="submit" value="수정하기">
+</td> </tr>
 </table>
 </form>
-	
-	</div>
+</div>
 	
 	<div id="section">
-	<block>
   <div class="row flex-nowrap" style="text-align:center">
     <div class="col-3 bd-sidebar">
       <ul class="nav"  >
-        <h3><li><a href = "MyInfo.jsp?">내 정보<br></a></li></h3>
-        <h3><li><a href="MyPost.jsp">내가 쓴 글</a></li></h3>
-        <h3><li><a href="LikePost.jsp">좋아요 누른 글</a></li></h3>
-        <h3><li><a href="Inquiry.jsp">문의 내역</a></li></h3>
-        
+ 		<li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
       </ul>
       <br>
     </div>
    </div>
-   </block>
 	</div>
 	
 	<footer>

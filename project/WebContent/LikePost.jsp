@@ -172,6 +172,16 @@
   background: #eee;
   height:350px;
   
+}a:link, a:visited {
+     
+     color: maroon;
+     padding: 5px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+}
+ a:hover, a:active {
+s     display: inline-block;  
 }
 footer {
   color: black;   
@@ -325,12 +335,12 @@ footer {
  		Connection conn = DriverManager.getConnection(
  				"jdbc:mysql://localhost/project","root","1234");
  		Statement stmt = conn.createStatement();
- 		ResultSet rs=stmt.executeQuery("select * from likes left join post on likes.likposnum=post.posnum left join member on likes.liknic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"' ");
+ 		ResultSet rs=stmt.executeQuery("select * from likes left join post on likes.posnum=post.posnum left join member on likes.liknic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"' ");
  		if(rs.next()==false){%>
 
  		</tr>	 			
  		<tr align="center" bgcolor="#FFFFFF" height="30">
- 			    <td colspan="4" >좋아요 누른 글이 없습니다.</td> 	
+ 			    <td colspan="4" >좋아요 누른 글이 없습니다.</td> 	  
  			  </tr> 
  			<% 	}
  		
@@ -338,18 +348,19 @@ footer {
  				//("select * from post left join likes on likes.posnum=post.posnum left join member on post.posnic=member.nickname where post.posnum=likes.posnum and member.id='"+(String)session.getAttribute("__ID")+"'");//
  		//좋아요 눌러진글 
  		//좋아요누른글번호랑 게시글번호조인해서 값가져옴 liknic 좋아요누른사람
- 		rs=stmt.executeQuery("select * from likes left join post on likes.likposnum=post.posnum left join member on likes.liknic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"' ");
- 		while(rs.next()){
- 			
- 			String likpostit = rs.getString("likpostit");
- 			String likposcon = rs.getString("likposcon");
+ 		//rs=stmt.executeQuery("select * from likes left join post on likes.likposnum=post.posnum left join member on likes.liknic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"' ");
+ 			rs=stmt.executeQuery("select post.postit, post.poscon from likes, post where post.posnum = likes.posnum and likes.liknic = '"+(String)session.getAttribute("__ID")+"'");		
+ 			while(rs.next()){
+ 			String postit = rs.getString("postit");
+ 			String poscon = rs.getString("poscon");		
  			
  			%>
- 			<tr> <th style="text-align: center;"><%=likpostit%></th>
- 			<th style="text-align: center;"><%=likposcon%></th>
+ 			<tr> <th style="text-align: center;"><%=postit%></th>
+ 			<th style="text-align: center;"><%=poscon%></th>
  			</tr>
- 			<%
+ 			<%		
  		} 
+		
  		} catch(SQLException e){
  		e.printStackTrace();
  	}

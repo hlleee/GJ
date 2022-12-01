@@ -17,7 +17,6 @@
     />
     <script
       src="https://kit.fontawesome.com/77e29b57dd.js"
-      crossorigin="anonymous"
     ></script>
 	<title>HTML Layouts</title>
 	<style>
@@ -156,9 +155,9 @@
 			/* 내 정보 */
 			width: 70%;
 			float: center;
-			height: 400px;
+			height: 450px;
 			position: relative;
-			left:400px;
+			left:600px;
 			overflow-x:hidden;
 			overflow-y:hidden"
 			
@@ -168,16 +167,30 @@
 			/* 메뉴 */
 			width: 200px;
 			float: center;
-			height: 400px;
+			height: 450px;
 			position: absolute;
 			top: 160px;
-			left:100px;
+			left:200px;
 			
 		}
 		.bd-sidebar {
   background: #eee;
   height:350px;
   
+}
+a:link, a:visited {
+     
+     color: maroon;
+     padding: 5px;
+     text-decoration: none;
+     display: inline-block;
+}
+ a:hover, a:active {
+     display: inline-block;  
+}
+.hr-solid{
+	border:0px;
+	border-top: 3px solid ;
 }
 
 footer {
@@ -313,15 +326,10 @@ footer {
 	
 	</div>
 	<div id="nav">
-	
-		<block>
+
 		<h1>내 정보</h1>
-		<hr width="50%" align="left">
-		</block>
-	<block>
-	  
-	<h4>아이디, 닉네임 수정 가능 </h4>
-<table class="table table-striped">
+		<hr class='hr-solid' width="50%" align="left" ></hr>
+	<h3><p style="color:red;">닉네임만 수정 가능</p> </h3><br>
 <%
  	try{
  		Class.forName("com.mysql.jdbc.Driver");
@@ -329,19 +337,13 @@ footer {
  				"jdbc:mysql://localhost/project","root","1234");
  		Statement stmt = conn.createStatement();
  		ResultSet rs = stmt.executeQuery("select * from member where id='"+(String)session.getAttribute("__ID")+"'");
- 		%> <table border = "1">
- 			<tr><th><h4>ID</h4></th><th><h4>닉네임</h4></th></tr>
- 		<%
+ 		
  		while(rs.next()){
- 			String id = rs.getString("id");
- 			String nickname = rs.getString("nickname");
  			
- 			out.println("<tr>");
- 			out.println("<td width = '100'><h4><a href = 'Member_Update_UI.jsp?id="+id+"&nickname="+nickname+"'>" + id + "</a></h4></td>");
- 			out.println("<td width = '100'><h4><a href = 'Member_Update_UI.jsp?id="+id+"&nickname="+nickname+"'>" + nickname + "</a></h4></td>");
- 			out.println("</tr>");
+ 			String nickname = rs.getString("nickname");
+ 			out.println("<h3>현재 닉네임: <a href = 'Member_Update_UI.jsp?&nickname="+nickname+"'>" + nickname + "</a></h3>");
  		}  
- 		%> </table><%
+ 		
  		} catch(SQLException e){
  		e.printStackTrace();
  	}
@@ -349,20 +351,17 @@ footer {
 	</div>
 	
 	<div id="section">
-	<block>
   <div class="row flex-nowrap" style="text-align:center">
     <div class="col-3 bd-sidebar">
       <ul class="nav"  >
-        <h3><li><a href = "MyInfo.jsp?">내 정보<br></a></li></h3>
-        <h3><li><a href="MyPost.jsp">내가 쓴 글</a></li></h3>
-        <h3><li><a href="LikePost.jsp">좋아요 누른 글</a></li></h3>
-        <h3><li><a href="Inquiry.jsp">문의 내역</a></li></h3>
-        
+    	<li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
       </ul>
       <br>
     </div>
    </div>
-   </block>
 	</div>
 	
 	<footer>

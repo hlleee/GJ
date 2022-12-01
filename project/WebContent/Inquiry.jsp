@@ -13,7 +13,6 @@
     />
     <script
       src="https://kit.fontawesome.com/77e29b57dd.js"
-      crossorigin="anonymous"
     ></script>
 	<title>HTML Layouts</title>
 	<style>
@@ -152,7 +151,7 @@
 		/* 문의 내역 */
 			width: 80%;
 			float: center;
-			height: auto;
+			height: 400px;
 			position: relative;
 			left:400px;
 		}
@@ -160,7 +159,7 @@
 			/* 메뉴 */
 			width: 200px;
 			float: center;
-			height: auto;
+			height: 400px;
 			position: absolute;
 			top: 160px;
 			left:100px;
@@ -233,13 +232,22 @@
   font-weight: bold;
 }
 /* 재사용 클래스 */
-
+a:link, a:visited {
+     
+     color: maroon;
+     padding: 5px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+}
+ a:hover, a:active {
+    
+     display: inline-block;  
+}
 .text_bold-13 {
   font-weight: bold;
   font-size: 13px;
 }
-
-		
 		@media (max-width: 600px) {
 			#nav, #section {
 				width: 100%;
@@ -248,12 +256,12 @@
 		}
 		a{text-decoration:none}
 		ul{list-style:none;}
-	</style><link rel="stylesheet" href="/css/bootstrap.css">
+	</style>
+	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
@@ -301,11 +309,9 @@
       
 	</div>
 	<div id="nav">
-	
-		<block>
+
 		<h1>문의 내역</h1>
 	
-		</block>
 	<div style="border: 1px solid black; height: 250px;width: 70%;">
 	 <div style="overflow: auto; width:100%; height:300px;">
 	<table class="table table-striped" style="overflow-x:scroll" >
@@ -328,8 +334,7 @@
  				("select * from inquiry inner join member on inquiry.inqnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"'"); 		//조건추가해서 해당정보만 출력
  		
 		if(rs.next()==false){%>
-
-</tr>	 			
+			
 <tr align="center" bgcolor="#FFFFFF" height="30">
 	    <td colspan="5" >문의내역이 없습니다.</td> 	
 	  </tr> 
@@ -361,20 +366,19 @@
 </div>
 </div>
 	<div id="section">
-	<block>
+
   <div class="row flex-nowrap" style="text-align:center">
     <div class="col-3 bd-sidebar">
       <ul class="nav"  >
-        <h3><li><a href = "MyInfo.jsp?">내 정보<br></a></li></h3>
-        <h3><li><a href="MyPost.jsp">내가 쓴 글</a></li></h3>
-        <h3><li><a href="LikePost.jsp">좋아요 누른 글</a></li></h3>
-        <h3><li><a href="Inquiry.jsp">문의 내역</a></li></h3>
+      	<li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
         
       </ul>
       <br>
     </div>
    </div>
-   </block>
 	</div>
 	<footer>
    
@@ -423,6 +427,5 @@
         </ul>
       </div>
   </footer>
-
 </body>
 </html>

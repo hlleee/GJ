@@ -17,7 +17,6 @@
     />
     <script
       src="https://kit.fontawesome.com/77e29b57dd.js"
-      crossorigin="anonymous"
     ></script>
 	<title>HTML Layouts</title>
 	<style>
@@ -313,17 +312,13 @@
 	
 	</div>
 	<div id="nav">
-	
-		<block>
+
 		<h1>내 정보</h1>
 		<hr width="50%" align="left">
-		</block>
-	<block>
-	  
+
 	<%
 	request.setCharacterEncoding("euc-kr");	
 
-	String id = request.getParameter("id");
 	String nickname = request.getParameter("nickname");
 	
 	try{
@@ -331,40 +326,39 @@
 	Connection conn = DriverManager.getConnection(
 			"jdbc:mysql://localhost/project","root","1234");
 	Statement stmt = conn.createStatement();
-	stmt.executeUpdate("update member set id='"+id+"', nickname = '"+nickname+"' where id='"+(String)session.getAttribute("__ID")+"'");
+	stmt.executeUpdate("update member set nickname = '"+nickname+"' where id='"+(String)session.getAttribute("__ID")+"'");
 	
 	out.println("<script>alert('수정완료!');</script>");
 	out.println("<script>location.href='Login.jsp';</script>");
-
-
+	
 	stmt.close();
 	conn.close();
 	
 	} catch(SQLException e){
-	e.printStackTrace();
+	
+	out.println("<script>alert('닉네임중복!');</script>");
+	out.println("<script>location.href='Member_Update_List.jsp';</script>");
+
 	}
 %>
 
-	</block>
-		
 	</div>
 	
 	<div id="section">
-	<block>
+
   <div class="row flex-nowrap" style="text-align:center">
     <div class="col-3 bd-sidebar">
       <ul class="nav"  >
-        <h3><li><a href = "MyInfo.jsp?">내 정보<br></a></li></h3>
-        <h3><li><a href="MyPost.jsp">내가 쓴 글</a></li></h3>
-        <h3><li><a href="LikePost.jsp">좋아요 누른 글</a></li></h3>
-        <h3><li><a href="Inquiry.jsp">문의 내역</a></li></h3>
+ 		<li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
         
       </ul>
       <br>
     </div>
    </div>
-   </block>
-	</div>
+   	</div>
 	
 	<footer>
    

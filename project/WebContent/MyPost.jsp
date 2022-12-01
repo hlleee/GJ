@@ -13,7 +13,6 @@
     />
     <script
       src="https://kit.fontawesome.com/77e29b57dd.js"
-      crossorigin="anonymous"
     ></script>
 	<title>HTML Layouts</title>
 	<style>
@@ -236,7 +235,17 @@
   font-weight: bold;
 }
 /* 재사용 클래스 */
-
+a:link, a:visited {
+     
+     color: maroon;
+     padding: 3px;
+    
+     text-decoration: none;
+     display: inline-block;
+}
+ a:hover, a:active {
+     display: inline-block;  
+}
 .text_bold-13 {
   font-weight: bold;
   font-size: 13px;
@@ -250,6 +259,9 @@
 		*.box     { border:1px solid black; background-color:gold; } 
 		a{text-decoration:none}
 		ul{list-style:none;}
+		form {
+	display: inline;
+}
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -304,13 +316,11 @@
 	
 	</div>
 	<div id="nav">
-	
-	<block>
+
 		<h1>내가 쓴 글</h1>
-		</block>
 		<table class="table table-striped" style="overflow-x:scroll">
-		<th style="background-color: #eeeeee; text-align: center;width:70px; ">번호</th>
-   <th style="background-color: #eeeeee; text-align: center;width:200px; ">글제목</th>
+	<th style="background-color: #eeeeee; text-align: center; width:70px; ">번호</th>
+   <th style="background-color: #eeeeee; text-align: center; width:200px; ">글제목</th>
    <th style="background-color: #eeeeee; text-align: center; width:400px; ">글내용</th>
 	<%
 	
@@ -322,9 +332,8 @@
 	 		 ResultSet rs = stmt.executeQuery
 		 				("select * from post inner join member on post.posnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"' ");
 	 		if(rs.next()==false){
-	 		//조건에 만족하는값없을 경우%>
-
-     </tr>	 			
+	 		//조건에 만족하는값 없을 경우%>
+ 			
 <tr align="center" bgcolor="#FFFFFF" height="30">
 	 	    <td colspan="5" >등록된 글이 없습니다.</td> 	
 	 	  </tr> 
@@ -333,7 +342,6 @@
 	 				("select * from post inner join member on post.posnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"'order by post.posnum asc");
 	 		//조인후 아이디값으로 글 찾기 게시글번호 오름차순정렬
 %>
-    
  
 <%
   while(rs.next()){
@@ -346,8 +354,8 @@
 <tr height="25" align="center">
 
 	<td><%=posnum %></td>
-	<td align="title"><a href='Login.jsp'><%=postit %></a></td>
-	<td align="title"><%=poscon %></td>
+	<td><a href='Login.jsp'><%=postit %></a></td>
+	<td><%=poscon %></td>
 	
 </tr>
 
@@ -363,20 +371,17 @@
 </div>	
 	
 	<div id="section">
-	<block>
   <div class="row flex-nowrap" style="text-align:center">
     <div class="col-3 bd-sidebar">
       <ul class="nav"  >
-        <h3><li><a href = "MyInfo.jsp?">내 정보<br></a></li></h3>
-        <h3><li><a href="MyPost.jsp">내가 쓴 글</a></li></h3>
-        <h3><li><a href="LikePost.jsp">좋아요 누른 글</a></li></h3>
-        <h3><li><a href="Inquiry.jsp">문의 내역</a></li></h3>
-        
+        <li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
       </ul>
       <br>
     </div>
    </div>
-   </block>
 	</div>
 		<footer>
    
