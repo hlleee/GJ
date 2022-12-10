@@ -7,16 +7,33 @@
 <title>Insert title here</title>
 <style type ="text/css">
 
-div#input{
-width:50%;
-margin-left : 30%;
+div#text{
+float : left;
+margin-left : 45%;
+}
+
+
+#input{
+width:80%;
+margin-left : 10%;
+margin-top : 5%;
 
 }
 
+#main{
+width:65%;
+float : left;
+margin-left : 18%;
+border-radius: 30px;
+border : 1px solid;
+}
+
+
 #btn{
-width : 50%;
-margin-left : 30%;
+width :90%;
+
 text-align : right;
+margin-bottom : 5%;
 
 } header {
     
@@ -339,21 +356,25 @@ text-align : right;
 	} 
 %>
 <form action = WritingBack.jsp method = "post">
-<div id = "input"><h3>글 작성</h3>
-						<select name = "_type" style = "width : 50%;" >
-						<option>자유게시판</option>
-						<option>취업후기게시판</option>
-						<option>면접게시판</option>
-						<option>질문게시판</option>
-						<option>채용게시판</option>
-				</select><p>
-				<input type = "text" name = "_title" style = "width : 99%;"  placeholder = "제목을 입력하세요" required> <p>
-				<textarea name = "_content" style = "width : 99%; height : 400px;"></textarea> 
+<div id = "text"><h1>글 작성</h1></div>
+<div id = "main">
+	<div id = "input">
+	<select name = "_type" style = "width : 50%;" >
+	<option>자유게시판</option>
+	<option>취업후기게시판</option>
+	<option>면접게시판</option>
+	<option>질문게시판</option>
+	<option>채용게시판</option>
+	</select><p>
+	<input type = "text" name = "_title" style = "width : 99%;"  placeholder = "제목을 입력하세요" required> <p>
+	<textarea name = "_content" style = "width : 99%; height : 400px; background-color : rgb(240, 255, 255)"></textarea> 
 </div>
 <div id="btn"><input type = "submit" value = "작성" >
 			  <input type = "reset" value = "취소" > 
 </div>
+</div>
 </form>
+<br>
 <footer>
 	  <div class="bottom_box">
         <ul>

@@ -30,7 +30,7 @@
 		while(rs.next())
 			++comnum;
 			
-			stmt.executeUpdate("insert into comment values ('"+comnum+"', '"+userID+"','"+comcon+"', '"+date+"', '"+comchk+"', '"+fgnnum+"')");	
+			stmt.executeUpdate("insert into comment values ('"+comnum+"', '"+userID+"','"+comcon+"', '"+date+"', '"+comchk+"', '"+fgnnum+"', 0)");	
 			if(comchk.equals("1"))
 				out.println("<script>alert('댓글이 등록되었습니다.');</script>");	
 			else
