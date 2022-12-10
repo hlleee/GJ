@@ -8,7 +8,7 @@
 <title>회원정보 없는 헤더</title>
 </head>
 <style>
- /* 만들어놓고 필요한 곳에서 쓸 수 있다 */
+ 
 :root {
     --text-color: #eee5e9;
     --background-color: #3D5F95;
@@ -171,7 +171,19 @@ a {
     padding-left:40px;
   }
   
-  
+  .banner {
+    text-align: center;
+    background-color: #d9e0eb;
+    /* opacity: 0.5; */
+    }
+
+.banner img{
+    width: 1400px;
+    height: 300px;
+    margin: auto;
+   
+    }
+
 
 </style>
   <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png">
@@ -244,7 +256,9 @@ a {
       </ul>
      
     </nav>
-   
+     <div class="banner">
+    <img src="future2.jpg">
+   </div>
 
 </body>
 </html>

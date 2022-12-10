@@ -460,7 +460,7 @@ a {
         </div>
         <div class="login_button">
             <input type="submit" value="로그인">
-            <input type="button" value="회원가입">
+            <input type="button" location.href="Join.jsp" value="회원가입">
         </div>
 	</form>
 	
@@ -502,12 +502,12 @@ a {
     <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a href="Gesipan.html">전체게시판</a></li>
-        <li><a href="createroom.html">자유게시판</a></li>
-        <li><a href="Myroom.html">질문게시판</a></li>
-        <li><a href="Myroom.html">면접게시판</a></li>
-        <li><a href="Myroom.html">취업후기</a></li>
-        <li><a href="Myroom.html">채용정보</a></li>
+        <li><a href="BulletinBoard.jsp">전체게시판</a></li>
+        <li><a href="BulletinBoard3.jsp">자유게시판</a></li>
+        <li><a href="BulletinBoard5.jsp">질문게시판</a></li>
+        <li><a href="BulletinBoard4.jsp">면접게시판</a></li>
+        <li><a href="BulletinBoard2.jsp">취업후기</a></li>
+        <li><a href="BulletinBoard6.jsp">채용정보</a></li>
       </ul>
      
     </nav>

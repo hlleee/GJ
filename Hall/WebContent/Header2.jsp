@@ -5,51 +5,41 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 안된 헤더</title>
+<title>로그인된 헤더</title>
 </head>
-<script
-      src="https://kit.fontawesome.com/77e29b57dd.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- defer란 무엇인가?!!!! -->
-    <script src="index.js" defer></script>
-  </head>
-  <style>
-/* table {border-collapse : collapse;} 
-    * {
-    box-sizing: border-box; /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
-  } */
+<style>
+
   body {
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
   }
-  
- /* 기본 밑줄을 제거합니다 */
+  /* 기본 밑줄을 제거합니다 */
    a {
     text-decoration: none; 
-    
+    color: rgb(54, 50, 50);
   }
   /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
    a:hover {
     text-decoration: underline; 
   }  
-
+  
+  
   header {
-    
     margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
     width: 100%;
     height: 160px;
-    display: flex;
+    display: inline-flex;
     align-items: center; /* 하위 요소들 수직 가운데정렬 */
     position: relative;
+    background-color: rgb(255, 255, 255);
   }
-    /* 기본 border 없애기(이 코드를 지우고 기본 border를 확인해보세요) */
+  
   fieldset {
     border: none;
     display: inline-block;
   }
 
- .logo{
+  .logo{
     width: 30%;
     height: 150px;
     /* background-color: #acbfe1; */
@@ -58,7 +48,7 @@
   
   .logo img {
     right: 20px;
-    padding-top: 27px;
+    padding-top: 37px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -73,10 +63,11 @@
  
 
   .search {
-    width : 40%;
+    width : 45%;
     height: 150px;
     padding-top: 55px;
     padding-left: 70px;
+    /* background-color: #acbfe1; */
   }
 
   .search_box {
@@ -107,56 +98,49 @@
   }
 
   .login {
-    width: 30%;
+    width: 25%;
     height: 150px;
-    padding-top: 15px;
-    padding-right: 10px;
+    background-color: #ffffff;
+    padding: 0px;
   }
 
-  .login_idpw {
-    display: block;
-    margin: auto;
-    width: 200px;
-    height: 70px;
-    padding-left: 0px;
-  }
+  /* .myinfo {
+    width: 100%;
+    height: 80px;
+    background-color: #4479db;
+  } */
 
-  .login_idpw input {
-    display: block;
-    width: 150px;
-    height: 30px;
-    padding: 10px;
-  }
-
-  .login_button {
-   padding-left:125px ;
-  }
-
-  .login_button input{
-   
-    margin: auto;
-    width: 70px;
-    height: 30px;
-    border: none;
-    outline: none;
-    background-color: #3D5F95;
-    padding-bottom: 0px;
-    color: #ffffff;
-    border-radius: 5px;
+  .myinfo {
+    justify-content: flex-end;
+    display: flex;
+    list-style: none;
+    padding-right: 160px;
+    padding-top: 60px;
+    font-size: 12px;
+    width: 100%;
+    height: 80px;
     
   }
-
+  
+   .myinfo li {
+    font-size: 17px;
+    padding: 5px 12px;
+   
+  }
+  .myinfo li:hover{
+    text-decoration: underline;
+  }
 
   .member {
     margin: auto;
-    width: 250px;
-    height: 46px;
+    width: 100%;
+    height: 20px;
+    /* background-color: #8361d4; */
+    padding-right: 120px;
+    padding-top: 10px;
    
-    padding-left: 30px;
-    padding-top: 0px;
   }
-  
-	/* 메뉴바 */
+ /* 메뉴바 */
 	:root {
    /* --text-color: #eee5e9; */
     --background-color: #3D5F95;
@@ -239,44 +223,38 @@ a {
     }
 
 }
- 
-  </style>
+</style>
 <body>
-	
-  <input type="hidden" name="_id" value="<%= (String)session.getAttribute("__ID") %>">
-    <header>
-
+ <header>
       <div class="logo">
-      <a href="Main.jsp">
+     <a href="Main_UI.jsp">
      <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
      </a>
       </div>
       <div class="search">
-      <form name="search" action="Search.jsp" method="post" >
+      <form name="search" action="Search_UI.jsp" method="post" >
         <fieldset>
           <legend class="visually-hidden">검색</legend>
           <div class="search_box">
             <input name="_keyword" type="text" maxlength="225" tabindex="1" />
-            <button type="submit" tabindex="2">검색</button>
+            <button type="submit" tabindex="2">
+              검색
+            </button>
+            
           </div>
+          
         </fieldset>
+        
       </form>
       </div>
-     
       <div class="login">
-      <form action="LoginCheck.jsp" method="post">
-		<div class="login_idpw">
-            <input type="text" name="_id" placeholder="아이디">
-            <input type="password" name="_pw" placeholder="비밀번호">
-        </div>
-        <div class="login_button">
-            <input type="submit" value="로그인">
-            <input type="button" location.href="Join.jsp" value="회원가입">
-        </div>
-	</form>
-	
-       
+        <ul class="myinfo">
+            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+            <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
+        </ul>
         <div class="member">
+       
+        
         <%
 	//총 회원수 받아오기, 성공..!
 		
@@ -295,7 +273,7 @@ a {
 	      
 	       } 
 	      
-	      out.println("<p>"+"총 회원수 : <b>"+ Countrun + "명</b></p>");
+	      out.println("<p style='text-align: center;'>"+"총 회원수 : <b>"+ Countrun + "명</b></p>");
 	      
 		rs.close();
 		stmt.close();
@@ -305,12 +283,13 @@ a {
 		e.printStackTrace();
 	}
 %>
+            
         </div>
       </div>
-    
       
     </header>
-    <nav class="navbar">
+    
+     <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
         <li><a href="BulletinBoard.jsp">전체게시판</a></li>

@@ -20,11 +20,7 @@
     <script src="index.js" defer></script>
   </head>
   <style>
-  
-  table {border-collapse : collapse;} 
-    * {
-    box-sizing: border-box; /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
-  }
+ 
   body {
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
@@ -491,12 +487,12 @@ a {
      <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a href="Gesipan.html">전체게시판</a></li>
-        <li><a href="createroom.html">자유게시판</a></li>
-        <li><a href="Myroom.html">질문게시판</a></li>
-        <li><a href="Myroom.html">면접게시판</a></li>
-        <li><a href="Myroom.html">취업후기</a></li>
-        <li><a href="Myroom.html">채용정보</a></li>
+        <li><a href="BulletinBoard.jsp">전체게시판</a></li>
+        <li><a href="BulletinBoard3.jsp">자유게시판</a></li>
+        <li><a href="BulletinBoard5.jsp">질문게시판</a></li>
+        <li><a href="BulletinBoard4.jsp">면접게시판</a></li>
+        <li><a href="BulletinBoard2.jsp">취업후기</a></li>
+        <li><a href="BulletinBoard6.jsp">채용정보</a></li>
       </ul>
      
     </nav>
