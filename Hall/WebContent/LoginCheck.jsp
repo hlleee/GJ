@@ -11,8 +11,10 @@
 
 
 <%
+		
 
-	String id = request.getParameter("_id");
+
+	String id = request.getParameter("_id");	
 	String pw = request.getParameter("_pw");	
 
 	try{
@@ -25,8 +27,17 @@
 				"Select * from member where id = '"+ id + "' and pw = '" + pw +"'" );
 		
 		if(rs.next()){
-			//키값은 언더바 2개에 대문자로 저장하기로 약속
+			
+			String nickname = rs.getString("nickname");
+			
+			//세션으로 아이디와 닉네임 받아오기.
 			session.setAttribute("__ID", id);//(name, value)
+			session.setAttribute("__NAME", nickname);
+			
+			if(id.equals("Admin")){
+				response.sendRedirect("Adm_main.jsp");
+			} else
+			
 			response.sendRedirect("Main_UI.jsp");
 		} else {
 			

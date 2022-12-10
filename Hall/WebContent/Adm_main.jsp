@@ -38,17 +38,7 @@
     text-decoration: underline; 
   } 
 
-   .navbar {
-    /* position:sticky; */
-    top:0;
-    justify-content: space-between;
-    display: block;
-    align-items: center;
-    /* padding: 22px 12px; */
-    background-color: var(--background-color);
-    width: 100%;
-  }
-
+ 
   header {
     margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
     width: 100%;
@@ -73,7 +63,7 @@
   
   .logo img {
     right: 20px;
-    padding-top: 35px;
+    padding-top: 27px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -99,8 +89,7 @@
     width: 500px;
     height: 50px;
     
-    border: 4px solid #3D5F95
-    ;
+    border: 4px solid #2867dd;
     display: flex;
     align-items: center;
   }
@@ -119,7 +108,7 @@
     padding: 0;
     border: none;
     outline: none;
-    background: #3D5F95;
+    background: #2867dd;
     color: #ffffff;
   }
 
@@ -141,14 +130,14 @@
     display: flex;
     list-style: none;
     padding-right: 160px;
-    padding-top: 60px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
     background-color: #ffffff;
   }
   
-   .myinfo li {
+  .myinfo li {
     font-size: 17px;
     padding: 5px 12px;
    
@@ -161,13 +150,12 @@
     margin: auto;
     width: 100%;
     height: 20px;
-    /* background-color: #8361d4; */
     padding-right: 120px;
-    padding-top: 10px;
+    padding-top: 0px;
     
-    background-color: #ffffff;
   }
- /* 메뉴바 */
+
+	 /* 메뉴바 */
 	:root {
    /* --text-color: #eee5e9; */
     --background-color: #3D5F95;
@@ -250,8 +238,8 @@ a {
     }
 
 }
-
  
+
   section {
     height: 450px;
     float:left;
@@ -281,7 +269,7 @@ a {
     }
 
 	table {
-		width: 790px;
+		width: 800px;
 		
     	margin-left:13px; 
     	margin-right:13px;
@@ -293,9 +281,6 @@ a {
   		box-shadow: 0 0 0 1px #000;
 	}
 
-	table > th {
-	height: 50px;
-	}
 /* 푸터 */
 
 
@@ -304,10 +289,12 @@ a {
     width:100%;  
     height: 60px;
     font-size: 12px;
-    padding:10px;
+    padding: 10px;
     position: relative;
     clear: both;
+    
   }
+  
   .bottom_box {
     flex: 2;
     font-size: 14px;
@@ -329,10 +316,11 @@ a {
   
     </style>
 <body>
-	<input type="hidden" name="_id" value="<%= (String)session.getAttribute("__ID") %>">
-     <header>
+	
+    <header>
+
       <div class="logo">
-     <a href="Main_UI.jsp">
+      <a href="Main_UI.jsp">
      <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
      </a>
       </div>
@@ -354,11 +342,10 @@ a {
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
-            <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
+            <li><a href="Adm_main.jsp" class="link_text_name"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+            <li><a href="Adm_main.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
-       
         
         <%
 	//총 회원수 받아오기, 성공..!
@@ -393,30 +380,24 @@ a {
       </div>
       
     </header>
-    
      <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a href="Gesipan.html">전체게시판</a></li>
-        <li><a href="createroom.html">자유게시판</a></li>
+        <li><a href="Gesipan.html">회원정보</a></li>
+        <li><a href="createroom.html">문의,,</a></li>
         <li><a href="Myroom.html">질문게시판</a></li>
         <li><a href="Myroom.html">면접게시판</a></li>
-        <li><a href="Myroom.html">취업후기</a></li>
-        <li><a href="Myroom.html">채용정보</a></li>
+        
       </ul>
      
     </nav>
-    
+  	<hr>
     <section>
         <article class="container">
             <article class="area" style="overflow-y:scroll">
                
 <%
 	request.setCharacterEncoding("UTF-8");
-	
-	String keyword = request.getParameter("_keyword");
-	String id = request.getParameter("_id");	
-
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
@@ -424,34 +405,34 @@ a {
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where postit LIKE '%" + keyword + "%'");
+				"Select * from member ");
 		
 		%>
 		<table border="1">
-		<tr><th>번호</th><th>제목</th><th>내용</th><th>조회수</th><th>게시일자</th><th>게시판</th><th>작성자</th></tr>
+		<tr><th>회원번호</th><th>ID</th><th>닉네임</th><th>직업</th></tr>
 			
 		<% 
 		
-		//request.setCharacterEncoding("UTF-8");
+		
 		
 		while(rs.next()){
-			String posnum = rs.getString("posnum");
-			String postit = rs.getString("postit");
-			String poscon = rs.getString("poscon");
-			int views = rs.getInt("views");
-			String posdat = rs.getString("posdat");
-			String btype = rs.getString("btype");
-			String posnic = rs.getString("posnic");
+			String memnum = rs.getString("memnum");
+			String id = rs.getString("id");
+			String pw = rs.getString("pw");
+			String nickname = rs.getString("nickname");
+			String ename = rs.getString("ename");
+			String etype = rs.getString("etype");
+			String joboffdiv = rs.getString("joboffdiv");
 			
 			
 			out.println("<tr>");
-			out.println("<td width='50' height='50'>" + posnum + "</td>");
-			out.println("<td width='150'>" + postit + "</td>");
-			out.println("<td width='365'>" + poscon + "</td>");
-			out.println("<td width='60'>" + views + "</td>");
-			out.println("<td width='100'>" + posdat + "</td>");
-			out.println("<td width='60'>" + btype + "</td>");
-			out.println("<td width='70'>" + posnic + "</td>");
+			out.println("<td width='100' height = '40'>" + memnum + "</td>");
+			out.println("<td width='180'>" + id + "</td>");
+			out.println("<td width='180'>" + nickname + "</td>");
+			out.println("<td width='180'>" + joboffdiv + "</td>");
+			//out.println("<td><input type='button' onclick='location.href='Adm_Delete_Query.jsp?memnum="+memnum+"&id="+id+"&nickname="+nickname+"&joboffdiv="+joboffdiv+"' value='삭제''></td>");
+			out.println("<td><a href='Adm_Delete_Query.jsp?memnum="+memnum+"&id="+id+"&nickname="+nickname+"&joboffdiv="+joboffdiv+"'>삭제</td>");
+			
 			out.println("</tr>");
 		}
 		%> </table>

@@ -21,10 +21,10 @@
     <script src="index.js" defer></script>
   </head>
   <style>
-  table {border-collapse : collapse;} 
+  /* table {border-collapse : collapse;} 
     * {
     box-sizing: border-box; /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
-  }
+  } */
   body {
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
@@ -33,7 +33,7 @@
  /* 기본 밑줄을 제거합니다 */
    a {
     text-decoration: none; 
-    color: rgb(54, 50, 50);
+    
   }
   /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
    a:hover {
@@ -55,15 +55,16 @@
     display: inline-block;
   }
 
-  .logo{
+ .logo{
     width: 30%;
     height: 150px;
-    background-color: #c2cfe6;
+    /* background-color: #acbfe1; */
     padding-left: 180px;
   }
+  
   .logo img {
-    padding-top: 35px;
-   
+    right: 20px;
+    padding-top: 27px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -80,16 +81,15 @@
   .search {
     width : 40%;
     height: 150px;
-    padding-top: 60px;
-    padding-left: 40px;
-    background-color: #c2cfe6;
+    padding-top: 55px;
+    padding-left: 70px;
   }
 
   .search_box {
     width: 500px;
     height: 50px;
     
-    border: 4px solid #4479db;
+    border: 4px solid #3D5F95;
     display: flex;
     align-items: center;
   }
@@ -108,15 +108,15 @@
     padding: 0;
     border: none;
     outline: none;
-    background: #4479db;
+    background: #3D5F95;
     color: #ffffff;
   }
 
   .login {
     width: 30%;
     height: 150px;
-    background-color: #c2cfe6;
-    padding: 10px;
+    padding-top: 15px;
+    padding-right: 10px;
   }
 
   .login_idpw {
@@ -124,8 +124,7 @@
     margin: auto;
     width: 200px;
     height: 70px;
-    background-color: #c2cfe6;
-    padding: 5px;
+    padding-left: 0px;
   }
 
   .login_idpw input {
@@ -136,70 +135,133 @@
   }
 
   .login_button {
-   
-    margin: auto;
-    width: 200px;
-    height: 30px;
-    background-color: #c2cfe6;
-    padding: 5px;
+   padding-left:125px ;
   }
 
-  .login_button input {
-   /* padding-left: 5px;  */
+  .login_button input{
+   
+    margin: auto;
+    width: 70px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: #3D5F95;
+    padding-bottom: 0px;
+    color: #ffffff;
+    border-radius: 5px;
+    
   }
+
 
   .member {
     margin: auto;
     width: 250px;
     height: 46px;
-    /* background-color: #8361d4; */
+   
     padding-left: 30px;
     padding-top: 0px;
   }
-
-  /* nav */
-    nav {
-    width: 100%;
-    height: 42px;
-    text-align: center;
-    justify-content: center;
-    bottom: 0;
-    background-color: #dee4ed;
-  }
-  .nav_items {
-    width: 100%;
-    height: 100%;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-    border-top: 1px solid #f1f3f6;
-  }
- 
-  .nav_items ul > li {
-    display: inline-block;
-    margin-left: 10px;
-  } 
-
-  /* <ul>하위 7번째 <li>까지 각각 내부의 <a> 태그 접근 */
-  /* .nav_items ul > li:nth-child(-n + 7) > a { 
-    color: #58b4cd;
-  } */
-
-  .nav_items ul > li > a {
-    text-decoration: none;
-    cursor: pointer;
-  }
   
- 
-  /* 재사용 클래스 */
-  /* .color_naver {
-    color: #03cf5d;
+	/* 메뉴바 */
+	:root {
+   /* --text-color: #eee5e9; */
+    --background-color: #3D5F95;
+    --accent-color: #6a87b5;
+}
+
+  /* 폰트는 최상위 컴포넌트에 */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .body {
+    margin: 0;
   } */
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.navbar {
+    position:sticky;
+    top:0;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 22px 12px;
+    background-color: var(--background-color);
+    width: 100%;
+    border-radius: 5px;
+}
+
+  /* menu */
+
+.navbar-menu {
+    display: flex;
+    margin: auto;
+    padding-left: 0px;
+    list-style: none;
+    font-size: 22px;
+    /* font-family: "Black Han Sans", sans-serif; */
+    color: #ffffff;
+}
+.navbar-menu li {
+    padding: 15px 35px;
+    word-spacing: 20px;
+}
+
+.navbar-menu li:hover {
+    background-color: var(--accent-color);
+    border-radius: 5px;
+}
+
+  
+
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 24px;
+    }
+
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+    ￼ .navbar-menu a {
+        display: block;
+    }
+
+
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+}
+
+.banner {
+    text-align: center;
+    background-color: #d9e0eb;
+    /* opacity: 0.5; */
+    }
+
+.banner img{
+    width: 1400px;
+    height: 300px;
+    margin: auto;
+   
+    }
+ 
 
   section {
-    background-color: #dee4ed;	 
+    
     height: 450px;
     float:left;
     width:100%;
@@ -208,9 +270,9 @@
 
    article {
     display: flex;
-    /* margin-top: 10px; */
+    
     padding: 2px;
-    background-color:  #dee4ed;
+    
   }
 
   .container{
@@ -220,21 +282,23 @@
     }
 
     .area1{
-        width: 35%;
+        width: 33%;
         height: 460px;
-        background-color: #ffffff;
+        
         display: block;
-        padding: 3px;
+        padding: 10px;
     }
 
-    /* .area1> .free */
+    
     .area1> .gesipan{
-        background-color: #c2cfe6;
+       /* background-color: #c2cfe6;*/
         width: 100%;
         height: 48%;
         padding: 0px;
         margin: 0px;
-        border: 3px solid rgba(126, 131, 141, 0.395)
+        border: 3px solid rgba(126, 131, 141, 0.395);
+        border-radius: 10px;
+        box-shadow: 0 0 0 1px #000;
     }
      
     .gesipan > b {
@@ -242,17 +306,11 @@
         font-weight: bold;
     }
     .gesipan_in{
-        background-color: #cdeaf1;
+        
         height: 185px;
-        /* padding: 10px;
-        display: grid;
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; */
+        
     }
-    /* .room{
-        background-color: aqua;
-        margin: 5px;
-    } */
-
+   
     .room {
         width: 100%;
         height: 100%;
@@ -260,77 +318,98 @@
     }
     
     .area1> .question{
-      background-color: #dae2f0;
+      
       width: 100%;
       height: 48%;
-      padding: 0px;
+      padding-bottom: 0px;
       margin: 0px;
-      border: 3px solid rgba(126, 131, 141, 0.395)
+      border: 3px solid rgba(126, 131, 141, 0.395);
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px #000;
   }
     .area2 {
-      width: 35%;
+      width: 33%;
       height: 460px;
-      background-color: #ffffff;
       display: block;
-      padding: 3px;
+      padding: 10px;
     }
 
     .area2 > .interview{
-      background-color: #dae2f0;
+      
       width: 100%;
       height: 48%;
       padding: 0px;
       margin: 0px;
-      border: 3px solid rgba(126, 131, 141, 0.395)
+      border: 3px solid rgba(126, 131, 141, 0.395);
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px #000;
     }
     
     .area2 > .job_review{
-      background-color: #c2cfe6;
+      
       width: 100%;
       height: 48%;
       padding: 0px;
       margin: 0px;
-      border: 3px solid rgba(126, 131, 141, 0.395)
+      border: 3px solid rgba(126, 131, 141, 0.395);
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px #000;
     }
 
     
 
     .area3{
-        width: 30%;
+        width: 34%;
         height: 440px;
-        background-color: #ffffff;
-        padding: 3px;
+        
+        padding: 10px;
     }
 
     .area3> .hire {
-        background-color: #c2cfe6;
+        /*background-color: #c2cfe6;*/
         width: 100%;
-        height: 440px;
+        height: 425px;
         padding: 0px;
-        border: 3px solid rgba(126, 131, 141, 0.395)
+        border: 3px solid rgba(126, 131, 141, 0.395);
+        border-radius: 10px;
+        box-shadow: 0 0 0 1px #000;
     }
   
     .gesipan_in2{
-      background-color: #cdeaf1;
+      
       width: 100%;
       height: 355px;
-      border: 3px solid #e0eaec
+      
       
   }
   
+ table {
+	 	width:450px;
 
-  /* 푸터 */
+		text-align: center;
+		padding:10px;
+		margin:auto;  
+    	
+	 	background-color: #eaeff8;
+	  	border-collapse: collapse;
+  		border-radius: 5px;
+  		border-style: hidden;
+  		box-shadow: 0 0 0 1px #000;
+	}
 
+	
+
+   /* 푸터 */
 
   footer {
-    color: black;   
-    height: 90px;
+    color: black; 
+    width:100%;  
+    height: 60px;
     font-size: 12px;
-    background-color: rgb(236, 236, 244);
+    padding:10px;
     position: relative;
     clear: both;
-    width:100%;
-    bottom: 0;
+    
   }
   
   .bottom_box {
@@ -353,7 +432,7 @@
   }
   </style>
 <body>
-
+<input type="hidden" name="_id" value="<%= (String)session.getAttribute("__ID") %>">
     <header>
 
       <div class="logo">
@@ -420,28 +499,26 @@
     
       
     </header>
-    <nav>
-    <div class="nav_items">
-        <ul>
-          
-          <li><a href="">전체글</a></li>
-          <li><a href="">자유게시판</a></li>
-          <li><a href="">질문게시판</a></li>
-          <li><a href="">면접게시판</a></li>
-          <li><a href="">취업후기게시판</a></li>
-          <li><a href="">채용게시판</a></li>
-
-        </ul>
-        
-      </div>
+    <nav class="navbar">
+ 	  <!-- menu -->
+      <ul class="navbar-menu">
+        <li><a href="Gesipan.html">전체게시판</a></li>
+        <li><a href="createroom.html">자유게시판</a></li>
+        <li><a href="Myroom.html">질문게시판</a></li>
+        <li><a href="Myroom.html">면접게시판</a></li>
+        <li><a href="Myroom.html">취업후기</a></li>
+        <li><a href="Myroom.html">채용정보</a></li>
+      </ul>
+     
     </nav>
-    
-    
+     <div class="banner">
+    <img src="future2.jpg">
+   </div>
     <section>
         <article class="container">
             <article class="area1">
                 <div class="gesipan">
-                    <P style="text-align: center; font-size: 10px;"><a href="자유게시판.jsp"><b>자유게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="자유게시판.jsp"><b>자유게시판</b></a></P>
                     <div class = "gesipan_in">
                         <%
 	
@@ -456,31 +533,27 @@
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where btype = '자유'LIMIT 3");
-		//postit = '" + keyword + "'"
-		//WHERE [컬럼명] LIKE '%특정문자열%'
-		// AND views=
+				"Select * from post where btype = '자유'LIMIT 4");
+		
 		
 		%>
 		<table border="1">
-			
+		<tr><th>번호</th><th>제목</th><th>작성날짜</th><th>작성자</th></tr>	
 		<% 
 		
 		
 		while(rs.next()){
-			
+			String posnum = rs.getString("posnum");
 			String postit = rs.getString("postit");
-			String poscon = rs.getString("poscon");
-			int views = rs.getInt("views");
+			
 			String posdat = rs.getString("posdat");
 			
 			String posnic = rs.getString("posnic");
 			
 			
 			out.println("<tr>");
-			out.println("<td width='150' height='30'>" + postit + "</td>");
-			out.println("<td width='370'>" + poscon + "</td>");
-			out.println("<td width='60'>" + views + "</td>");
+			out.println("<td width='30' height='36'>" + posnum + "</td>");
+			out.println("<td width='150'>" + postit + "</td>");
 			out.println("<td width='100'>" + posdat + "</td>");
 			out.println("<td width='70'>" + posnic + "</td>");
 			out.println("</tr>");
@@ -497,7 +570,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <P style="text-align: center; font-size: 10px;"><a href="게시판.jsp"><b>질문게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="게시판.jsp"><b>질문게시판</b></a></P>
                     <div class = "gesipan_in">
                         <%
 	try{
@@ -507,30 +580,28 @@
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where btype = '질문' LIMIT 3");
+				"Select * from post where btype = '질문' LIMIT 4");
 	
 		
 		%>
 		<table border="1">
-			
+		<tr><th>번호</th><th>제목</th><th>작성날짜</th><th>작성자</th></tr>	
 		<% 
 		
-		request.setCharacterEncoding("UTF-8");
 		
 		while(rs.next()){
-			
+			String posnum = rs.getString("posnum");
 			String postit = rs.getString("postit");
-			String poscon = rs.getString("poscon");
-			int views = rs.getInt("views");
+			
 			String posdat = rs.getString("posdat");
-
+			
 			String posnic = rs.getString("posnic");
 			
 			
 			out.println("<tr>");
-			out.println("<td width='150' height='30'>" + postit + "</td>");
-			out.println("<td width='370'>" + poscon + "</td>");
-			out.println("<td width='60'>" + views + "</td>");
+			out.println("<td width='30'>" + posnum + "</td>");
+			out.println("<td width='150' height='36'>" + postit + "</td>");
+			
 			out.println("<td width='100'>" + posdat + "</td>");
 			out.println("<td width='70'>" + posnic + "</td>");
 			out.println("</tr>");
@@ -550,7 +621,7 @@
 
             <article class="area2">
                 <div class="interview">
-                    <P style="text-align: center; font-size: 10px ;"><a href="게시판.jsp"><b>면접게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px ;"><a href="게시판.jsp"><b>면접게시판</b></a></P>
                     <div class = "gesipan_in">
                          <%
 	try{
@@ -560,30 +631,28 @@
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where btype = '면접' LIMIT 3");
+				"Select * from post where btype = '면접' LIMIT 4");
 	
 		
 		%>
 		<table border="1">
-			
+			<tr><th>번호</th><th>제목</th><th>작성날짜</th><th>작성자</th></tr>	
 		<% 
 		
-		request.setCharacterEncoding("UTF-8");
 		
 		while(rs.next()){
-			
+			String posnum = rs.getString("posnum");
 			String postit = rs.getString("postit");
-			String poscon = rs.getString("poscon");
-			int views = rs.getInt("views");
+			
 			String posdat = rs.getString("posdat");
-
+			
 			String posnic = rs.getString("posnic");
 			
 			
 			out.println("<tr>");
-			out.println("<td width='150' height='30'>" + postit + "</td>");
-			out.println("<td width='370'>" + poscon + "</td>");
-			out.println("<td width='60'>" + views + "</td>");
+			out.println("<td width='30'>" + posnum + "</td>");
+			out.println("<td width='150' height='36'>" + postit + "</td>");
+			
 			out.println("<td width='100'>" + posdat + "</td>");
 			out.println("<td width='70'>" + posnic + "</td>");
 			out.println("</tr>");
@@ -600,7 +669,7 @@
                     </div>
                 </div>
                 <div class="job_review">
-                    <P style="text-align: center; font-size: 10px;"><a href="자유게시판.jsp"><b>취업후기게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="자유게시판.jsp"><b>취업후기게시판</b></a></P>
                     <div class = "gesipan_in">
                          <%
 	try{
@@ -610,30 +679,27 @@
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where btype = '취업후기' LIMIT 3");
+				"Select * from post where btype = '취업후기' LIMIT 4");
 	
 		
 		%>
 		<table border="1">
-			
+			<tr><th>번호</th><th>제목</th><th>작성날짜</th><th>작성자</th></tr>	
 		<% 
 		
-		request.setCharacterEncoding("UTF-8");
 		
 		while(rs.next()){
-			
+			String posnum = rs.getString("posnum");
 			String postit = rs.getString("postit");
-			String poscon = rs.getString("poscon");
-			int views = rs.getInt("views");
+			
 			String posdat = rs.getString("posdat");
-
+			
 			String posnic = rs.getString("posnic");
 			
 			
 			out.println("<tr>");
-			out.println("<td width='150' height='30'>" + postit + "</td>");
-			out.println("<td width='370'>" + poscon + "</td>");
-			out.println("<td width='60'>" + views + "</td>");
+			out.println("<td width='30'>" + posnum + "</td>");
+			out.println("<td width='150' height='36'>" + postit + "</td>");
 			out.println("<td width='100'>" + posdat + "</td>");
 			out.println("<td width='70'>" + posnic + "</td>");
 			out.println("</tr>");
@@ -653,7 +719,7 @@
             </article>
             <article class="area3">
                 <div class="hire">
-                    <P style="text-align: center; font-size: 13px;"><a href="자유게시판.jsp"><b>채용정보</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="자유게시판.jsp"><b>채용정보</b></a></P>
                     <div class = "gesipan_in2">
                          <%
 	try{
@@ -668,25 +734,23 @@
 		
 		%>
 		<table border="1">
-			
+			<tr><th>번호</th><th>제목</th><th>작성날짜</th><th>작성자</th></tr>	
 		<% 
 		
-		request.setCharacterEncoding("UTF-8");
 		
 		while(rs.next()){
-			
+			String posnum = rs.getString("posnum");
 			String postit = rs.getString("postit");
-			String poscon = rs.getString("poscon");
-			int views = rs.getInt("views");
+			
 			String posdat = rs.getString("posdat");
-
+			
 			String posnic = rs.getString("posnic");
 			
 			
 			out.println("<tr>");
-			out.println("<td width='150' height='30'>" + postit + "</td>");
-			out.println("<td width='370'>" + poscon + "</td>");
-			out.println("<td width='60'>" + views + "</td>");
+			out.println("<td width='30'>" + posnum + "</td>");
+			out.println("<td width='150' height='50'>" + postit + "</td>");
+			
 			out.println("<td width='100'>" + posdat + "</td>");
 			out.println("<td width='70'>" + posnic + "</td>");
 			out.println("</tr>");
@@ -708,7 +772,7 @@
         
         
     </section>
-    
+    <hr>
     <footer>
    <div class="bottom_box">
         <ul>
