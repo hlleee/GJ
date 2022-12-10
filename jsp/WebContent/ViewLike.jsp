@@ -10,21 +10,21 @@
 <% 
 request.setCharacterEncoding("UTF-8");
 String posnum = request.getParameter("_posnum");
-String userID = "id";
+String userID = "sadasd";
 try{
 	
 	 Class.forName("com.mysql.jdbc.Driver");
 	 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false", "root", "1234");
 	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery("select inqnum from inquiry");
-	rs = stmt.executeQuery("select * from likes where liknic='"+userID+"' and posnum = '"+posnum+"'");   //me2 세션으로 아이디 받아와야함
+	
+	ResultSet rs = stmt.executeQuery("select * from likes where liknic='"+userID+"' and posnum = '"+posnum+"'");   //me2 세션으로 아이디 받아와야함
 	if(rs.next()) {
 		out.println("<script>alert('좋아요는 한 번만 누를 수 있습니다.');</script>");
-		out.println("<script>location.href='View.jsp?_posnum='"+posnum+"'';</script>");
+		out.println("<script>location.href='View.jsp?_posnum="+posnum+"';</script>");
 	}
 						
 	else {
-		stmt.executeUpdate("insert into likes values ('"+userID+"','"+posnum+"')");	
+		stmt.executeUpdate("insert into likes values ('"+posnum+"','"+userID+"')");	
 		response.sendRedirect("View.jsp?_posnum='"+posnum+"'");
 	}
 	stmt.close();

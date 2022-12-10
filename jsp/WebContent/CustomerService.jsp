@@ -9,26 +9,16 @@
 <style type ="text/css">
 
 div#text{
-width:20%;
-float:left;
-text-align : right;
-margin-left : 5%;    
-margin-top : 4%;
-
+float : left;
+margin-left : 45%;
 }
 
-div#input{
-width:50%;
-float:left;
-margin-left : 1%;
-
-}
-
-#btn{
-width : 50%;
-margin-left : 26%;
-text-align : right;
-
+#main{
+width:65%;
+float : left;
+margin-left : 18%;
+border-radius: 30px;
+border : 1px solid;
 }
  header {
     
@@ -262,6 +252,13 @@ text-align : right;
    a:hover {
     text-decoration: underline; 
   }  
+ 
+  .table {
+    width:95%; 
+    margin-left : -3%;
+ 	margin-top : 5%;
+ 	margin-bottom : 5%;
+  }
   </style>
 <body>
 	
@@ -304,7 +301,7 @@ text-align : right;
 		
 		Statement stmt = conn.createStatement();
 		
-		String strQuery = "Select count(id) from member";
+		String strQuery = "select count(id) from member";
 	    ResultSet rs = stmt.executeQuery(strQuery);
 
 	    String Countrun="";
@@ -350,28 +347,44 @@ text-align : right;
 		out.println("<script>location.href='Login.jsp';</script>");
 	} 
 %>
-<form action = "CustomerServiceBack.jsp" method = "post">
+
     <div id = "text">
-    				<p style = "font-size : 16px">문의사항 |</p>
-					<p style = "font-size : 16px">	제목 |</p>
-					<p style = "font-size : 16px">발생일자 |</p>
-   					<p style = "font-size : 16px"> 문의내용 |</p>
-   	</div>
-    <div id = "input"> <h3>고객센터</h3>
-    				   <select name = "_type" style = "width : 50%">
+    	<h1>고객센터</h1>
+    </div>
+    <div id = "main">
+    <form action = "CustomerServiceBack.jsp" method = "post">
+    	<table class = "table">
+    	<tr>
+    		<td style = "font-size : 16px; text-align : right;">문의사항 |</td>
+    		<td><select name = "_type" style = "width : 50%">
 					   <option>버그 제보</option>
 					   <option>사용자 신고</option>
 					   <option>건의사항</option>
-				   	   </select><p>
-					   <input type = "text" style = "width : 99%" name = "_title" size = "50" placeholder = "제목을 입력하세요" required> <p>
-   					   <input type = "date" style = "width : 50%" name = "_date" value = "${dateType2}"> <p>
-   					   <textarea name = "_content" style = "width : 99%; height : 350px;"></textarea> 
-   	</div>
-   	<div id = "btn">
-		<input type = "submit" value = "문의" >
-		<input type = "reset" value = "취소" > 
+				   	   </select>
+			</td>
+    	</tr>
+    	<tr><td style = "font-size : 16px; text-align : right;">	제목 | </td>
+    		<td> <input type = "text" style = "width : 99%" name = "_title" size = "50" placeholder = "제목을 입력하세요" required></td>
+    	</tr>
+    	<tr>
+    		<td style = "font-size : 16px; text-align : right;">발생일자 |</td>
+    		<td><input type = "date" style = "width : 50%" name = "_date" value = "${dateType2}"></td>
+    	</tr>
+    	<tr>
+    		<td style = "font-size : 16px; text-align : right; vertical-align : top;">문의내용 | </td>
+    		<td> <textarea name = "_content" style = "width : 99%; height : 350px; background-color : rgb(240, 255, 255);"></textarea> </td>
+   		</tr>			  
+   		<tr>
+   			<td colspan = "2" style = "text-align : right;">
+		   		<input type = "submit" value = "문의" >
+				<input type = "reset" value = "취소" > 
+			</td>
+		</tr>
+   		</table>
+	 </form>
 	</div>
-  </form>
+	<br>
+
 <footer>
 	  <div class="bottom_box">
         <ul>
