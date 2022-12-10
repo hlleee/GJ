@@ -165,7 +165,7 @@
 			float: center;
 			height: 400px;
 			position: absolute;
-			top: 160px;
+			top: 180px;
 			left:100px;
 			
 		}.bd-sidebar {
@@ -245,6 +245,15 @@ a:link, a:visited {
 }
  a:hover, a:active {
      display: inline-block;  
+}
+a{
+text-decoration:none !important}
+
+li:hover{
+		background-color: #4479db;
+		}
+li:active{
+background-color: aqua;
 }
 .text_bold-13 {
   font-weight: bold;
@@ -372,17 +381,17 @@ a:link, a:visited {
 	
 	<div id="section">
   <div class="row flex-nowrap" style="text-align:center">
-    <div class="col-3 bd-sidebar">
-      <ul class="nav"  >
-        <li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
-        <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
-        <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
-        <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
+     <ul class="list-group">      
+      
+        <li class="list-group-item"><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li class="list-group-item"><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li class="list-group-item"><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li class="list-group-item"> <h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
+        
       </ul>
-      <br>
+  </div>
     </div>
-   </div>
-	</div>
+
 		<footer>
    
     <div class="aside_box">

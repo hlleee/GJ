@@ -65,7 +65,6 @@
   .search_box {
     width: 500px;
     height: 50px;
-    
     border: 4px solid #4479db;
     display: flex;
     align-items: center;
@@ -150,9 +149,9 @@
 			/* 메뉴 */
 			width: 200px;
 			float: center;
-			height: 450px;
+			height: 100px;
 			position: absolute;
-			top: 160px;
+			top: 180px;
 			left:200px;
 			
 		}
@@ -236,10 +235,16 @@ a:link, a:visited {
      text-decoration: none;
      display: inline-block;
 }
- a:hover, a:active {
-s     display: inline-block;  
+
+a{
+text-decoration:none !important}
+
+li:hover{
+		background-color: #4479db;
+		}
+li:active{
+background-color: aqua;
 }
-	
 .text_bold-13 {
   font-weight: bold;
   font-size: 13px;
@@ -348,7 +353,7 @@ s     display: inline-block;
 %>
 	
    <div id="row1" style="float:left;">
-      <input class="btn btn-primary" type="button" value="수정하기" onclick="location.href='Member_Update_List.jsp'"> &nbsp;&nbsp;
+      <input class="btn btn-primary" type="button" value="수정하기" onclick="location.href='Member_Update_List.jsp'">&nbsp;&nbsp;
    </div> 
    <div id="row2" style="float:left;">
       <input class="btn btn-primary" type="button" value="탈퇴하기" onclick="location.href='Member_Delete_List.jsp'">
@@ -356,19 +361,18 @@ s     display: inline-block;
 	</div>
 	
 	<div id="section">
-  <div class="row flex-nowrap" style="text-align:center">
-    <div class="col-3 bd-sidebar">
-      <ul class="nav"  >
-        <li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
-        <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
-        <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
-        <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
+	  <div class="row flex-nowrap" style="text-align:center">
+      <ul class="list-group">      
+      
+        <li class="list-group-item"><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li class="list-group-item"><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li class="list-group-item"><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li class="list-group-item"> <h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
         
       </ul>
       <br>
     </div>
    </div>
-	</div>
 	
 	<footer>
    

@@ -13,7 +13,6 @@
     />
     <script
       src="https://kit.fontawesome.com/77e29b57dd.js"
-      crossorigin="anonymous"
     ></script>
 	<title>HTML Layouts</title>
 	<style>
@@ -165,7 +164,7 @@
 			float: center;
 			height: 400px;
 			position: absolute;
-			top: 160px;
+			top: 180px;
 			left:100px;
 			
 		}.bd-sidebar {
@@ -181,7 +180,16 @@
      display: inline-block;
 }
  a:hover, a:active {
-s     display: inline-block;  
+    display: inline-block;  
+}
+a{
+text-decoration:none !important}
+
+li:hover{
+		background-color: #4479db;
+		}
+li:active{
+background-color: aqua;
 }
 footer {
   color: black;   
@@ -314,12 +322,8 @@ footer {
 	</div>
 	<div id="nav">
 	
-		<block>
 		<h1>좋아요 누른 글</h1>
 		
-		</block>
-		
-	
 	<table class="table table-striped">
       <thead>
           <tr>
@@ -335,10 +339,9 @@ footer {
  		Connection conn = DriverManager.getConnection(
  				"jdbc:mysql://localhost/project","root","1234");
  		Statement stmt = conn.createStatement();
- 		ResultSet rs=stmt.executeQuery("select * from likes left join post on likes.posnum=post.posnum left join member on likes.liknic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"' ");
+ 		ResultSet rs=stmt.executeQuery("select post.postit, post.poscon from likes, post where post.posnum = likes.posnum and likes.liknic = '"+(String)session.getAttribute("__ID")+"'");
  		if(rs.next()==false){%>
-
- 		</tr>	 			
+			
  		<tr align="center" bgcolor="#FFFFFF" height="30">
  			    <td colspan="4" >좋아요 누른 글이 없습니다.</td> 	  
  			  </tr> 
@@ -367,24 +370,19 @@ footer {
 %>
         </table>
 	</div>
-</div>
-	</div>
+
 
 	<div id="section">
-	<block>
   <div class="row flex-nowrap" style="text-align:center">
-    <div class="col-3 bd-sidebar">
-      <ul class="nav"  >
-        <h3><li><a href = "MyInfo.jsp?">내 정보<br></a></li></h3>
-        <h3><li><a href="MyPost.jsp">내가 쓴 글</a></li></h3>
-        <h3><li><a href="LikePost.jsp">좋아요 누른 글</a></li></h3>
-        <h3><li><a href="Inquiry.jsp">문의 내역</a></li></h3>
+    <ul class="list-group">      
+      
+        <li class="list-group-item"><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li class="list-group-item"><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li class="list-group-item"><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li class="list-group-item"> <h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
         
       </ul>
-      <br>
-    </div>
    </div>
-   </block>
 	</div>
 	
 	<footer>

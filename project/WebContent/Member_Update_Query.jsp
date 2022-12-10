@@ -317,7 +317,7 @@
 		<hr width="50%" align="left">
 
 	<%
-	request.setCharacterEncoding("euc-kr");	
+	request.setCharacterEncoding("utf-8");	
 
 	String nickname = request.getParameter("nickname");
 	

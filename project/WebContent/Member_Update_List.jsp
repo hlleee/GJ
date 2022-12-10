@@ -169,7 +169,7 @@
 			float: center;
 			height: 450px;
 			position: absolute;
-			top: 160px;
+			top: 180px;
 			left:200px;
 			
 		}
@@ -255,7 +255,15 @@ footer {
   font-weight: bold;
 }
 /* 재사용 클래스 */
+a{
+text-decoration:none !important}
 
+li:hover{
+		background-color: #4479db;
+		}
+li:active{
+background-color: aqua;
+}
 .text_bold-13 {
   font-weight: bold;
   font-size: 13px;
@@ -329,8 +337,9 @@ footer {
 
 		<h1>내 정보</h1>
 		<hr class='hr-solid' width="50%" align="left" ></hr>
-	<h3><p style="color:red;">닉네임만 수정 가능</p> </h3><br>
-<%
+	<h3><p style=color:red;>닉네임만 수정 가능</p> </h3><br>
+<%	request.setCharacterEncoding("UTF-8");	
+
  	try{
  		Class.forName("com.mysql.jdbc.Driver");
  		Connection conn = DriverManager.getConnection(
@@ -353,11 +362,13 @@ footer {
 	<div id="section">
   <div class="row flex-nowrap" style="text-align:center">
     <div class="col-3 bd-sidebar">
-      <ul class="nav"  >
-    	<li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
-        <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
-        <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
-        <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
+      <ul class="list-group">      
+      
+        <li class="list-group-item"><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li class="list-group-item"><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li class="list-group-item"><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li class="list-group-item"> <h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
+        
       </ul>
       <br>
     </div>

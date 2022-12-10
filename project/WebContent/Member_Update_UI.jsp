@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*"%>
-    <%@page import="java.util.ArrayList"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -171,7 +169,7 @@
 			float: center;
 			height: 450px;
 			position: absolute;
-			top: 160px;
+			top: 180px;
 			left:200px;
 			
 		}
@@ -256,6 +254,14 @@ a:link, a:visited {
 .hr-solid{
 	border:0px;
 	border-top: 3px solid ;
+}a{
+text-decoration:none !important}
+
+li:hover{
+		background-color: #4479db;
+		}
+li:active{
+background-color: aqua;
 }
 .text_bold-13 {
   font-weight: bold;
@@ -332,11 +338,12 @@ a:link, a:visited {
 		<hr class='hr-solid' width="50%" align="left" ></hr>
 <h3>닉네임을 수정하세요.</h3>
 <%
-	String nickname = request.getParameter("nickname");
+	request.setCharacterEncoding("UTF-8");	
+    String nickname = request.getParameter("nickname");
 %>
-<form action = "Member_Update_Query.jsp" method = "post">
+<form action = "Member_Update_Query.jsp" method = "get">
 <table>
-<tr> <td><h3>닉네임: </h3></td> <td> <input type = "text" name = "nickname" value = <%=nickname %>> </td> </tr><br>
+<tr> <td><h3>닉네임: </h3></td> <td> <input type = "text" name = "nickname" value = <%=nickname %>> </td> </tr>
 <tr> <td> <br>
 <input class="btn btn-primary" type="submit" value="수정하기">
 </td> </tr>
@@ -347,11 +354,13 @@ a:link, a:visited {
 	<div id="section">
   <div class="row flex-nowrap" style="text-align:center">
     <div class="col-3 bd-sidebar">
-      <ul class="nav"  >
- 		<li><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
-        <li><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
-        <li><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
-        <li><h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
+      <ul class="list-group">      
+      
+        <li class="list-group-item"><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li class="list-group-item"><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li class="list-group-item"><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
+        <li class="list-group-item"> <h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
+        
       </ul>
       <br>
     </div>
