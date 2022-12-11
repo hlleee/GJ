@@ -73,6 +73,7 @@
   .search_box {
     width: 500px;
     height: 50px;
+    
     border: 4px solid #3D5F95;
     display: flex;
     align-items: center;
@@ -96,7 +97,7 @@
     color: #ffffff;
   }
 
-  .login {
+ .login {
     width: 25%;
     height: 150px;
     background-color: #ffffff;
@@ -113,8 +114,8 @@
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
-    padding-top: 60px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
@@ -123,7 +124,7 @@
   
    .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
@@ -211,7 +212,7 @@ a {
         text-align: center;
         width: 100%;
     }
-      .navbar-menu a {
+    ￼ .navbar-menu a {
         display: block;
     }
 
@@ -248,7 +249,8 @@ a {
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
