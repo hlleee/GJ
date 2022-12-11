@@ -270,7 +270,6 @@ a {
 
 	table {
 		width: 800px;
-		
     	margin-left:13px; 
     	margin-right:13px;
 		text-align: center;
@@ -284,18 +283,49 @@ a {
 /* 푸터 */
 
 
-  footer {
-    color: black; 
-    width:100%;  
-    height: 60px;
+footer {
+    color: black;   
+    height: 90px;
     font-size: 12px;
-    padding: 10px;
+    background-color: rgb(236, 236, 244);
     position: relative;
     clear: both;
-    
+    width:100%;
+    bottom: 0;
+  }
+  
+  .aside_box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #91acd6;
+    padding: 0;
+    margin: 0;
+  }
+  .area_user {
+    flex: 4;
+    line-height: 1em; /* 줄간격 */
+  }
+  .area_user_row {
+    display: flex;
+  }
+  .area_user_row span {
+    flex: 1;
+  }
+  .area_user_row ul {
+    flex: 6;
+  }
+  /* .aur_title {
+    font-size: 13px;
+    font-weight: bold;
+  } */
+  .area_user_row ul > li {
+    display: inline-block; /* li 수평정렬하는 방법 */
+    margin-left: 8px;
   }
   
   .bottom_box {
+    
     flex: 2;
     font-size: 14px;
     text-align: center;
@@ -384,7 +414,7 @@ a {
  	  <!-- menu -->
       <ul class="navbar-menu">
         <li><a href="Gesipan.html">회원정보</a></li>
-        <li><a href="createroom.html">문의,,</a></li>
+        <li><a href="AllInquiry.jsp">문의내역</a></li>
         <li><a href="Myroom.html">질문게시판</a></li>
         <li><a href="Myroom.html">면접게시판</a></li>
         
@@ -466,7 +496,7 @@ a {
      <div class="bottom_box">
      <p>&copy; 굿잡 Corp.</p>
      </div>
-</footer>
+  </footer>
 
   </body>
   </html>

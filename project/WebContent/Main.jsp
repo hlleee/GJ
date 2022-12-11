@@ -438,7 +438,7 @@ a {
 
       <div class="logo">
       <a href="Main.jsp">
-     <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
+     <img src="Logo.png" class="img_logo" style="display: block; width:300px; "/>
      </a>
       </div>
       <div class="search">

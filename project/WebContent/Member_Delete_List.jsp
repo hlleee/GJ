@@ -420,7 +420,6 @@ background-color: aqua;
         <li><a href="BulletinBoard4.jsp">면접게시판</a></li>
         <li><a href="BulletinBoard2.jsp">취업후기</a></li>
         <li><a href="BulletinBoard6.jsp">채용정보</a></li>
-        <li><a href="Inquirydiv.jsp">문의내역</a></li>
       </ul>
      
     </nav>
@@ -469,7 +468,7 @@ background-color: aqua;
         <li class="list-group-item"><h3><a class="menu" href = "MyInfo.jsp?">내 정보<br></a></h3></li>
         <li class="list-group-item"><h3><a class="menu" href="MyPost.jsp?">내가 쓴 글</a></h3></li>
         <li class="list-group-item"><h3><a class="menu" href="LikePost.jsp">좋아요 누른 글</a></h3></li>
-        
+        <li class="list-group-item"><h3><a class="menu" href="Inquiry.jsp">문의 내역</a></h3></li>
       </ul>
       <br>
     </div>
