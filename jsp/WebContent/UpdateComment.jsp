@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>댓글, 답글 수정</title>
 <style>
 #comment{
 width:65%;
@@ -20,7 +20,8 @@ margin-left : 15%;
 	String content = request.getParameter("_content");
 	String comchk = request.getParameter("_comchk");
 	String posnum = request.getParameter("_posnum");
-	String userID = "me";
+	String userID =  (String) session.getAttribute("__NAME");
+
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false","root","1234");

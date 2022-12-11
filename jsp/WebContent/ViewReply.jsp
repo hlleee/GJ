@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>\
+<title>답글 작성</title>\
 <style>
 #comment{
 width:65%;
@@ -16,7 +16,8 @@ margin-left : 15%;
 <body>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String userID = "me";
+	String userID =  (String) session.getAttribute("__NAME");
+
 	String comchk = request.getParameter("_comchk");
 	String fgnnum = request.getParameter("_fgnnum");
 	String posnum = request.getParameter("_posnum");

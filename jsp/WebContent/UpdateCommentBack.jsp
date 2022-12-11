@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>댓글, 답글 수정 처리</title>
 </head>
 <body>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String userID = "me";
+	String userID =  (String) session.getAttribute("__NAME");
 	String comchk = request.getParameter("_comchk");
 	String content = request.getParameter("_content"); 
 	String comnum = request.getParameter("_comnum");	

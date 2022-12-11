@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>좋아요 처리</title>
 </head>
 <body>
 <% 
 request.setCharacterEncoding("UTF-8");
 String posnum = request.getParameter("_posnum");
-String userID = "sadasd";
+String userID =  (String) session.getAttribute("__NAME");
+
 try{
 	
 	 Class.forName("com.mysql.jdbc.Driver");

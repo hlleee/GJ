@@ -4,30 +4,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>문의 처리</title>
 </head>
 <body>
 <% 
 	request.setCharacterEncoding("UTF-8");
-	int inqnum = 1;
 	String type = request.getParameter("_type");
 	String title = request.getParameter("_title");
 	String date = request.getParameter("_date");
 	String content = request.getParameter("_content");
-	String userID = "id";
+	String userID =  (String) session.getAttribute("__NAME");
+
+
 try{
 	 Class.forName("com.mysql.jdbc.Driver");
 	 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp", "root", "1234");
 	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery("select inqnum from inquiry");
-	while(rs.next())
-		++inqnum;
-		stmt.executeUpdate("insert into inquiry values ('"+inqnum+"', '"+ type +"', '" + title + "','"+userID+"', '" + date + "', '"+content+"', 0)");
+		stmt.executeUpdate("insert into inquiry(category, inqtit, inqnic, inqdat, inqcon, process) values ('"+ type +"', '" + title + "','"+userID+"', '" + date + "', '"+content+"', 0)");
 		out.println("<script>alert('문의가 완료되었습니다.');</script>");	
 		out.println("<script>location.href='CustomerService.jsp';</script>");
 	stmt.close();
 	conn.close();
-	rs.close();
  }catch(Exception e){
 	 e.printStackTrace();
  }
