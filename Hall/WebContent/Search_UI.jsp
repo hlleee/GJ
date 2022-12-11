@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>레이아웃</title>
+    <title>검색 화면</title>
     <link rel="stylesheet" href="main_login.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
@@ -140,22 +140,23 @@
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
-    padding-top: 60px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
-    background-color: #ffffff;
+    
   }
   
    .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
     text-decoration: underline;
   }
+
 
   .member {
     margin: auto;
@@ -354,7 +355,8 @@ a {
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
@@ -397,12 +399,12 @@ a {
      <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a href="Gesipan.html">전체게시판</a></li>
-        <li><a href="createroom.html">자유게시판</a></li>
-        <li><a href="Myroom.html">질문게시판</a></li>
-        <li><a href="Myroom.html">면접게시판</a></li>
-        <li><a href="Myroom.html">취업후기</a></li>
-        <li><a href="Myroom.html">채용정보</a></li>
+        <li><a href="BulletinBoard.jsp">전체게시판</a></li>
+        <li><a href="BulletinBoard3.jsp">자유게시판</a></li>
+        <li><a href="BulletinBoard5.jsp">질문게시판</a></li>
+        <li><a href="BulletinBoard4.jsp">면접게시판</a></li>
+        <li><a href="BulletinBoard2.jsp">취업후기</a></li>
+        <li><a href="BulletinBoard6.jsp">채용정보</a></li>
       </ul>
      
     </nav>
@@ -434,26 +436,39 @@ a {
 		
 		//request.setCharacterEncoding("UTF-8");
 		
-		while(rs.next()){
-			String posnum = rs.getString("posnum");
-			String postit = rs.getString("postit");
-			String poscon = rs.getString("poscon");
-			int views = rs.getInt("views");
-			String posdat = rs.getString("posdat");
-			String btype = rs.getString("btype");
-			String posnic = rs.getString("posnic");
-			
-			
-			out.println("<tr>");
-			out.println("<td width='50' height='50'>" + posnum + "</td>");
-			out.println("<td width='150'>" + postit + "</td>");
-			out.println("<td width='365'>" + poscon + "</td>");
-			out.println("<td width='60'>" + views + "</td>");
-			out.println("<td width='100'>" + posdat + "</td>");
-			out.println("<td width='60'>" + btype + "</td>");
-			out.println("<td width='70'>" + posnic + "</td>");
-			out.println("</tr>");
-		}
+		if(rs.next())	{
+			do {
+				int postnum = rs.getInt("posnum");			//게시글번호
+				String btype = rs.getString("btype");		//게시판유형
+				String postit = rs.getString("postit");		//게시글제목
+				String posnic = rs.getString("posnic");	
+				String poscon = rs.getString("poscon");	//작성자
+				int views = rs.getInt("views");				//조회수
+				String posdat = rs.getString("posdat");		//날짜
+				int commentcnt = rs.getInt("commentcnt");	//댓글 수
+				int likes = rs.getInt("likes");				//좋아요 수
+				
+				
+					out.println("<tr height = '40'>");
+					out.println("<td>" + postnum + "</td>");
+					out.println("<td>" + btype + "</td>");
+					out.println("<td><a href='View.jsp' class='a2'>" + postit + "</a></td>");
+					out.println("<td>" + posnic + "</td>");
+					out.println("<td>" + views + "</td>");
+					out.println("<td>" + posdat + "</td>");
+					out.println("<td>" + commentcnt + "</td>");
+					out.println("<td>" + likes + "</td>");
+					out.println("</tr>");
+					
+				} while(rs.next());
+		}		
+			else{
+				String su = "등록된 글이 없습니다.";
+				out.println("<tr>");
+				out.println("<td height = '300' colspan = '8'>" + su + "</td>");
+				out.println("</tr>");
+					
+			}
 		%> </table>
 		<%
 		

@@ -110,6 +110,7 @@
     outline: none;
     background: #3D5F95;
     color: #ffffff;
+    border-radius: 0px;
   }
 
   .login {
@@ -138,7 +139,7 @@
    padding-left:125px ;
   }
 
-  .login_button input{
+  .login_button input,button{
    
     margin: auto;
     width: 70px;
@@ -441,7 +442,7 @@ a {
      </a>
       </div>
       <div class="search">
-      <form name="search" action="Search.jsp" method="post" >
+      <form name="search" action="Search_UI.jsp" method="post" >
         <fieldset>
           <legend class="visually-hidden">검색</legend>
           <div class="search_box">
@@ -460,7 +461,8 @@ a {
         </div>
         <div class="login_button">
             <input type="submit" value="로그인">
-            <input type="button" location.href="Join.jsp" value="회원가입">
+           
+            <button type="button" class="navyBtn" onClick="location.href='Join.jsp'">회원가입</button>
         </div>
 	</form>
 	

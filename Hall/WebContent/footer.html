@@ -5,22 +5,112 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>푸터</title>
-   
+    <link rel="stylesheet" href="footer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/77e29b57dd.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- defer란 무엇인가?!!!! -->
+    <script src="index.js" defer></script>
   </head>
   <style>
+  	/* 만들어놓고 필요한 곳에서 쓸 수 있다 */
+:root {
+    --text-color: #eee5e9;
+    --background-color: #a6b9ec;
+    --accent-color: #81c147;
+  }
+  
+  /* 폰트는 최상위 컴포넌트에 */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* .body {
+    margin: 0;
+  } */
+  
+  a {
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  
+  .navbar {
+    position:sticky;
+    top:0;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 22px 12px;
+    background-color: var(--background-color);
+    width: 100%;
+  }
+  
+
+section {
+  /* padding : 20px; */
+  /* margin : 23px; */
+  background-color: green;	 
+  height: 550px;
+  float:left;
+  width:100%;
+}
+
+article {
+    margin-top: 10px;
+    background-color: #999;
+  }
  
+/* 푸터 */
+
 
   footer {
     color: black;   
     height: 90px;
     font-size: 12px;
+    background-color: rgb(236, 236, 244);
     position: relative;
     clear: both;
     width:100%;
     bottom: 0;
   }
   
- 
+  .aside_box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #91acd6;
+    padding: 0;
+    margin: 0;
+  }
+  .area_user {
+    flex: 4;
+    line-height: 1em; /* 줄간격 */
+  }
+  .area_user_row {
+    display: flex;
+  }
+  .area_user_row span {
+    flex: 1;
+  }
+  .area_user_row ul {
+    flex: 6;
+  }
+  /* .aur_title {
+    font-size: 13px;
+    font-weight: bold;
+  } */
+  .area_user_row ul > li {
+    display: inline-block; /* li 수평정렬하는 방법 */
+    margin-left: 8px;
+  }
+  
   .bottom_box {
     
     flex: 2;
@@ -42,7 +132,24 @@
   }
   </style>
   <body>
-	<hr>
+    <!-- container -->
+    <nav class="navbar">
+     <p>헤더</p>
+    </nav>
+	</div>
+  <section>
+    <p>section</p>
+    <article>
+      <p>article</p>
+    </article>
+    <article>
+      <p>article</p>
+    </article>
+    <article>
+      <p>article</p>
+    </article>
+  </section>
+ 
   <!--풋터-->
    <footer>
    <div class="bottom_box">
@@ -51,7 +158,7 @@
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
-        <li><p><a>문의하기</a></p></li>
+        <li><p>개인정보처리방침</p></li>
         <li><p>청소년보호정책</p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>

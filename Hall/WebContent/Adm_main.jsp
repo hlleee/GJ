@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>레이아웃</title>
+    <title>관리자 메인 화면 - 회원삭제가 메인</title>
     <link rel="stylesheet" href="main_login.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"

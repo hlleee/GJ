@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>레이아웃</title>
+    <title>로그인된 메인화면</title>
     <link rel="stylesheet" href="main_login.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
@@ -20,7 +20,11 @@
     <script src="index.js" defer></script>
   </head>
   <style>
- 
+  
+  table {border-collapse : collapse;} 
+    * {
+    box-sizing: border-box; /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
+  }
   body {
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
@@ -126,8 +130,8 @@
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
-    padding-top: 60px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
@@ -136,7 +140,7 @@
   
    .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
@@ -444,7 +448,8 @@ a {
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
@@ -503,7 +508,7 @@ a {
         <article class="container">
             <article class="area1">
                 <div class="gesipan">
-                    <P style="text-align: center; font-size: 20px;"><a href="자유게시판.jsp"><b>자유게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="BulletinBoard3.jsp"><b>자유게시판</b></a></P>
                     <div class = "gesipan_in">
                         <%
 	
@@ -555,7 +560,7 @@ a {
                     </div>
                 </div>
                 <div class="question">
-                    <P style="text-align: center; font-size: 20px;"><a href="게시판.jsp"><b>질문게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="BulletinBoard5.jsp"><b>질문게시판</b></a></P>
                     <div class = "gesipan_in">
                         <%
 	try{
@@ -606,7 +611,7 @@ a {
 
             <article class="area2">
                 <div class="interview">
-                    <P style="text-align: center; font-size: 20px ;"><a href="게시판.jsp"><b>면접게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px ;"><a href="BulletinBoard4.jsp"><b>면접게시판</b></a></P>
                     <div class = "gesipan_in">
                          <%
 	try{
@@ -654,7 +659,7 @@ a {
                     </div>
                 </div>
                 <div class="job_review">
-                    <P style="text-align: center; font-size: 20px;"><a href="자유게시판.jsp"><b>취업후기게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="BulletinBoard2.jsp"><b>취업후기게시판</b></a></P>
                     <div class = "gesipan_in">
                          <%
 	try{
@@ -704,7 +709,7 @@ a {
             </article>
             <article class="area3">
                 <div class="hire">
-                    <P style="text-align: center; font-size: 20px;"><a href="자유게시판.jsp"><b>채용정보</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="BulletinBoard6.jsp"><b>채용정보</b></a></P>
                     <div class = "gesipan_in2">
                          <%
 	try{
@@ -766,7 +771,7 @@ a {
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
         <li><p>개인정보처리방침</p></li>
-        <li><p>청소년보호정책</p></li>
+        <li><p><a>문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
         
