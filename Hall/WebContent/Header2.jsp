@@ -73,7 +73,6 @@
   .search_box {
     width: 500px;
     height: 50px;
-    
     border: 4px solid #3D5F95;
     display: flex;
     align-items: center;
@@ -212,7 +211,7 @@ a {
         text-align: center;
         width: 100%;
     }
-    ￼ .navbar-menu a {
+      .navbar-menu a {
         display: block;
     }
 
