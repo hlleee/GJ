@@ -33,7 +33,7 @@
   
   .logo img {
     right: 20px;
-    padding-top: 37px;
+
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -222,7 +222,7 @@ a {
 			float: center;
 			height: 400px;
 			position: absolute;
-			top: 400px;
+			top: 350px;
 			left:100px;
 			
 		}
@@ -292,8 +292,6 @@ footer {
     font-size: 13px;
   }
 a:link, a:visited {
-     
-     color: maroon;
      padding: 5px;
      text-align: center;
      text-decoration: none;
@@ -306,10 +304,10 @@ a:link, a:visited {
 a{
 text-decoration:none !important}
 
-li:hover{
-		background-color: #4479db;
-		}
-li:active{
+.list-group-item:hover{
+background-color: #4479db;
+}
+.list-group-item:active{
 background-color: aqua;
 }
 
@@ -321,6 +319,9 @@ background-color: aqua;
 		}
 		a{text-decoration:none}
 		ul{list-style:none;}
+		.menu{
+	color: black;
+}
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -374,7 +375,7 @@ background-color: aqua;
 		
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/project","root", "1234");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
 		
 		Statement stmt = conn.createStatement();
 		
@@ -411,6 +412,7 @@ background-color: aqua;
         <li><a href="BulletinBoard4.jsp">면접게시판</a></li>
         <li><a href="BulletinBoard2.jsp">취업후기</a></li>
         <li><a href="BulletinBoard6.jsp">채용정보</a></li>
+        <li><a href="Inquirydiv.jsp">문의내역</a></li>
       </ul>
      
     </nav>
@@ -434,7 +436,7 @@ background-color: aqua;
  	try{
  		Class.forName("com.mysql.jdbc.Driver");
  		Connection conn = DriverManager.getConnection(
- 				"jdbc:mysql://localhost/project","root","1234");
+ 				"jdbc:mysql://localhost/gj","root","1234");
  		Statement stmt = conn.createStatement();
  		ResultSet rs = stmt.executeQuery
  				("select * from inquiry inner join member on inquiry.inqnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"'"); 		//조건추가해서 해당정보만 출력
@@ -476,10 +478,9 @@ background-color: aqua;
   <div class="row flex-nowrap" style="text-align:center">
     <ul class="list-group">      
       
-        <li class="list-group-item"><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
-        <li class="list-group-item"><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
-        <li class="list-group-item"><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
-        <li class="list-group-item"> <h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
+        <li class="list-group-item"><h3><a class="menu" class="menu" href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li class="list-group-item"><h3><a class="menu" href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li class="list-group-item"><h3><a class="menu" href="LikePost.jsp">좋아요 누른 글</a></h3></li>
         
       </ul>
    </div>

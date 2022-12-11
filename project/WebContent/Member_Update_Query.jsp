@@ -255,7 +255,9 @@
 		*.box     { border:1px solid black; background-color:gold; } 
 		a{text-decoration:none}
 		ul{list-style:none;}
-		
+.menu{
+	color: black;
+}		
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">

@@ -33,7 +33,6 @@
   
   .logo img {
     right: 20px;
-    padding-top: 37px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -227,7 +226,7 @@ a {
 			float: center;
 			height: 450px;
 			position: absolute;
-			top: 400px;
+			top: 380px;
 			left:200px;
 			
 		}
@@ -238,7 +237,6 @@ a {
 }
 a:link, a:visited {
      
-     color: maroon;
      padding: 5px;
      text-decoration: none;
      display: inline-block;
@@ -314,10 +312,10 @@ footer {
 a{
 text-decoration:none !important}
 
-li:hover{
-		background-color: #4479db;
-		}
-li:active{
+.list-group-item:hover{
+background-color: #4479db;
+}
+.list-group-item:active{
 background-color: aqua;
 }
 
@@ -330,7 +328,9 @@ background-color: aqua;
 		*.box     { border:1px solid black; background-color:gold; } 
 		a{text-decoration:none}
 		ul{list-style:none;}
-		
+.menu{
+	color: black;
+}		
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -384,7 +384,7 @@ background-color: aqua;
 		
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/project","root", "1234");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
 		
 		Statement stmt = conn.createStatement();
 		
@@ -421,6 +421,7 @@ background-color: aqua;
         <li><a href="BulletinBoard4.jsp">면접게시판</a></li>
         <li><a href="BulletinBoard2.jsp">취업후기</a></li>
         <li><a href="BulletinBoard6.jsp">채용정보</a></li>
+        <li><a href="Inquirydiv.jsp">문의내역</a></li>
       </ul>
      
     </nav>
@@ -452,13 +453,12 @@ background-color: aqua;
 	
 	<div id="section">
   <div class="row flex-nowrap" style="text-align:center">
-    <div class="col-3 bd-sidebar">
+
       <ul class="list-group">      
       
-        <li class="list-group-item"><h3><a href = "MyInfo.jsp?">내 정보<br></a></h3></li>
-        <li class="list-group-item"><h3><a href="MyPost.jsp?">내가 쓴 글</a></h3></li>
-        <li class="list-group-item"><h3><a href="LikePost.jsp">좋아요 누른 글</a></h3></li>
-        <li class="list-group-item"> <h3><a href="Inquiry.jsp">문의 내역</a></h3></li>
+        <li class="list-group-item"><h3><a class="menu" href = "MyInfo.jsp?">내 정보<br></a></h3></li>
+        <li class="list-group-item"><h3><a class="menu" href="MyPost.jsp?">내가 쓴 글</a></h3></li>
+        <li class="list-group-item"><h3><a class="menu" href="LikePost.jsp">좋아요 누른 글</a></h3></li>
         
       </ul>
       <br>

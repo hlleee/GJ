@@ -1,15 +1,45 @@
 <%@page import="java.sql.DriverManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="utf-8" import="java.sql.*"%>
+    pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>문의 내역 관리자</title>
-</head>
-<style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>관리자 메인 화면 - 회원삭제가 메인</title>
+    <link rel="stylesheet" href="main_login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/77e29b57dd.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- defer란 무엇인가?!!!! -->
+    <script src="index.js" defer></script>
+  </head>
+  <style>
+    * {
+    box-sizing: border-box; /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
+  }
+  body {
+    margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
+    font-family: sans-serif;
+  }
+  
+ /* 기본 밑줄을 제거합니다 */
+   a {
+    text-decoration: none; 
+    color: #888;
+  }
+  /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
+   a:hover {
+    text-decoration: underline; 
+  } 
 
-  #header {
+ 
+  header {
     margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
     width: 100%;
     height: 160px;
@@ -33,6 +63,7 @@
   
   .logo img {
     right: 20px;
+    padding-top: 27px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -58,7 +89,7 @@
     width: 500px;
     height: 50px;
     
-    border: 4px solid #3D5F95;
+    border: 4px solid #2867dd;
     display: flex;
     align-items: center;
   }
@@ -77,7 +108,7 @@
     padding: 0;
     border: none;
     outline: none;
-    background: #3D5F95;
+    background: #2867dd;
     color: #ffffff;
   }
 
@@ -99,14 +130,14 @@
     display: flex;
     list-style: none;
     padding-right: 160px;
-    padding-top: 60px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
-    
+    background-color: #ffffff;
   }
   
-   .myinfo li {
+  .myinfo li {
     font-size: 17px;
     padding: 5px 12px;
    
@@ -119,12 +150,12 @@
     margin: auto;
     width: 100%;
     height: 20px;
-    /* background-color: #8361d4; */
     padding-right: 120px;
-    padding-top: 10px;
-   
+    padding-top: 0px;
+    
   }
- /* 메뉴바 */
+
+	 /* 메뉴바 */
 	:root {
    /* --text-color: #eee5e9; */
     --background-color: #3D5F95;
@@ -196,7 +227,7 @@ a {
         text-align: center;
         width: 100%;
     }
-      .navbar-menu a {
+    ￼ .navbar-menu a {
         display: block;
     }
 
@@ -207,73 +238,64 @@ a {
     }
 
 }
+ 
+
+  section {
+    height: 450px;
+    float:left;
+    width:100%;
+    padding: 10px;
+  }
+
+   article {
+    display: flex;
+    padding: 5px;
+  }
+
+  .container{
+    justify-content: center;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    
+    }
+
+    .area{
+        width: 60%;
+        display: block;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 0 1px #000;
+    }
+
+	table {
+		width: 800px;
 		
-		#nav {
-		/* 문의 내역 */
-			width: 80%;
-			float: center;
-			height: 400px;
-			position: relative;
-			left:400px;
-		}
-		#section {
-			/* 메뉴 */
-			width: 200px;
-			float: center;
-			height: 400px;
-			position: absolute;
-			top: 350px;
-			left:100px;
-			
-		}
-		.bd-sidebar {
-  background: #eee;
-  height:350px;
-  
-}
-	footer {
-    color: black;   
-    height: 90px;
+    	margin-left:13px; 
+    	margin-right:13px;
+		text-align: center;
+	 	background-color: #e6eef9;
+	  	border-collapse: collapse;
+  		border-radius: 5px;
+  		border-style: hidden;
+  		box-shadow: 0 0 0 1px #000;
+	}
+
+/* 푸터 */
+
+
+  footer {
+    color: black; 
+    width:100%;  
+    height: 60px;
     font-size: 12px;
-    background-color: rgb(236, 236, 244);
+    padding: 10px;
     position: relative;
     clear: both;
-    width:100%;
-    bottom: 0;
-  }
-  
-  .aside_box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #91acd6;
-    padding: 0;
-    margin: 0;
-  }
-  .area_user {
-    flex: 4;
-    line-height: 1em; /* 줄간격 */
-  }
-  .area_user_row {
-    display: flex;
-  }
-  .area_user_row span {
-    flex: 1;
-  }
-  .area_user_row ul {
-    flex: 6;
-  }
-  /* .aur_title {
-    font-size: 13px;
-    font-weight: bold;
-  } */
-  .area_user_row ul > li {
-    display: inline-block; /* li 수평정렬하는 방법 */
-    margin-left: 8px;
+    
   }
   
   .bottom_box {
-    
     flex: 2;
     font-size: 14px;
     text-align: center;
@@ -291,50 +313,15 @@ a {
     font-weight: bold;
     font-size: 13px;
   }
-a:link, a:visited {
-
-     padding: 5px;
-     text-align: center;
-     text-decoration: none;
-     display: inline-block;
-}
- a:hover, a:active {
-     display: inline-block;  
-}
-
-		@media (max-width: 600px) {
-			#nav, #section {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		a{text-decoration:none}
-		ul{list-style:none;}
-		.menu{
-	color: black;
-}
-	</style>
-	<link rel="stylesheet" href="/css/bootstrap.css">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<!-- 제이쿼리 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-</head>
-
+  
+    </style>
 <body>
-<input type="hidden" name="_id" value="<%= (String)session.getAttribute("__ID") %>">
-<div id="header">
+	
+    <header>
+
       <div class="logo">
-     <a href="Main_UI.jsp">
-     <img src="images/Logo.png" class="img_logo" style="display: block; width:180px;"/>
+      <a href="Main_UI.jsp">
+     <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
      </a>
       </div>
       <div class="search">
@@ -355,11 +342,10 @@ a:link, a:visited {
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
-            <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
+            <li><a href="Adm_main.jsp" class="link_text_name"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+            <li><a href="Adm_main.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
-       
         
         <%
 	//총 회원수 받아오기, 성공..!
@@ -393,81 +379,77 @@ a:link, a:visited {
         </div>
       </div>
       
-    </div>
-    <nav class="navbar">
+    </header>
+     <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a href="BulletinBoard.jsp">전체게시판</a></li>
-        <li><a href="BulletinBoard3.jsp">자유게시판</a></li>
-        <li><a href="BulletinBoard5.jsp">질문게시판</a></li>
-        <li><a href="BulletinBoard4.jsp">면접게시판</a></li>
-        <li><a href="BulletinBoard2.jsp">취업후기</a></li>
-        <li><a href="BulletinBoard6.jsp">채용정보</a></li>
-        <li><a href="Inquiry.jsp?">문의내역</a></li>
+        <li><a href="Gesipan.html">회원정보</a></li>
+        <li><a href="createroom.html">문의,,</a></li>
+        <li><a href="Myroom.html">질문게시판</a></li>
+        <li><a href="Myroom.html">면접게시판</a></li>
+        
       </ul>
      
     </nav>
-	<div id="nav">
-
-		<h1>문의 내역</h1>
-
-	<div style="border: 1px solid black; height: 250px;width: 70%;">
-	 <div style="overflow: auto; width:100%; height:100%;">
-	<table class="table table-striped" style="overflow-x:scroll" >
-      <thead>
-          <tr>
-              <th style="background-color: #eeeeee; text-align: center; width:100px">문의번호</th>
-                <th style="background-color: #eeeeee; text-align: center; width:300px">제목</th>
-                <th style="background-color: #eeeeee; text-align: center; width: 120px">작성자</th>
-                <th style="background-color: #eeeeee; text-align: center; width:200px">작성일</th>
-                <th style="background-color: #eeeeee; text-align: center; width:100px">처리여부</th>
-            </tr>
-        </thead>
-        <%
- 	try{
- 		Class.forName("com.mysql.jdbc.Driver");
- 		Connection conn = DriverManager.getConnection(
- 				"jdbc:mysql://localhost/gj","root","1234");
- 		Statement stmt = conn.createStatement();
- 		ResultSet rs = stmt.executeQuery
- 				("select * from inquiry order by inqnum asc"); 		//조건추가해서 해당정보만 출력
- 		
-		if(rs.next()==false){%>
+  	<hr>
+    <section>
+        <article class="container">
+            <article class="area" style="overflow-y:scroll">
+               
+<%
+	request.setCharacterEncoding("UTF-8");
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
+		
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(
+				"Select * from member ");
+		
+		%>
+		<table border="1">
+		<tr><th>회원번호</th><th>ID</th><th>닉네임</th><th>직업</th></tr>
 			
-<tr align="center" bgcolor="#FFFFFF" height="30">
-	    <td colspan="5" >문의내역이 없습니다.</td> 	
-	  </tr> 
-	<% 	}
-		rs = stmt.executeQuery
- 				("select * from inquiry order by inqnum asc"); 
- 		while(rs.next()){
- 			String inqnum = rs.getString("inqnum");
- 			String inqtit = rs.getString("inqtit");
- 			String inqnic = rs.getString("inqnic");
- 			String inqdat = rs.getString("inqdat");
- 			String process = rs.getString("process");
- 			%>
- 			
- 			<tr> <th style="text-align: center;"><%=inqnum%></th>
- 			<th style="text-align: center;"><%=inqtit%></th>
- 			<th style="text-align: center;"><%=inqnic%></th>
- 			<th style="text-align: center;"><%=inqdat%></th>
- 			<th style="text-align: center;"><%=process%></th>
- 			</tr>
- 			<%
- 		} 
- 		} catch(SQLException e){
- 		e.printStackTrace();
- 	}
+		<% 
+		
+		
+		
+		while(rs.next()){
+			String memnum = rs.getString("memnum");
+			String id = rs.getString("id");
+			String pw = rs.getString("pw");
+			String nickname = rs.getString("nickname");
+			String ename = rs.getString("ename");
+			String etype = rs.getString("etype");
+			String joboffdiv = rs.getString("joboffdiv");
+			
+			
+			out.println("<tr>");
+			out.println("<td width='100' height = '40'>" + memnum + "</td>");
+			out.println("<td width='180'>" + id + "</td>");
+			out.println("<td width='180'>" + nickname + "</td>");
+			out.println("<td width='180'>" + joboffdiv + "</td>");
+			//out.println("<td><input type='button' onclick='location.href='Adm_Delete_Query.jsp?memnum="+memnum+"&id="+id+"&nickname="+nickname+"&joboffdiv="+joboffdiv+"' value='삭제''></td>");
+			out.println("<td><a href='Adm_Delete_Query.jsp?memnum="+memnum+"&id="+id+"&nickname="+nickname+"&joboffdiv="+joboffdiv+"'>삭제</td>");
+			
+			out.println("</tr>");
+		}
+		%> </table>
+		<%
+		
+	}catch (SQLException e){
+		
+		
+	}
+
 %>
-        </table>
-        </div>
-</div>
-</div>
-	<div id="section">
- 
-	</div>
-	<footer>
+                
+            </article>  
+        </article>
+    </section>
+    <hr>
+    <footer>
    <div class="bottom_box">
         <ul>
         <li><p>회사소개</p></li>
@@ -484,7 +466,8 @@ a:link, a:visited {
      <div class="bottom_box">
      <p>&copy; 굿잡 Corp.</p>
      </div>
-  </footer>
+</footer>
 
-</body>
-</html>
+  </body>
+  </html>
+    
