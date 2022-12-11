@@ -414,15 +414,15 @@ a {
 <% 
 	//게시글 출력
 	request.setCharacterEncoding("UTF-8");
-	String num = request.getParameter("_num");    //게시글번호 받아옴
+	String num = request.getParameter("_posnum");    //게시글번호 받아옴
 	String title = "", content = "", name = "", type = "", date = "";
 	int view = 1;
 	int like = 0;
 	int comnum;
 	String userID =  (String) session.getAttribute("__NAME");
 	
-	if(userID.isEmpty()){		//로그아웃상태면 오류메시지 로그인페이지로 이동
-		out.println("<script>alert('게시글 작성을 하려면 로그인을 하십시오.');</script>");		
+	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+		out.println("<script>alert('게시글 조회를 하려면 로그인을 하십시오.');</script>");		
 		out.println("<script>location.href='main.jsp';</script>");
 	} 
 	else{
@@ -443,7 +443,7 @@ a {
 					
 					stmt.executeUpdate("update post set views = '"+view+"'where posnum = '"+num+"'");       // 조회수 저장
 					
-					rs = stmt.executeQuery("select count(posnum) from likes where posnum = '"+num+"'"); //게시글의 좋아요 개수 받아옴
+					rs = ViewDAO.viewLike(num); //게시글의 좋아요 개수 받아옴
 						while (rs.next())
 						like = rs.getInt(1);
 					
@@ -464,7 +464,7 @@ a {
 			<tr> 
 				<td></td>
 				<td> <%=type %> </td> 
-				<td style = "text-align : right;"><font size = "8">조회수 | </font><%=view %> </td>
+				<td style = "text-align : right;">조회수 | <%=view %> </td>
 			</tr>
 			<tr>
 				<td style = "text-align : right;">제목 | </td>
@@ -515,8 +515,7 @@ a {
 			
 			<%
 				ResultSet rsL=ViewDAO.like(num,userID); 
-				if(rsL.next())
-					out.println("♥");
+				if(rsL.next()) out.println("♥");
 				else out.println("♡");
 				rsL.close();
 			%>
@@ -625,7 +624,7 @@ a {
 				}
 			%>
 		
-	<form action = "ViewComment.jsp" method = "post">
+	<form action = "WriteComment.jsp" method = "post">
 			<input type = "hidden" name = "_comchk" value = 1>
 			<input type = "hidden" name = "_fgnnum" value = <%=num %>>
 			<input type = "hidden" name = "_posnum" value = <%=num %>>

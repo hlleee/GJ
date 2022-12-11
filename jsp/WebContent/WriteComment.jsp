@@ -27,7 +27,7 @@
 		 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false", "root", "1234");
 		Statement stmt = conn.createStatement();
 		
-			stmt.executeUpdate("insert into comment (comnic, comcon, comdat, comrepdiv, fgnnum, delchk) values ('"+userID+"','"+comcon+"', '"+date+"', '"+comchk+"', '"+fgnnum+"', 0)");	
+			stmt.executeUpdate("insert into comment (comnic, comcon, comdat, comrepdiv, fgnnum, delchk) values ('"+userID+"','"+comcon+"', '"+date+"', '"+comchk+"', '"+fgnnum+"', 0)");
 			if(comchk.equals("1"))
 				out.println("<script>alert('댓글이 등록되었습니다.');</script>");	
 			else

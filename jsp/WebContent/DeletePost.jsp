@@ -11,14 +11,26 @@
 	String userID =  (String) session.getAttribute("__NAME");
 	String posnum = request.getParameter("_posnum");
 	String type = "";
+	int comnum = 0;
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false","root","1234");
 		Statement stmt = conn.createStatement();
+		Statement stmt2 = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("select * from post where posnic = '"+userID+"' and posnum = '"+posnum+"'");
 		if(rs.next() || userID.equals("Admin")){
+			
 			if(rs.first()) type = rs.getString("btype");
-			stmt.executeUpdate("delete from post where posnum='"+posnum+"'");
+			
+			rs = stmt.executeQuery("select comnum from comment where fgnnum = '"+posnum+"' and comrepdiv = 1");
+			while(rs.next()){
+				comnum = rs.getInt("comnum");
+				stmt2.executeUpdate("delete from comment where fgnnum = '"+posnum+"' and comrepdiv = 1 or fgnnum = '"+comnum+"' and comrepdiv = 0");
+			}
+			stmt2.executeUpdate("delete from comment where fgnnum = '"+posnum+"' and comrepdiv = 1");
+			
+			stmt2.executeUpdate("delete from post where posnum='"+posnum+"'");
+			
 			out.println("<script>alert('게시글 삭제가 완료되었습니다.');</script>");	
 				if(userID.equals("Admin")) out.println("<script>location.href='관리자 게시판.jsp';</script>");
 				else {

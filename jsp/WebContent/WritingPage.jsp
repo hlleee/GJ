@@ -365,7 +365,7 @@ a {
 <%
 	String userID =  (String) session.getAttribute("__NAME");  		//세션에서 로그인중인 id 받아옴
 
-	if(userID.isEmpty()){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
 		out.println("<script>alert('게시글 작성을 하려면 로그인을 하십시오.');</script>");		
 		out.println("<script>location.href='Main.jsp';</script>");
 	} 

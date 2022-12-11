@@ -24,7 +24,7 @@ margin-left : 15%;
 %>
 <div id="comment">
 	<h3>답글 작성</h3>
-	<form action = ViewComment.jsp method = "post">
+	<form action = "WriteComment.jsp" method = "post">
 	<input type = "hidden" name = "_comchk" value = <%=comchk%>>
 	<input type = "hidden" name = "_fgnnum" value = <%=fgnnum%>>
 	<input type = "hidden" name = "_posnum" value = <%=posnum%>>

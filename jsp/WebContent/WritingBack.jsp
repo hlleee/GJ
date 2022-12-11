@@ -30,7 +30,7 @@
 		int result = stmt.executeUpdate("insert into post (postit, poscon, posdat, posnic, views, btype) values ('" + title + "','"+content+"', '" + date + "', '"+userID+"', 0, '"+type+"')");
 		if(result!=0){
 			ResultSet rs = stmt.executeQuery("select posnum from post where postit = '"+title+"' and poscon = '"+content+"' and posdat = '"+date+"' and btype = '"+type+"'");
-			if (rs.last()){
+			if (rs.next()){
 				posnum = rs.getInt("posnum");
 				rs.close();
 			}
