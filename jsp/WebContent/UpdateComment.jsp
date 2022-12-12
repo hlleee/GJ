@@ -11,6 +11,20 @@ width:65%;
 float : left; 
 margin-left : 15%;
 }
+
+    .writeCom{
+     margin: auto;
+     width : 65px;
+    height: 55px;
+    font-size : 12px;
+    border: none;
+    outline: none;
+    background-color: #3D5F95;
+    padding-bottom: 0px;
+    color: #ffffff;
+    border-radius: 5px;
+    
+    }
 </style>
 
 </head>
@@ -38,13 +52,14 @@ margin-left : 15%;
 %>
 <div id="comment">
 	<h3>댓글 수정</h3>
+	<hr><br>
 	<form action = UpdateCommentBack.jsp method = "post">
 	<input type = "hidden" name = "_comnum" value = <%=comnum%>>
 	<input type = "hidden" name = "_comchk" value = <%=comchk%>>
 	<input type = "hidden" name = "_posnum" value = <%=posnum%>>
-	<textarea style = "width : 700px; height : 50px;" name = "_content"><%=content %></textarea>
-	<span style="float:right;"> 
-	<button type = "submit" style = "height : 56px; font-size : 12px;">댓글 수정</button>
+	<textarea style = "width : 700px; height : 50px; resize: none;" name = "_content"><%=content %></textarea>
+	<span style = "margin-left : 1%; vertical-align : top;">  
+	<button type = "submit" class = "writeCom">댓글 수정</button>
 	</span>
 	</form>
 </div>

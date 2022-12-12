@@ -13,7 +13,7 @@ margin-left : 15%;
 }
  .writeCom{
      margin: auto;
-     width : 55px;
+     width : 65px;
     height: 55px;
     font-size : 12px;
     border: none;
@@ -42,12 +42,13 @@ margin-left : 15%;
 %>
 <div id="comment">
 	<h3>답글 작성</h3>
+	<hr><br>
 	<form action = "WriteComment.jsp" method = "post">
 	<input type = "hidden" name = "_comchk" value = <%=comchk%>>
 	<input type = "hidden" name = "_fgnnum" value = <%=fgnnum%>>
 	<input type = "hidden" name = "_posnum" value = <%=posnum%>>
-	<textarea style = "width : 700px; height : 50px;" name = "_content"></textarea>
-	<span style="float:right;"> 
+	<textarea style = "width : 700px; height : 50px; resize: none;"  name = "_content"></textarea>
+	<span style = "margin-left : 1%; vertical-align : top;"> 
 	<button type = "submit" class = "writeCom">답글 작성</button>
 	</span>
 	</form>

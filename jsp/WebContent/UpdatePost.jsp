@@ -431,7 +431,9 @@ a {
 		</form>
 </div>
 <footer>
+	<br>
    <div class="bottom_box">
+   	<hr>
         <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>

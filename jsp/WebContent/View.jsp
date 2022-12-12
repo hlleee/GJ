@@ -9,7 +9,7 @@
 <style type="text/css">
 
 #text{
-width:80%;
+width:85%;
 float : left;
 margin-top : 1%
 }
@@ -38,7 +38,7 @@ margin-left : 15%;
 }
 
 .table {
-    width:100%; 
+    width:95%; 
     margin-left:5%; 
 }
 .right {
@@ -49,8 +49,7 @@ margin-left : 15%;
 
 .likeBtn {
   background-color: rgb(240, 255, 255);
-  border: 0.5px soild;
-  border-color : rgb(220, 220, 220) rgb(220, 220, 220);
+  border-color : red;
   color: red;
   padding: 5px 20px;
   text-align: center;
@@ -67,13 +66,20 @@ margin-left : 15%;
 }
 
   #com{
-  width : 95%;
+  width : 100%;
+  border : 1px solid;
+  float:left;
+  padding-right : 3%;
+   border-color : rgb(220, 220, 220);
   }
   
   #reply{
-  width : 90%;
-  margin-left : 10%;
+  width : 100%;
+  padding-left : 10%;
   float : left;
+  border : 1px solid;
+  border-color : rgb(220, 220, 220);
+   padding-right : 3%;
   }
   
   #main{
@@ -484,7 +490,7 @@ a {
 	
 %><div id = "main">
 	<div id = "text">
-		<table style = "width : 100%; margin-left : 5%;">
+		<table style = "width : 100%;">
 			<tr> 
 				<td></td>
 				<td style = "margin-bottom : 4px"> <font size = "2px"><b><%=type %></b> </font></td> 
@@ -550,8 +556,7 @@ a {
 		</form>
 	</div>
 	<div id = "comment">
-		<h3>댓글</h3>
-		<hr>
+		<h3>댓글</h3><br>
 		<%
 			rs = stmt.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 0");
 			ResultSet rsD = stmt2.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 1");
@@ -563,15 +568,17 @@ a {
 						String comcon = rs.getString("comcon");
 						String comdate = rs.getString("comdat");
 						comnum = rs.getInt("comnum");
+						
 		%>
+		
 		<div id = "com">
 		<br>
 		<table class="table">
 			<tr> 
 				<td> <%=comnic%></td>
 				<td class = "right"> <a class="a" href="ViewReply.jsp?_id=me2&_comchk=0&_fgnnum=<%=comnum%>&_posnum=<%=num%>">답글</a> 
-									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=comnum%>&_comchk=1&_posnum=<%=num%>"> 삭제</a> 
-									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=comnum%>&_comchk=1&_content=<%=comcon%>"> 수정</a>
+									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=<%=userID %>&_comnum=<%=comnum%>&_comchk=1&_posnum=<%=num%>"> 삭제</a> 
+									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=<%=userID %>&_comnum=<%=comnum%>&_comchk=1&_content=<%=comcon%>"> 수정</a>
 				</td>
 			</tr>
 			<tr>
@@ -579,10 +586,11 @@ a {
 				<td class = "right"> <text><%=comdate%></text></td>
 			</tr>
 		</table>
-		</div>
 		<br>
+		</div>
+		
 			<%
-				ResultSet rsR = stmt2.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 0 and delchk = 0"); 
+				ResultSet rsR = stmt2.executeQuery("select * from comment where fgnnum = '"+comnum+"' and comrepdiv = 0 and delchk = 0"); 
 					while(rsR.next()){
 						String renic = rsR.getString("comnic");
 						String recon = rsR.getString("comcon");
@@ -590,11 +598,12 @@ a {
 						String renum = rsR.getString("comnum");
 			%>
 			<div id = "reply">
-				<table style = "width : 100%">
+			<br>
+				<table style = "width : 100%;">
 				<tr> 
 					<td> ➥ <%=renic %></td>
-					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
-										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
+					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=<%=userID %>&_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
+										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=<%=userID %>&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
 					</td>
 				</tr>
 				<tr>
@@ -632,8 +641,8 @@ a {
 				<table style = "width : 100%; margin-top : 3%;">
 				<tr> 
 					<td> ➥ <%=renic %></td>
-					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
-										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
+					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=<%=userID %>&_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
+										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=<%=userID %>&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
 					</td>
 				</tr>
 				<tr>
@@ -682,9 +691,11 @@ a {
 	%>
 	
 <!--풋터-->
-	<hr>
+
    <footer>
+   <br>
    <div class="bottom_box">
+	<hr>
         <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
