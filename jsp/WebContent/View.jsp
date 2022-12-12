@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import = "java.sql.*" import = "view.ViewDAO"%>
+    pageEncoding="UTF-8" import = "java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +9,8 @@
 <style type="text/css">
 
 #text{
-width:75%;
+width:80%;
 float : left;
-margin-left : 5%;
 margin-top : 1%
 }
 
@@ -22,9 +21,9 @@ margin-left : 15%;
 text-align : center;
 }
 #content{
-width:60%;
+width:70%;
 float : left; 
-margin-left : 20%;
+margin-left : 15%;
 margin-top : 3%;
 padding : 1%;
 border-radius: 15px;
@@ -33,24 +32,25 @@ background-color : rgb(240, 255, 255);
 }
 
 #comment{
-width:65%;
+width:70%;
 float : left; 
 margin-left : 15%;
 }
 
 .table {
-    width:95%; 
+    width:100%; 
     margin-left:5%; 
 }
 .right {
     text-align : right;
-    width : 120px;
+    width : 100px;
     vertical-align : top;
 }
 
-.button {
-  background-color: white;
-  border: none;
+.likeBtn {
+  background-color: rgb(240, 255, 255);
+  border: 0.5px soild;
+  border-color : rgb(220, 220, 220) rgb(220, 220, 220);
   color: red;
   padding: 5px 20px;
   text-align: center;
@@ -67,7 +67,7 @@ margin-left : 15%;
 }
 
   #com{
-  width : 100%;
+  width : 95%;
   }
   
   #reply{
@@ -332,6 +332,37 @@ a {
     font-weight: bold;
     font-size: 13px;
   }
+  text{
+  font-size : 3px;
+  color : rgb(200, 200, 200);
+  vertical-align : center;
+  }
+  
+  .btn{
+    margin: auto;
+    width: 70px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: #3D5F95;
+    padding-bottom: 0px;
+    color: #ffffff;
+    border-radius: 5px;
+    }
+    
+    .writeCom{
+     margin: auto;
+     width : 55px;
+    height: 55px;
+    font-size : 12px;
+    border: none;
+    outline: none;
+    background-color: #3D5F95;
+    padding-bottom: 0px;
+    color: #ffffff;
+    border-radius: 5px;
+    
+    }
 </style>
 <body>
  <header>
@@ -383,11 +414,9 @@ a {
 	       } 
 	      
 	      out.println("<p style='text-align: center;'>"+"총 회원수 : <b>"+ Countrun + "명</b></p>");
-	      
-		rs.close();
-		stmt.close();
-		conn.close();
-		
+	      conn.close();
+	      stmt.close();
+	      rs.close();
 	} catch(Exception e) {
 		e.printStackTrace();
 	}
@@ -423,7 +452,7 @@ a {
 	
 	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
 		out.println("<script>alert('게시글 조회를 하려면 로그인을 하십시오.');</script>");		
-		out.println("<script>location.href='main.jsp';</script>");
+		out.println("<script>location.href='Main.jsp';</script>");
 	} 
 	else{
 		try{
@@ -431,6 +460,7 @@ a {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false","root","1234");
 			Statement stmt = conn.createStatement();
+			Statement stmt2 = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from post where posnum = '"+num+"'");  	// 클릭한 게시글 번호 받아와서 조회수 받아옴
 				if(rs.next()){
 					view += rs.getInt("views");		// 조회수 +1
@@ -443,55 +473,49 @@ a {
 					
 					stmt.executeUpdate("update post set views = '"+view+"'where posnum = '"+num+"'");       // 조회수 저장
 					
-					rs = ViewDAO.viewLike(num); //게시글의 좋아요 개수 받아옴
-						while (rs.next())
-						like = rs.getInt(1);
+					rs = stmt.executeQuery("select count(posnum) from likes where posnum = '"+num+"'"); //게시글의 좋아요 개수 받아옴
+					if (rs.next()) like = rs.getInt(1);
 					
-					conn.close();
-					stmt.close();
-					rs.close();
 				} else{
 					out.println("<script>alert('유효하지 않은 게시글입니다.');</script>");	
 					out.println("<script>location.href='WritingPage.jsp';</script>");
 				}
-			}catch(Exception e){
-				e.printStackTrace();
-			}
+		
 	
 %><div id = "main">
 	<div id = "text">
-		<table class="table">
+		<table style = "width : 100%; margin-left : 5%;">
 			<tr> 
 				<td></td>
-				<td> <%=type %> </td> 
-				<td style = "text-align : right;">조회수 | <%=view %> </td>
+				<td style = "margin-bottom : 4px"> <font size = "2px"><b><%=type %></b> </font></td> 
+				<td style = "text-align : right;"><text>조회수 | <%=view %></text> </td>
 			</tr>
 			<tr>
-				<td style = "text-align : right;">제목 | </td>
-				<td colspan = 2 style = "font-size : 15px;"><%=title %></td>
+				<td style = "text-align : right;"><text> 제목 | &nbsp;</text></td>
+				<td colspan = 2 ><font size = "6px"><b><%=title %></b></font></td>
 			</tr>
 			<tr>
-				<td style = "text-align : right;"> 작성자 | </td>
+				<td style = "text-align : right;"><text> 작성자 |&nbsp; </text></td>
 				<td > <%=name %></td>
-				<td style = "text-align : right;"> <%=date %></td>
+				<td style = "text-align : right;"><text> <%=date %></text></td>
 			</tr>
 		</table>
 		
 	</div>
 	<div id = "content">
-		<table class="table">
+		<table style = "width : 95%; margin-left : 5%;">
 			<tr>
 				<td style = "text-align : right; "> 
 				
 					<form action = "UpdatePost.jsp" method = "post">
 						<input type = hidden name = "_posnum" value = <%=num %>>
-						<input onclick = "return confirm('게시글을 수정하시겠습니까?')" type = submit value = "글 수정">
+						<input onclick = "return confirm('게시글을 수정하시겠습니까?')" type = submit class = "btn" value = "글 수정">
 					</form>
 				</td>
 				<td style = "text-align : right; width : 50px;">
 					<form action = "DeletePost.jsp" method = "post">
 						<input type = hidden name = "_posnum" value = <%=num %>>
-						<input onclick = "return confirm('게시글을 정말 삭제하시겠습니까?')" type = submit value = "글 삭제">
+						<input onclick = "return confirm('게시글을 정말 삭제하시겠습니까?')" type = submit class = "btn" value = "글 삭제">
 					</form>
 					
 				</td>
@@ -502,7 +526,7 @@ a {
 			<tr>
 				<td colspan = 2 style = "text-align : right;"> 
 					<form action = "BulletinBoard.jsp" method = "post">
-						<input type = submit value = "글 목록">
+						<input type = submit  class = "btn" value = "글 목록">
 					</form>
 				</td>
 			</tr>
@@ -511,13 +535,13 @@ a {
 	<div id = "like">
 		<form action = "ViewLike.jsp" method = "post">
 			<input type = "hidden" name = "_posnum" value = <%=num %>>
-			<button type = "submit" class = "button">
+			<button type = "submit" class = "likeBtn">
 			
 			<%
-				ResultSet rsL=ViewDAO.like(num,userID); 
-				if(rsL.next()) out.println("♥");
+				rs = stmt.executeQuery("select * from likes where liknic = '"+userID+"' and posnum = '"+num+"'");  
+				if(rs.next()) out.println("♥");
 				else out.println("♡");
-				rsL.close();
+				
 			%>
 			
 			</button>
@@ -527,12 +551,13 @@ a {
 	</div>
 	<div id = "comment">
 		<h3>댓글</h3>
+		<hr>
 		<%
-			ResultSet rs = ViewDAO.comment(num);
-			ResultSet rsD = ViewDAO.delComment(num);
-			if(!rs.next() && !rsD.next()) out.println("작성된 댓글이 없습니다.");
+			rs = stmt.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 0");
+			ResultSet rsD = stmt2.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 1");
+			if(!rs.next() && !rsD.next()) out.println("<br><b>&nbsp; &nbsp; &nbsp; &nbsp;작성된 댓글이 없습니다.</b>");
 				else{
-					rs = ViewDAO.comment(num); 
+					rs = stmt.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 0");
 					while (rs.next()){
 						String comnic = rs.getString("comnic");
 						String comcon = rs.getString("comcon");
@@ -540,23 +565,24 @@ a {
 						comnum = rs.getInt("comnum");
 		%>
 		<div id = "com">
+		<br>
 		<table class="table">
 			<tr> 
 				<td> <%=comnic%></td>
 				<td class = "right"> <a class="a" href="ViewReply.jsp?_id=me2&_comchk=0&_fgnnum=<%=comnum%>&_posnum=<%=num%>">답글</a> 
-											<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=comnum%>&_comchk=1&_posnum=<%=num%>"> 삭제</a> 
-											<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=comnum%>&_comchk=1&_content=<%=comcon%>"> 수정</a>
+									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=comnum%>&_comchk=1&_posnum=<%=num%>"> 삭제</a> 
+									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=comnum%>&_comchk=1&_content=<%=comcon%>"> 수정</a>
 				</td>
 			</tr>
 			<tr>
 				<td><%=comcon.replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>")%></td>
-				<td class = "right"> <%=comdate%></td>
+				<td class = "right"> <text><%=comdate%></text></td>
 			</tr>
 		</table>
-		
+		</div>
 		<br>
 			<%
-				ResultSet rsR = ViewDAO.reply(comnum);
+				ResultSet rsR = stmt2.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 0 and delchk = 0"); 
 					while(rsR.next()){
 						String renic = rsR.getString("comnic");
 						String recon = rsR.getString("comcon");
@@ -568,16 +594,16 @@ a {
 				<tr> 
 					<td> ➥ <%=renic %></td>
 					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
-												<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
+										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
 					</td>
 				</tr>
 				<tr>
 					<td><div style = "margin-left:3%"><%=recon.replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>")  %></div></td>
-					<td class = "right"> <%=redate %></td>
+					<td class = "right"> <text><%=redate %></text></td>
 				</tr>
 			</table>
 			<br>
-			</div>
+			
 			</div>
 			<%
 					}	
@@ -585,19 +611,21 @@ a {
 			
 			%>
 			<%
-				rsD = ViewDAO.delComment(num);
+				rsD = stmt.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 1");
 				while (rsD.next()){
 					comnum = rsD.getInt("comnum");
+				
 			%>
 			<div id = "com">
-				<b style = "margin-left : 5%;"> 삭제된 댓글입니다. </b>
+				<br><b style = "margin-left : 5%;"> &nbsp; &nbsp; &nbsp; &nbsp;삭제된 댓글입니다. </b>
+			</div>
 			<%
-						ResultSet rsR = ViewDAO.reply(comnum);
-							while(rsR.next()){
-								String renic = rsR.getString("comnic");
-								String recon = rsR.getString("comcon");
-								String redate = rsR.getString("comdat");
-								String renum = rsR.getString("comnum");
+						ResultSet rsR = stmt2.executeQuery("select * from comment where fgnnum = '"+comnum+"' and comrepdiv = 0 and delchk = 0"); 
+						while(rsR.next()){
+							String renic = rsR.getString("comnic");
+							String recon = rsR.getString("comcon");
+							String redate = rsR.getString("comdat");
+							String renum = rsR.getString("comnum");
 			%>
 			
 			<div id = "reply">
@@ -605,42 +633,51 @@ a {
 				<tr> 
 					<td> ➥ <%=renic %></td>
 					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
-												<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
+										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
 					</td>
 				</tr>
 				<tr>
 					<td><div style = "margin-left:3%"><%=recon.replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>")  %></div></td>
-					<td class = "right"> <%=redate %></td>
+					<td class = "right"><text> <%=redate %></text></td>
 				</tr>
 			</table>
 			<br>
-			</div>
+			
 			</div>
 			<%
 						}
 		rsR.close();
 			}
 		rs.close();
+		rsD.close();
 				}
 			%>
-		
-	<form action = "WriteComment.jsp" method = "post">
+		<form action = "WriteComment.jsp" method = "post">
 			<input type = "hidden" name = "_comchk" value = 1>
 			<input type = "hidden" name = "_fgnnum" value = <%=num %>>
 			<input type = "hidden" name = "_posnum" value = <%=num %>>
-			<textarea style = "width : 60%; height : 55px; margin-left : 15%; resize: none;" name = "_content"></textarea>
+			<br>
+			<textarea style = "width : 92%; height : 55px;  resize: none;" name = "_content"></textarea>
 			<span style = "margin-left : 1%; vertical-align : top;">  				<!-- 줄바꿈이 일어나지 않게 함 -->
-			<button type = "submit" style = "height : 56px; font-size : 12px;">댓글 작성</button>
+			<button type = "submit" class = "writeCom">댓글 작성</button>
 			</span>
 		</form>
+	
 	</div>
 		
 	</div>
 	<br>
 	<%
-	
+		conn.close();
+		stmt.close();
+		stmt2.close();
+
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
-	ViewDAO.close();
+	
 
 	%>
 	

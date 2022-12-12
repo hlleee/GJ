@@ -33,7 +33,6 @@ border : 1px solid;
 
 #btn{
 width :90%;
-
 text-align : right;
 margin-bottom : 5%;
 
@@ -284,6 +283,26 @@ a {
     font-weight: bold;
     font-size: 13px;
   }
+   .btn{
+    margin: auto;
+    width: 70px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: #3D5F95;
+    padding-bottom: 0px;
+    color: #ffffff;
+    border-radius: 5px;
+    }
+    
+    textarea{
+    width : 100%; 	
+    height : 400px;  
+    margin-top : 5px; 
+    resize: none; 
+    background-color : rgb(240, 255, 255);
+    }
+    
 </style>
 <body>
  <header>
@@ -371,25 +390,25 @@ a {
 	} 
 %>
 
-<div id = "text"><h1>글 작성</h1></div>
+<div id = "text"><br><h1>글 작성</h1><br></div>
 <div id = "main">
 <form action = WritingBack.jsp method = "post">
 	<div id = "input">
 	
-	<select name = "_type" style = "width : 50%;" >
+	<select name = "_type" style = "width : 50%; height : 30px;" >
 	<option>자유게시판</option>
 	<option>취업후기게시판</option>
 	<option>면접게시판</option>
 	<option>질문게시판</option>
 	<option>채용게시판</option>
 	</select><p>
-	<input type = "text" name = "_title" style = "width : 99%;"  placeholder = "제목을 입력하세요" required> <p>
-	<textarea name = "_content" style = "width : 99%; height : 400px; resize: none; background-color : rgb(240, 255, 255)"></textarea> 
+	<input type = "text" name = "_title" style = "width : 100%; height : 30px; margin-top : 5px;"  placeholder = "제목을 입력하세요" required> <p>
+	<textarea name = "_content" placeholder = "내용을 입력하세요" required></textarea> 
 	
 </div>
 <div id="btn">
-	<input type = "submit" value = "작성" >
-			 <input type = "reset" value = "취소" > 
+	<input type = "submit" class = "btn" value = "작성" >
+			 <input type = "reset" class = "btn" value = "취소" > 
 </div>
 </form>
 </div>

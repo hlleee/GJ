@@ -12,6 +12,11 @@
 	String posnum = request.getParameter("_posnum");
 	String type = "";
 	int comnum = 0;
+	
+	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+		out.println("<script>alert('접근 오류');</script>");		
+		out.println("<script>location.href='Main.jsp';</script>");
+	}  
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false","root","1234");
@@ -28,6 +33,7 @@
 				stmt2.executeUpdate("delete from comment where fgnnum = '"+posnum+"' and comrepdiv = 1 or fgnnum = '"+comnum+"' and comrepdiv = 0");
 			}
 			stmt2.executeUpdate("delete from comment where fgnnum = '"+posnum+"' and comrepdiv = 1");
+			stmt2.executeUpdate("delete from likes where posnum = '"+posnum+"'");
 			
 			stmt2.executeUpdate("delete from post where posnum='"+posnum+"'");
 			

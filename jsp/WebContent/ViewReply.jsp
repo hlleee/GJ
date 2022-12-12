@@ -4,13 +4,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>답글 작성</title>\
+<title>답글 작성</title>
 <style>
 #comment{
 width:65%;
 float : left; 
 margin-left : 15%;
 }
+ .writeCom{
+     margin: auto;
+     width : 55px;
+    height: 55px;
+    font-size : 12px;
+    border: none;
+    outline: none;
+    background-color: #3D5F95;
+    padding-bottom: 0px;
+    color: #ffffff;
+    border-radius: 5px;
+    
+    }
 </style>
 </head>
 <body>
@@ -21,6 +34,11 @@ margin-left : 15%;
 	String comchk = request.getParameter("_comchk");
 	String fgnnum = request.getParameter("_fgnnum");
 	String posnum = request.getParameter("_posnum");
+	
+	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+		out.println("접근 오류');</script>");		
+		out.println("<script>location.href='Main.jsp';</script>");
+	}  
 %>
 <div id="comment">
 	<h3>답글 작성</h3>
@@ -30,7 +48,7 @@ margin-left : 15%;
 	<input type = "hidden" name = "_posnum" value = <%=posnum%>>
 	<textarea style = "width : 700px; height : 50px;" name = "_content"></textarea>
 	<span style="float:right;"> 
-	<button type = "submit" style = "height : 56px; font-size : 12px;">답글 작성</button>
+	<button type = "submit" class = "writeCom">답글 작성</button>
 	</span>
 	</form>
 </div>

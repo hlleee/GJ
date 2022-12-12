@@ -386,7 +386,7 @@ background-color : rgb(240, 255, 255);
 <% 
 	//문의글 출력
 	request.setCharacterEncoding("UTF-8");
-//	String num = request.getParameter("_num");    //게시글번호 받아옴
+//	String inqnum = request.getParameter("_inqnum");    //게시글번호 받아옴
 	String inqnum = "1";
 	String title = "", content = "", name = "", type = "", date = "";
 	String userID =  "Admin";

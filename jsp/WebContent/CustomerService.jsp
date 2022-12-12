@@ -1,5 +1,6 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*"%>
+    pageEncoding="UTF-8" import="java.sql.*" import = "java.time.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -264,6 +265,37 @@ a {
     font-weight: bold;
     font-size: 13px;
   }
+  
+   .btn{
+    margin: auto;
+    width: 70px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: #3D5F95;
+    padding-bottom: 0px;
+    color: #ffffff;
+    border-radius: 5px;
+    }
+    .table {
+    width:95%; 
+    margin-left : -3%;
+ 	margin-top : 5%;
+ 	margin-bottom : 5%;
+  }
+  textarea{
+  width : 100%; 
+  height : 350px; 
+  resize: none; 
+  background-color : rgb(240, 255, 255);
+  margin-top : 5px;
+  }
+  
+  text{
+  font-size : 3px; 
+  color : rgb(220, 220, 220);
+  }
+    
 </style>
 <body>
  <header>
@@ -299,6 +331,10 @@ a {
         <%
 	//총 회원수 받아오기, 성공..!
 		
+	LocalDate now = LocalDate.now();
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	 
+    String date = now.format(formatter);
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp","root", "1234");
@@ -345,42 +381,42 @@ a {
 <%
 	String userID =  (String) session.getAttribute("__NAME");   		//세션에서 로그인중인 id 받아옴
 
-	if(userID.isEmpty()){		//로그아웃상태면 오류메시지 로그인페이지로 이동
-		out.println("<script>alert('게시글 작성을 하려면 로그인을 하십시오.');</script>");		
-		out.println("<script>location.href='Login.jsp';</script>");
-	} 
+	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+		out.println("<script>alert('문의를 하려면 로그인을 하십시오.');</script>");		
+		out.println("<script>location.href='Main.jsp';</script>");
+	}  
 %>
-	<br>
+	
     <div id = "text">
-    	<h1>고객센터</h1>
+    	<br><h1>고객센터</h1><br>
     </div>
     <div id = "main">
     <form action = "CustomerServiceBack.jsp" method = "post">
     	<table class = "table">
     	<tr>
-    		<td style = "font-size : 16px; text-align : right;">문의사항 |</td>
-    		<td><select name = "_type" style = "width : 50%">
+    		<td style = "text-align : right; "> <text>문의사항 |&nbsp;</text></td>
+    		<td><select name = "_type" style = "width : 50%; height : 30px;">
 					   <option>버그 제보</option>
 					   <option>사용자 신고</option>
 					   <option>건의사항</option>
 				   	   </select>
 			</td>
     	</tr>
-    	<tr><td style = "font-size : 16px; text-align : right;">	제목 | </td>
-    		<td> <input type = "text" style = "width : 99%" name = "_title" size = "50" placeholder = "제목을 입력하세요" required></td>
+    	<tr><td	style = "text-align : right;"><text> 제목 |&nbsp; </text></td>
+    		<td> <input type = "text" style = "width : 100%; height : 30px; margin-top : 5px;" name = "_title" size = 50 placeholder = "제목을 입력하세요" required></td>
     	</tr>
     	<tr>
-    		<td style = "font-size : 16px; text-align : right;">발생일자 |</td>
-    		<td><input type = "date" style = "width : 50%" name = "_date" value = "${dateType2}"></td>
+    		<td style = "text-align : right;"><text> 발생일자 |&nbsp; </text></td>
+    		<td><input type = "date" style = "width : 50%; height : 30px; margin-top : 5px;" name = "_date" min = "2022-11-01" max = <%=date %> required></td>
     	</tr>
     	<tr>
-    		<td style = "font-size : 16px; text-align : right; vertical-align : top;">문의내용 | </td>
-    		<td> <textarea name = "_content" style = "width : 99%; height : 350px; resize: none; background-color : rgb(240, 255, 255);"></textarea> </td>
+    		<td style = "vertical-align : top; text-align : right;"> <text>문의내용 |&nbsp;</text> </td>
+    		<td> <textarea name = "_content" placeholder = "내용을 입력하세요" required></textarea> </td>
    		</tr>			  
    		<tr>
    			<td colspan = "2" style = "text-align : right;">
-		   		<input type = "submit" value = "문의" >
-				<input type = "reset" value = "취소" > 
+		   		<input type = "submit" class = "btn" value = "문의" >
+				<input type = "reset" class = "btn" value = "취소" > 
 			</td>
 		</tr>
    		</table>

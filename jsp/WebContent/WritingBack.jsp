@@ -17,7 +17,7 @@
 	int posnum=0;
 	
 	LocalDate now = LocalDate.now();
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	 
     String date = now.format(formatter);
     

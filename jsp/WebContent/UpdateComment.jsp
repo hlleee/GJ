@@ -20,8 +20,12 @@ margin-left : 15%;
 	String content = request.getParameter("_content");
 	String comchk = request.getParameter("_comchk");
 	String posnum = request.getParameter("_posnum");
-	String userID =  (String) session.getAttribute("__NAME");
+	String userID =  (String) session.getAttribute("__NAME");   		//세션에서 로그인중인 id 받아옴
 
+	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+		out.println("<script>alert('접근 오류');</script>");		
+		out.println("<script>location.href='Main.jsp';</script>");
+	}  
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false","root","1234");

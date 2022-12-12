@@ -7,18 +7,34 @@
 <title>글 수정</title>
 <style type ="text/css">
 
-div#input{
-width:50%;
-margin-left : 30%;
-
+div#text{
+float : left;
+margin-left : 45%;
 }
 
-#btn{
-width : 50%;
-margin-left : 30%;
-text-align : right;
+
+#input{
+width:80%;
+margin-left : 10%;
+margin-top : 5%;
 
 } 
+
+#btn{
+width :90%;
+text-align : right;
+margin-bottom : 5%;
+
+} 
+
+#main{
+width:65%;
+float : left;
+margin-left : 18%;
+border-radius: 30px;
+border : 1px solid;
+}
+
 
   body {
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
@@ -265,6 +281,17 @@ a {
     font-weight: bold;
     font-size: 13px;
   }
+  .btn{
+    margin: auto;
+    width: 70px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: #3D5F95;
+    padding-bottom: 0px;
+    color: #ffffff;
+    border-radius: 5px;
+    }
 </style>
 <body>
  <header>
@@ -347,7 +374,12 @@ a {
 	request.setCharacterEncoding("UTF-8");
 	String posnum = request.getParameter("_posnum");
 	String title = "", content = "", type = "";
-	String userID =  (String) session.getAttribute("__NAME");
+	String userID =  (String) session.getAttribute("__NAME"); 
+	
+	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+		out.println("<script>alert('접근 오류');</script>");		
+		out.println("<script>location.href='Main.jsp';</script>");
+	}  
 
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -370,29 +402,34 @@ a {
 		e.printStackTrace();
 	}
 %>
-<form action = UpdatePostBack.jsp method = "post">
-<div id = "input"><h3>글 작성</h3>
-				<select name="_type">    
 
-                    <option <%if(type.equals("자유게시판")) out.println("selected"); %>>자유게시판</option>
-
-                    <option <%if(type.equals("취업후기게시판")) out.println("selected"); %>>취업후기게시판</option>
-
-                    <option <%if(type.equals("면접게시판")) out.println("selected"); %>>면접게시판</option>
-
-                    <option <%if(type.equals("질문게시판")) out.println("selected"); %>>질문게시판</option>
-                    
-                     <option <%if(type.equals("채용게시판")) out.println("selected"); %>>채용게시판</option>
-                    
-				</select><p>
+	<div id = "text"><br><h1>글 수정</h1><br></div>
+	<div id = "main">
+		<form action = UpdatePostBack.jsp method = "post">
+			<div id = "input">
+				<select name="_type" style = "width : 50%; height : 30px">    
+				
+				   <option <%if(type.equals("자유게시판")) out.println("selected"); %>>자유게시판</option>
+				
+				   <option <%if(type.equals("취업후기게시판")) out.println("selected"); %>>취업후기게시판</option>
+				
+				   <option <%if(type.equals("면접게시판")) out.println("selected"); %>>면접게시판</option>
+				
+				   <option <%if(type.equals("질문게시판")) out.println("selected"); %>>질문게시판</option>
+				   
+				   <option <%if(type.equals("채용게시판")) out.println("selected"); %>>채용게시판</option>
+				   
+				</select>
 				<input type = "hidden" name = "_posnum" value = <%=posnum %>>
-				<input type = "text" name = "_title" style = "width : 99%;"  value=<%=title %> required> <p>
-				<textarea name = "_content" style = "width : 99%; height : 400px;" required><%=content %></textarea> 
+				<input type = "text" name = "_title" style = "width : 100%; height : 30px; margin-top : 5px;"  value=<%=title %> required> 
+				<textarea name = "_content" style = "width : 100%; height : 400px; margin-top : 5px; resize: none;  background-color : rgb(240, 255, 255);" required><%=content %></textarea> 
+			</div>
+			<div id="btn">
+				<input type = "submit" class = "btn" value = "작성" >
+				<input type = "reset" class = "btn" value = "취소" > 
+			</div>
+		</form>
 </div>
-<div id="btn"><input type = "submit" value = "작성" >
-			  <input type = "reset" value = "취소" > 
-</div>
-</form>
 <footer>
    <div class="bottom_box">
         <ul>
