@@ -9,20 +9,20 @@
 <title>상품정보 삭제 확인</title>
 </head>
 <body>
-<h1>관리자용 회원 삭제 페이지</h1>
+<h1>나의글 삭제</h1>
 
 <%
 
 	request.setCharacterEncoding("EUC-KR");
 
-	String memnum = request.getParameter("memnum");
+	String posnum = request.getParameter("posnum");
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	String joboffdiv = request.getParameter("joboffdiv");
 
 	try{
 		
-		Class.forName("com.mysql.jdbc.Driver");//이 안에 클래스 이름을 넣으면 로딩해줌/ 지금은 mysql인 경우
+		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn =
 				DriverManager.getConnection(
 						"jdbc:mysql://localhost/gj"
@@ -30,15 +30,15 @@
 						, "1234");
 		
 		Statement stmt = conn.createStatement();
-		stmt.executeUpdate("Delete from member where id = '" + id + "' ");
+		stmt.executeUpdate("Delete from post where posnum = '" + posnum + "' ");
 		
 		
-		out.println("alert(<h3>회원 삭제가 완료되었습니다.</h3>)");		
+		
 		
 		stmt.close();
 		conn.close();
 		
-		response.sendRedirect("Adm_main.jsp");
+		response.sendRedirect("MyPost.jsp");
 		
 	} catch(SQLException e){
 		e.printStackTrace();

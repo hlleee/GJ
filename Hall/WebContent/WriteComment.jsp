@@ -18,13 +18,17 @@
 	String userID =  (String) session.getAttribute("__NAME");
 	
 	LocalDate now = LocalDate.now();
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	 
     String date = now.format(formatter);
+	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+		out.println("<script>alert('접근 오류');</script>");		
+		out.println("<script>location.href='Main.jsp';</script>");
+	}  
 	
 	try{
 		 Class.forName("com.mysql.jdbc.Driver");
-		 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false", "root", "1234");
+		 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false", "root", "1234");
 		Statement stmt = conn.createStatement();
 		
 			stmt.executeUpdate("insert into comment (comnic, comcon, comdat, comrepdiv, fgnnum, delchk) values ('"+userID+"','"+comcon+"', '"+date+"', '"+comchk+"', '"+fgnnum+"', 0)");

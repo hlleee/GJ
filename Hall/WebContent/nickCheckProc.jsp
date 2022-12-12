@@ -16,7 +16,7 @@
     try {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(
-				"jdbc:mysql://localhost/pro", "root", "1234");
+				"jdbc:mysql://localhost/gj", "root", "1234");
 		Statement stmt = conn.createStatement();
 		
 		 out.println("입력 ID : <strong>" + nickname + "</stong>");

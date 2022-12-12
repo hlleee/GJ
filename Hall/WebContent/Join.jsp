@@ -120,9 +120,9 @@
 
 <nav class = "nav2">
 <div class = "dd">
-<h2 align="left">회원가입</h2>
+<h2>회원가입</h2>
 <% request.setCharacterEncoding("UTF-8"); %>
-	<table align="center" width="500px" cellspacing = "5" cellpadding = "20" >
+	<table cellspacing = "5" cellpadding = "20" >
 					<tr height="30">
 						<td bgcolor="efefef">아이디</td>
 						<td><input type="text" placeholder="1~10자" maxlength="10"

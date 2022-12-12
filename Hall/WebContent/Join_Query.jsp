@@ -153,23 +153,21 @@
 <form>
 <nav class = "nav2">
 <div class = "dd">
-<h2 align="left">회원가입</h2>
-	<table align="center" width="500px" cellspacing = "105" cellpadding = "15" class="table2">
+<h2>회원가입</h2>
+	<table cellspacing = "105" cellpadding = "15" class="table2">
 	<%
 		//모두 다 해당 안 될 때 - 회원가입 완료 띄우기
 		if(state != 1) {
 			out.println("<tr>");
-			out.println("<td width='480px'>" + nickname + "님 회원가입이 완료되었습니다.</td>");
+			out.println("<h4><td><b>" + nickname + "</b>님 <p>회원가입이 완료되었습니다.<p></td></h4>");
 			out.println("</tr>");
-			out.println("<tr>");
-			out.println("<td><a href='Main.jsp' class='btnbottom1 btn-gradient blue mini'>메인으로</a></td>");
-			out.println("</tr>");
+			
 		} else {	//하나라도 해당되면 다시 회원가입 페이지 불러옴
 			out.println("<script>location.href='Join.jsp?page=" + spage + "'</script>");
 		}
 	%>
 	</table>
-	
+	<a href="Main.jsp" class="btnbottom1 btn-gradient blue mini">메인으로</a>
 </div>
 </nav>
 </form>

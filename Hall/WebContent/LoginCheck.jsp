@@ -35,7 +35,7 @@
 			session.setAttribute("__NAME", nickname);
 			
 			if(id.equals("Admin")){
-				response.sendRedirect("Adm_main.jsp");
+				response.sendRedirect("Adm_Board.jsp");
 			} else
 			
 			response.sendRedirect("Main_UI.jsp");

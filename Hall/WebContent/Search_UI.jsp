@@ -438,26 +438,24 @@ a {
 		
 		if(rs.next())	{
 			do {
-				int postnum = rs.getInt("posnum");			//게시글번호
+				int likesCnt = 0;							//좋아요 수 저장할 변수 초기화
+				int commentCnt = 0;							//댓글 수 저장할 변수 초기화
+				int posnum = rs.getInt("posnum");			//게시글번호
 				String btype = rs.getString("btype");		//게시판유형
 				String postit = rs.getString("postit");		//게시글제목
-				String posnic = rs.getString("posnic");	
-				String poscon = rs.getString("poscon");	//작성자
+				String posnic = rs.getString("posnic");		//작성자
 				int views = rs.getInt("views");				//조회수
 				String posdat = rs.getString("posdat");		//날짜
-				int commentcnt = rs.getInt("commentcnt");	//댓글 수
-				int likes = rs.getInt("likes");				//좋아요 수
 				
 				
 					out.println("<tr height = '40'>");
-					out.println("<td>" + postnum + "</td>");
+					out.println("<td>" + posnum + "</td>");
 					out.println("<td>" + btype + "</td>");
 					out.println("<td><a href='View.jsp' class='a2'>" + postit + "</a></td>");
 					out.println("<td>" + posnic + "</td>");
 					out.println("<td>" + views + "</td>");
 					out.println("<td>" + posdat + "</td>");
-					out.println("<td>" + commentcnt + "</td>");
-					out.println("<td>" + likes + "</td>");
+					
 					out.println("</tr>");
 					
 				} while(rs.next());

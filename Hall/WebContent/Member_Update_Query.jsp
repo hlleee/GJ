@@ -255,7 +255,9 @@
 		*.box     { border:1px solid black; background-color:gold; } 
 		a{text-decoration:none}
 		ul{list-style:none;}
-		
+.menu{
+	color: black;
+}		
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -324,7 +326,7 @@
 	try{
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection conn = DriverManager.getConnection(
-			"jdbc:mysql://localhost/gj","root","1234");
+			"jdbc:mysql://localhost/project","root","1234");
 	Statement stmt = conn.createStatement();
 	stmt.executeUpdate("update member set nickname = '"+nickname+"' where id='"+(String)session.getAttribute("__ID")+"'");
 	

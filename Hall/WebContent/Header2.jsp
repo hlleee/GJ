@@ -104,12 +104,7 @@
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
-
+ 
   .myinfo {
     justify-content: flex-end;
     display: flex;
@@ -140,6 +135,7 @@
     padding-top: 10px;
    
   }
+  
  /* 메뉴바 */
 	:root {
    /* --text-color: #eee5e9; */

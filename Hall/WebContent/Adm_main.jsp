@@ -63,7 +63,7 @@
   
   .logo img {
     right: 20px;
-    padding-top: 27px;
+    padding-top: 37px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -89,7 +89,7 @@
     width: 500px;
     height: 50px;
     
-    border: 4px solid #2867dd;
+    border: 4px solid #3D5F95;
     display: flex;
     align-items: center;
   }
@@ -108,7 +108,7 @@
     padding: 0;
     border: none;
     outline: none;
-    background: #2867dd;
+    background: #3D5F95;
     color: #ffffff;
   }
 
@@ -119,27 +119,23 @@
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
+
 
   .myinfo {
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
+    padding-right: 130px;
     padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
-    background-color: #ffffff;
+    
   }
   
-  .myinfo li {
+   .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
@@ -150,9 +146,10 @@
     margin: auto;
     width: 100%;
     height: 20px;
+    /* background-color: #8361d4; */
     padding-right: 120px;
-    padding-top: 0px;
-    
+    padding-top: 10px;
+   
   }
 
 	 /* 메뉴바 */
@@ -342,9 +339,9 @@ a {
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="Adm_main.jsp" class="link_text_name"><%= (String)session.getAttribute("__NAME") %></a>님</li>
-            <li><a href="Adm_main.jsp" class="link_text" >로그아웃</a></li> 
-        </ul>
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+           <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
+        </ul> 
         <div class="member">
         
         <%
@@ -383,11 +380,9 @@ a {
      <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a href="Gesipan.html">회원정보</a></li>
-        <li><a href="createroom.html">문의,,</a></li>
-        <li><a href="Myroom.html">질문게시판</a></li>
-        <li><a href="Myroom.html">면접게시판</a></li>
-        
+        <li><a href="Adm_Board.jsp">전체게시글</a></li>
+        <li><a href="Adm_main.jsp">회원정보</a></li>
+        <li><a href="AllInquiry.jsp">문의내역</a></li>
       </ul>
      
     </nav>

@@ -17,7 +17,7 @@
 	} else{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp", "root", "1234");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj", "root", "1234");
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate("update inquiry set process = 1 where inqnum = '"+inqnum+"'");
 			out.println("<script>alert('문의 처리가 완료되었습니다.');</script>");	

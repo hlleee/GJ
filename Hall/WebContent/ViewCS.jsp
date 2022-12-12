@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import = "java.sql.*" import = "view.ViewDAO"%>
+    pageEncoding="UTF-8" import = "java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,34 +144,30 @@ background-color : rgb(240, 255, 255);
     color: #ffffff;
   }
 
-  .login {
+.login {
     width: 25%;
     height: 150px;
-    background-color: #8db2f2;
-    padding: 10px;
+    background-color: #ffffff;
+    padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
-
+ 
   .myinfo {
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 150px;
-    padding-top: 30px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
-    height: 60px;
-    background-color: #8db2f2;
+    height: 80px;
+    
   }
   
-  .myinfo li {
-    font-size: larger;
-    padding: 5px 12px;
+   .myinfo li {
+    font-size: 17px;
+    padding: 5px 10px;
+   
   }
   .myinfo li:hover{
     text-decoration: underline;
@@ -182,10 +178,9 @@ background-color : rgb(240, 255, 255);
     width: 100%;
     height: 20px;
     /* background-color: #8361d4; */
-    padding-right: 60px;
-    padding-top: 0px;
-    
-    background-color: #8db2f2;
+    padding-right: 120px;
+    padding-top: 10px;
+   
   }
 
   /* nav */
@@ -330,8 +325,9 @@ background-color : rgb(240, 255, 255);
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="/" class="link_text_name"><%= (String)session.getAttribute("__ID") %></a>님</li>
-            <li><a href="Main.jsp" class="link_text" >로그아웃</a></li> 
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
+            <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
         
@@ -340,7 +336,7 @@ background-color : rgb(240, 255, 255);
 		
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp","root", "1234");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
 		
 		Statement stmt = conn.createStatement();
 		
@@ -386,7 +382,7 @@ background-color : rgb(240, 255, 255);
 <% 
 	//문의글 출력
 	request.setCharacterEncoding("UTF-8");
-//	String num = request.getParameter("_num");    //게시글번호 받아옴
+//	String inqnum = request.getParameter("_inqnum");    //게시글번호 받아옴
 	String inqnum = "1";
 	String title = "", content = "", name = "", type = "", date = "";
 	String userID =  "Admin";
@@ -399,7 +395,7 @@ background-color : rgb(240, 255, 255);
 		try{
 			
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false","root","1234");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false","root","1234");
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from inquiry where inqnum = '"+inqnum+"'");  	// 클릭한 게시글 번호 받아와서 조회수 받아옴
 				if(rs.next()){

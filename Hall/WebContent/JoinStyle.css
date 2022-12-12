@@ -194,12 +194,12 @@ a {
 	text-align: center;
 	align-content: center;
 	align-items: center;
-	width: 900px;
-	height: 650px;
+	width: 700px;
+	height: 500px;
 	border: solid 2px #aaaaaa;
 	padding: 30px;
 	border-radius: 15px;
-	margin: 0 0 0 330px;
+	margin: auto;
 	
 }
 
@@ -210,7 +210,7 @@ a {
 	margin: 60px 0 10px 30px;
 }
 .nav2 {		/* 헤더 nav랑 겹칠까봐 클래스로 해놓음  */
-	height: 710px;
+	height: 610px;
 	padding: 20px 0;
 }
 
@@ -219,7 +219,8 @@ a {
 }
 
 td {
-	padding: 10px
+	padding: 10px;
+	text-align: center;
 }
 
 .button {
@@ -227,6 +228,7 @@ td {
 	}
 	
 input {
+		height: 25px;
 		border: solid 1px #aaaaaa;
 		border-radius: 15px;
 		padding-left: 10px;
@@ -234,20 +236,22 @@ input {
 	}
 	
 h2 {
-	margin-bottom: 50px;
-	margin-left: 370px; 
+	margin: auto; 
 	}
 
 table {			/* join.jsp 페이지 테이블 */
-	margin-left:160px;
+	margin:auto;
+	width:530px;
 	align-content: center;
 	align-items: center;
 }
 
 .table2 {		/* join_Query.jsp 페이지 테이블 */
-	margin-left:170px;
-	font-size: 15px;
+	margin:auto;
+	width:500px;
+	font-size: 20px;
 }
+
 
 /* ----------------- 하단 버튼 스타일 --------------- */
 .btn.mini, 
@@ -259,7 +263,7 @@ table {			/* join.jsp 페이지 테이블 */
 }
 
 .btn-gradient.blue {
-	background:  #4479db;    /* 버튼 색깔 */
+	background:  #3D5F95;    /* 버튼 색깔 */
  /* background: rgba(102,152,203,1);
   background: -moz-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
   background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(102,152,203,1)), color-stop(100%, rgba(92,138,184,1)));

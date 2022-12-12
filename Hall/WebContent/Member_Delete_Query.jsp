@@ -18,12 +18,12 @@
 	try{
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection conn = DriverManager.getConnection(
-			"jdbc:mysql://localhost/gj","root","1234");
+			"jdbc:mysql://localhost/project","root","1234");
 	Statement stmt = conn.createStatement();
 	stmt.executeUpdate("delete from member where id = '"+id+"'");
 	
 	out.println("<script>alert('탈퇴완료!');</script>");
-	out.println("<script>location.href='Main.jsp';</script>");
+	out.println("<script>location.href='Login.jsp';</script>");
 	
 	stmt.close();
 	conn.close();

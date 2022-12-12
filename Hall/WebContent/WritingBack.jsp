@@ -5,37 +5,49 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 작성 처리</title>
 </head>
 <body>
 <% 
 	
 	request.setCharacterEncoding("UTF-8");
-	int posnum = 1;
 	String type = request.getParameter("_type");
 	String title = request.getParameter("_title");
-	String userID = "me";
+	String userID =  (String) session.getAttribute("__NAME");
+	int posnum=0;
 	
 	LocalDate now = LocalDate.now();
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	 
     String date = now.format(formatter);
     
 	String content = request.getParameter("_content");
 
 	try{
-		 Class.forName("com.mysql.jdbc.Driver");
-		 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false", "root", "1234");
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false", "root", "1234");
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("select posnum from post");
-		while(rs.next())
-			++posnum;
-			stmt.executeUpdate("insert into post values ('"+posnum+"', '" + title + "','"+content+"', '" + date + "', '"+userID+"', 0, '"+type+"')");
-			out.println("<script>alert('게시글 작성이 완료되었습니다.');</script>");	
-			out.println("<script>location.href='View.jsp';</script>");
+		int result = stmt.executeUpdate("insert into post (postit, poscon, posdat, posnic, views, btype) values ('" + title + "','"+content+"', '" + date + "', '"+userID+"', 0, '"+type+"')");
+		if(result!=0){
+			ResultSet rs = stmt.executeQuery("select posnum from post where postit = '"+title+"' and poscon = '"+content+"' and posdat = '"+date+"' and btype = '"+type+"'");
+			if (rs.next()){
+				posnum = rs.getInt("posnum");
+				rs.close();
+			}
+		} else{
+			out.println("<script>alert('글 작성 오류');</script>");	
+			out.println("<script>location.href='WritingPage.jsp';</script>");
+		}
+		if(posnum != 0){
+		out.println("<script>alert('게시글 작성이 완료되었습니다.');</script>");	
+		out.println("<script>location.href='View.jsp?_posnum="+posnum+"';</script>");
+		} else{
+			out.println("<script>alert('글 작성 오류');</script>");	
+			out.println("<script>location.href='WritingPage.jsp';</script>");
+		}
 		stmt.close();
 		conn.close();
-		rs.close();
+		
 	 }catch(Exception e){
 		 e.printStackTrace();
 	 }

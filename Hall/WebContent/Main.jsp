@@ -21,10 +21,7 @@
     <script src="index.js" defer></script>
   </head>
   <style>
-  /* table {border-collapse : collapse;} 
-    * {
-    box-sizing: border-box; /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
-  } */
+
   body {
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
