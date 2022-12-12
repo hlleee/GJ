@@ -326,6 +326,10 @@ background-color: aqua;
 			}
 		}.menu{
 	color: black;
+}.menubar{
+color: white;}
+.logininfo{
+color: black;
 }
 		*.box     { border:1px solid black; background-color:gold; } 
 		a{text-decoration:none}
@@ -352,7 +356,7 @@ background-color: aqua;
 <div id="header">
       <div class="logo">
      <a href="Main_UI.jsp">
-     <img src="images/Logo.png" class="img_logo" style="display: block; width:180px;"/>
+     <img src="images/Logo.png" class="img_logo" style="display: block; width:150px;"/>
      </a>
       </div>
       <div class="search">
@@ -373,8 +377,8 @@ background-color: aqua;
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
-            <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
+            <li><a class="logininfo" href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+            <li><a class="logininfo" href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
        
@@ -415,12 +419,12 @@ background-color: aqua;
     <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a href="BulletinBoard.jsp">전체게시판</a></li>
-        <li><a href="BulletinBoard3.jsp">자유게시판</a></li>
-        <li><a href="BulletinBoard5.jsp">질문게시판</a></li>
-        <li><a href="BulletinBoard4.jsp">면접게시판</a></li>
-        <li><a href="BulletinBoard2.jsp">취업후기</a></li>
-        <li><a href="BulletinBoard6.jsp">채용정보</a></li>
+        <li><a class="menubar" href="BulletinBoard.jsp">전체게시판</a></li>
+        <li><a class="menubar" href="BulletinBoard3.jsp">자유게시판</a></li>
+        <li><a class="menubar" href="BulletinBoard5.jsp">질문게시판</a></li>
+        <li><a class="menubar" href="BulletinBoard4.jsp">면접게시판</a></li>
+        <li><a class="menubar" href="BulletinBoard2.jsp">취업후기</a></li>
+        <li><a class="menubar" href="BulletinBoard6.jsp">채용정보</a></li>
       </ul>
      
     </nav>

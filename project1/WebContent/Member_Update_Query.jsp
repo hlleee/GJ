@@ -257,7 +257,8 @@
 		ul{list-style:none;}
 .menu{
 	color: black;
-}		
+}.menubar{
+color: white;}		
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
