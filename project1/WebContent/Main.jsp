@@ -21,10 +21,7 @@
     <script src="index.js" defer></script>
   </head>
   <style>
-  /* table {border-collapse : collapse;} 
-    * {
-    box-sizing: border-box; /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
-  } */
+
   body {
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
@@ -64,6 +61,7 @@
   
   .logo img {
     right: 20px;
+    padding-top: 27px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -437,7 +435,7 @@ a {
 
       <div class="logo">
       <a href="Main.jsp">
-     <img src="images/Logo.png" class="img_logo" style="display: block; width:150px; "/>
+     <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
      </a>
       </div>
       <div class="search">
@@ -782,10 +780,9 @@ a {
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
         <li><p>개인정보처리방침</p></li>
-        <li><p>청소년보호정책</p></li>
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">

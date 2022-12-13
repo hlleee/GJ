@@ -257,8 +257,7 @@
 		ul{list-style:none;}
 .menu{
 	color: black;
-}.menubar{
-color: white;}		
+}		
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -327,20 +326,20 @@ color: white;}
 	try{
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection conn = DriverManager.getConnection(
-			"jdbc:mysql://localhost/project","root","1234");
+			"jdbc:mysql://localhost/gj","root","1234");
 	Statement stmt = conn.createStatement();
 	stmt.executeUpdate("update member set nickname = '"+nickname+"' where id='"+(String)session.getAttribute("__ID")+"'");
-	
-	out.println("<script>alert('수정완료!');</script>");
-	out.println("<script>location.href='Login.jsp';</script>");
+	//입력한 값으로 닉네임 수정
+	out.println("<script>alert('수정완료!');</script>");//수정완료알림창
+	out.println("<script>location.href='MyInfo.jsp';</script>");//내정보페이지로 이동
 	
 	stmt.close();
 	conn.close();
 	
 	} catch(SQLException e){
 	
-	out.println("<script>alert('닉네임중복!');</script>");
-	out.println("<script>location.href='Member_Update_List.jsp';</script>");
+	out.println("<script>alert('닉네임중복!');</script>");//닉네임 중복시 오류창
+	out.println("<script>location.href='Member_Update_List.jsp';</script>");//다시 수정할 수 있는 페이지로 이동
 
 	}
 %>

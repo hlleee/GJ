@@ -8,20 +8,28 @@
 <title>내가 쓴 글</title>
 </head>
 <style>
-body {
+
+.color {
+	color: white;
+}
+.colors {
+	color: black;
+}
+ body {
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
   }
   /* 기본 밑줄을 제거합니다 */
    a {
     text-decoration: none; 
-    color: rgb(54, 50, 50);
+    
   }
   /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
    a:hover {
     text-decoration: underline; 
-  }  
-  #header {
+  } 
+
+   #header {
     margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
     width: 100%;
     height: 160px;
@@ -45,6 +53,7 @@ body {
   
   .logo img {
     right: 20px;
+    padding-top: 37px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -100,18 +109,14 @@ body {
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
+
 
   .myinfo {
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
-    padding-top: 60px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
@@ -120,7 +125,7 @@ body {
   
    .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
@@ -131,14 +136,14 @@ body {
     margin: auto;
     width: 100%;
     height: 20px;
-    /* background-color: #8361d4; */
     padding-right: 120px;
     padding-top: 10px;
    
   }
+  
  /* 메뉴바 */
 	:root {
-   /* --text-color: #eee5e9; */
+  
     --background-color: #3D5F95;
     --accent-color: #6a87b5;
 }
@@ -150,14 +155,7 @@ body {
     box-sizing: border-box;
 }
 
-/* .body {
-    margin: 0;
-  } */
 
-a {
-    text-decoration: none;
-    color: var(--text-color);
-}
 
 .navbar {
     position:sticky;
@@ -219,73 +217,127 @@ a {
     }
 
 }
-		
-		#nav {
-			/* 내 정보 */
-			width: 60%;
+		.nav {
+		/* 문의 내역 */
+			width: 700px;
 			float: center;
-			height: 400px;
+			height: 550px;
 			position: relative;
-			left:400px;
+			padding-top:0px;
+			left:550px;
 			overflow-x:hidden;
-			overflow-y:hidden"
+			overflow-y:hidden;
+		}
+		
+		.nav > h1{
+			padding-left:70px;
+		}	
+		
+		 hr.hr	{
+	
+			width:700px;
+			background-color: black;
+  			height: 2px;
+		}
+		
+		
+		#section {
+			
+			width: 300px;
+			height: 400px;
+			position: absolute;
+			top: 330px;
+			left:170px;
+			border-radius: 5px;
+			
 			
 		}
 		
-		#section {
-			/* 메뉴 */
-			width: 200px;
-			float: center;
-			height: 400px;
-			position: absolute;
-			top: 350px;
-			left:100px;
-			
-		}.bd-sidebar {
-  background: #eee;
-  height:350px;
-  
+	.menu {
+    	position:sticky;
+   		top:0;
+   		border: 2px solid red;
+    	justify-content: space-between;
+    	display: flex;
+    	align-items: center;
+    	padding: 22px 12px;
+    	background-color:#3D5F95;
+    	width: 300px;
+    	height: 310px;
+    	border : 2px solid var(--background-color);
+    	border-radius: 5px;
+    	color: #ffffff;
 }
+
+  /* menu */
+
+.list {
+	
+    display: block;
+    margin: auto;
+    padding-left: 0px;
+    font-size: 22px;
+    background-color: (--background-color);
+    border-radius: 5px;
+    color: #ffffff;
+    
+    
+}
+.list li {
+    padding: 15px 60px;
+    word-spacing: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border : 2px solid var(--background-color);
+    color: #ffffff;
+}
+
+.list li:hover {
+    background-color: #e4ecf8;
+    border-radius: 10px;
+    color: black;
+}
+
+@media screen and (max-width: 768px) {
+    .menu{
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 24px;
+    }
+
+    .list {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+      
+        
+    }
+    .list > a {
+        display: flex;
+      
+        
+    }
+
+    .list.active {
+        display: block;
+         color: black;
+    }
+
+}
+
 footer {
     color: black;   
     height: 90px;
     font-size: 12px;
-    background-color: rgb(236, 236, 244);
+    
     position: relative;
     clear: both;
     width:100%;
     bottom: 0;
   }
-  
-  .aside_box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #91acd6;
-    padding: 0;
-    margin: 0;
-  }
-  .area_user {
-    flex: 4;
-    line-height: 1em; /* 줄간격 */
-  }
-  .area_user_row {
-    display: flex;
-  }
-  .area_user_row span {
-    flex: 1;
-  }
-  .area_user_row ul {
-    flex: 6;
-  }
-  /* .aur_title {
-    font-size: 13px;
-    font-weight: bold;
-  } */
-  .area_user_row ul > li {
-    display: inline-block; /* li 수평정렬하는 방법 */
-    margin-left: 8px;
-  }
+ 
   
   .bottom_box {
     
@@ -306,43 +358,22 @@ footer {
     font-weight: bold;
     font-size: 13px;
   }
-a:link, a:visited {
-     
-     padding: 3px;
-     text-decoration: none;
-     display: inline-block;
+
+table{
+width:700px;
+border-collapse: collapse;
+border-radius: 5px;
+text-align: center;}
+
+th {
+	
+	 text-align:center;
 }
- a:hover, a:active {
-     display: inline-block;  
-}
+
 a{
 text-decoration:none !important}
-
-.list-group-item:hover{
-background-color: #4479db;
-}
-.list-group-item:active{
-background-color: aqua;
-}
-
-		@media (max-width: 600px) {
-			#nav, #section {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		*.box     { border:1px solid black; background-color:gold; } 
-		a{text-decoration:none}
 		ul{list-style:none;}
-		form {
-	display: inline;
-}
-.menu{
-	color: black;
-}.menubar{
-color: white;}
-.logininfo{
-color: black;
+	}
 }
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
@@ -365,7 +396,7 @@ color: black;
 <div id="header">
       <div class="logo">
      <a href="Main_UI.jsp">
-     <img src="images/Logo.png" class="img_logo" style="display: block; width:150px;"/>
+     <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px;"/>
      </a>
       </div>
       <div class="search">
@@ -386,8 +417,9 @@ color: black;
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a class="logininfo" href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
-            <li><a class="logininfo" href="Logout.jsp" class="link_text" >로그아웃</a></li> 
+            <li><a class="colors" href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a class="colors" href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
+            <li><a class="colors" href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
        
@@ -428,27 +460,32 @@ color: black;
     <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a class="menubar" href="BulletinBoard.jsp">전체게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard3.jsp">자유게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard5.jsp">질문게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard4.jsp">면접게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard2.jsp">취업후기</a></li>
-        <li><a class="menubar" href="BulletinBoard6.jsp">채용정보</a></li>
-
+        <li><a class="color" href="BulletinBoard.jsp">전체게시판</a></li>
+        <li><a class="color" href="BulletinBoard3.jsp">자유게시판</a></li>
+        <li><a class="color" href="BulletinBoard5.jsp">질문게시판</a></li>
+        <li><a class="color" href="BulletinBoard4.jsp">면접게시판</a></li>
+        <li><a class="color" href="BulletinBoard2.jsp">취업후기</a></li>
+        <li><a class="color" href="BulletinBoard6.jsp">채용정보</a></li>
       </ul>
      
     </nav>
       
    
 	
-	</div>
-	<div id="nav">
 
+	<div class="nav">
 		<h1>내가 쓴 글</h1>
+		<hr class="hr">
 		<table class="table table-striped" style="overflow-x:scroll">
-	<th style="background-color: #eeeeee; text-align: center; width:70px; ">번호</th>
-   <th style="background-color: #eeeeee; text-align: center; width:200px; ">글제목</th>
-   <th style="background-color: #eeeeee; text-align: center; width:400px; ">글내용</th>
+		 <thead>
+          <tr>
+	<th style="background-color: #eeeeee; text-align:center; width:70px;">번호</th>
+   <th style="background-color: #eeeeee; text-align: center; width:200px;">글제목</th>
+   <th style="background-color: #eeeeee; text-align: center; width:400px;">글내용</th>
+   <th style="background-color: #eeeeee; text-align: center; width:400px;"></th>
+	 </tr>
+        </thead>
+	
 	<%
 	
 	try {
@@ -457,22 +494,22 @@ color: black;
 	 				"jdbc:mysql://localhost/gj","root","1234");
 	 		Statement stmt = conn.createStatement();
 	 		 ResultSet rs = stmt.executeQuery
-		 				("select * from post inner join member on post.posnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"' ");
+		 				("select * from post where posnic = '" + (String)session.getAttribute("__NAME") + "'");
 	 		if(rs.next()==false){
-	 		//조건에 만족하는값 없을 경우%>
+	 		//조건에 만족하는값 없을 경우 등록된 글 없다고 출력%>
  			
 <tr align="center" bgcolor="#FFFFFF" height="30">
 	 	    <td colspan="5" >등록된 글이 없습니다.</td> 	
 	 	  </tr> 
 	 	<% 	}
 	 		 rs = stmt.executeQuery
-	 				("select * from post inner join member on post.posnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"'order by post.posnum asc");
-	 		//조인후 아이디값으로 글 찾기 게시글번호 오름차순정렬
+	 				("select * from post where posnic = '" + (String)session.getAttribute("__NAME") + "'");
+	 			//세션값 닉네임과 같은 글 작성자의 글 불러오기
 %>
  
 <%
   while(rs.next()){
-			int posnum=rs.getInt("posnum");
+			int posnum =rs.getInt("posnum");
 			String postit = rs.getString("postit");
 			String poscon = rs.getString("poscon");
 			String posnic=rs.getString("posnic");
@@ -481,9 +518,10 @@ color: black;
 <tr height="25" align="center">
 
 	<td><%=posnum %></td>
-	<td><a href='View.jsp'><%=postit %></a></td>
+	<td><a href='View.jsp'><%=postit %></a></td>	<!-- 글제목 누르면 해당 글로 넘어감 -->
 	<td><%=poscon %></td>
-	
+	<td><a href="Mypost_Delete.jsp?posnum=<%=posnum %>">삭제</a></td> <!-- 삭제누르면 자신이 쓴 글 삭제 -->
+			
 </tr>
 
 <% 
@@ -498,18 +536,17 @@ color: black;
 </div>	
 	
 	<div id="section">
-  <div class="row flex-nowrap" style="text-align:center">
-     <ul class="list-group">      
-      
-        <li class="list-group-item"><h3><a class="menu" href = "MyInfo.jsp?">내 정보<br></a></h3></li>
-        <li class="list-group-item"><h3><a class="menu" href="MyPost.jsp?">내가 쓴 글</a></h3></li>
-        <li class="list-group-item"><h3><a class="menu" href="LikePost.jsp">좋아요 누른 글</a></h3></li>
-        <li class="list-group-item"><h3><a class="menu" href="Inquiry.jsp">문의 내역</a></h3></li>
-        
+	  <div class="menu" style="text-align:center">
+      <ul class="list">      
+        <li><a class="colors" href="MyInfo.jsp">내 정보<br></a></li>
+        <li><a class="colors" href="MyPost.jsp">내가 쓴 글</a></li>
+        <li><a class="colors" href="LikePost.jsp">내가 좋아한글</a></li>
+        <li><a class="colors" href="Inquiry.jsp">문의한 내역</a></li>
       </ul>
-  </div>
+      
     </div>
-
+   </div>
+	<hr>
 		<footer>
    <div class="bottom_box">
         <ul>

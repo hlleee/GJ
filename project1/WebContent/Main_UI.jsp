@@ -64,6 +64,7 @@
   
   .logo img {
     right: 20px;
+    padding-top: 37px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -119,11 +120,7 @@
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
+
 
   .myinfo {
     justify-content: flex-end;
@@ -426,7 +423,7 @@ a {
     <header>
       <div class="logo">
      <a href="Main_UI.jsp">
-     <img src="images/Logo.png" class="img_logo" style="display: block; width:150px; "/>
+     <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
      </a>
       </div>
       <div class="search">
@@ -764,16 +761,15 @@ a {
     <hr>
     <footer>
    <div class="bottom_box">
-        <ul>
+         <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
         <li><p>개인정보처리방침</p></li>
-        <li><p><a>문의하기</a></p></li>
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">
