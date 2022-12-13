@@ -108,25 +108,20 @@ border : 1px solid;
     color: #ffffff;
   }
 
-  .login {
+ .login {
     width: 25%;
     height: 150px;
     background-color: #ffffff;
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
-
+ 
   .myinfo {
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
-    padding-top: 60px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
@@ -135,7 +130,7 @@ border : 1px solid;
   
    .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
@@ -322,7 +317,8 @@ a {
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
@@ -379,9 +375,9 @@ a {
      
     </nav>
 <%
-	String userID =  (String) session.getAttribute("__NAME");   		//세션에서 로그인중인 id 받아옴
+	String userID =  (String) session.getAttribute("__NAME");   		//세션에서 로그인중인 닉네임 받아옴
 
-	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+	if(userID==null){		//로그아웃상태면 오류메시지 메인페이지로 이동
 		out.println("<script>alert('문의를 하려면 로그인을 하십시오.');</script>");		
 		out.println("<script>location.href='Main.jsp';</script>");
 	}  
@@ -391,6 +387,7 @@ a {
     	<br><h1>고객센터</h1><br>
     </div>
     <div id = "main">
+    <!-- CustomerServiceBack.jsp에 값을 전달하는 form 태그 -->
     <form action = "CustomerServiceBack.jsp" method = "post">
     	<table class = "table">
     	<tr>
@@ -403,15 +400,18 @@ a {
 			</td>
     	</tr>
     	<tr><td	style = "text-align : right;"><text> 제목 |&nbsp; </text></td>
-    		<td> <input type = "text" style = "width : 100%; height : 30px; margin-top : 5px;" name = "_title" size = 50 placeholder = "제목을 입력하세요" required></td>
+    			<!-- 문의 제목은 30글자까지만 입력받고 무조건 입력이 되어야함 -->
+    		<td> <input type = "text" style = "width : 100%; height : 30px; margin-top : 5px;" name = "_title" size = 50 placeholder = "제목을 입력하세요" maxlength = "30" required></td>
     	</tr>
     	<tr>
     		<td style = "text-align : right;"><text> 발생일자 |&nbsp; </text></td>
+    			<!-- 발생일자는 오늘날짜 까지만 입력받고 무조건 입력이 되어야함 -->
     		<td><input type = "date" style = "width : 50%; height : 30px; margin-top : 5px;" name = "_date" min = "2022-11-01" max = <%=date %> required></td>
     	</tr>
     	<tr>
     		<td style = "vertical-align : top; text-align : right;"> <text>문의내용 |&nbsp;</text> </td>
-    		<td> <textarea name = "_content" placeholder = "내용을 입력하세요" required></textarea> </td>
+    			<!-- 문의 내용은 1000글자까지만 입력받고 무조건 입력이 되어야함 -->
+    		<td> <textarea name = "_content" placeholder = "내용을 입력하세요" maxlength = "1000" required></textarea> </td>
    		</tr>			  
    		<tr>
    			<td colspan = "2" style = "text-align : right;">
@@ -427,18 +427,17 @@ a {
 <!--풋터-->
   <footer>
   <br>
+  <hr>
    <div class="bottom_box">
-   	<hr>
-        <ul>
+         <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
+        <li><p>개인정보처리방침</p></li>
         <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
-        <li><p>청소년보호정책</p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">

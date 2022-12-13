@@ -126,25 +126,20 @@ margin-bottom : 5%;
     color: #ffffff;
   }
 
-  .login {
+.login {
     width: 25%;
     height: 150px;
     background-color: #ffffff;
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
-
+ 
   .myinfo {
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
-    padding-top: 60px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
@@ -153,7 +148,7 @@ margin-bottom : 5%;
   
    .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
@@ -329,7 +324,8 @@ a {
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
@@ -382,9 +378,9 @@ a {
      
     </nav>
 <%
-	String userID =  (String) session.getAttribute("__NAME");  		//세션에서 로그인중인 id 받아옴
+	String userID =  (String) session.getAttribute("__NAME");  		//세션에서 로그인중인 닉네임 받아옴
 
-	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+	if(userID==null){		//로그아웃상태면 오류메시지 메인페이지로 이동
 		out.println("<script>alert('게시글 작성을 하려면 로그인을 하십시오.');</script>");		
 		out.println("<script>location.href='Main.jsp';</script>");
 	} 
@@ -392,6 +388,7 @@ a {
 
 <div id = "text"><br><h1>글 작성</h1><br></div>
 <div id = "main">
+<!-- WritingBack.jsp로 값을 보내는 form태그 -->
 <form action = WritingBack.jsp method = "post">
 	<div id = "input">
 	
@@ -402,8 +399,10 @@ a {
 	<option>질문게시판</option>
 	<option>채용게시판</option>
 	</select><p>
-	<input type = "text" name = "_title" style = "width : 100%; height : 30px; margin-top : 5px;"  placeholder = "제목을 입력하세요" required> <p>
-	<textarea name = "_content" placeholder = "내용을 입력하세요" required></textarea> 
+	<!-- 게시글 제목은 최대 30글자까지 입력을 받고 무조건 입력이 되어야함 -->
+	<input type = "text" name = "_title" style = "width : 100%; height : 30px; margin-top : 5px;" maxlength = "30" placeholder = "제목을 입력하세요" required> <p>
+	<!-- 게시글 내용은 최대 1000글자까지 입력을 받고 무조건 입력이 되어야함 -->
+	<textarea name = "_content" placeholder = "내용을 입력하세요" maxlength = "1000" required></textarea> 
 	
 </div>
 <div id="btn">
@@ -412,21 +411,18 @@ a {
 </div>
 </form>
 </div>
-
+<hr>
   <footer>
-  <br>
    <div class="bottom_box">
-   <hr>
         <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
-        <li><p><a>문의하기</a></p></li>
-        <li><p>청소년보호정책</p></li>
+        <li><p>개인정보처리방침</p></li>
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">

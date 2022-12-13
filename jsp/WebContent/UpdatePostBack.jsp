@@ -10,7 +10,7 @@
 <body>
 <% 
 	request.setCharacterEncoding("UTF-8");
-	String posnum = request.getParameter("_posnum");
+	String posnum = request.getParameter("_posnum");		//게시글의 기본 정보 받아옴
 	String type = request.getParameter("_type");
 	String title = request.getParameter("_title");
 	String content = request.getParameter("_content");
@@ -18,7 +18,7 @@ try{
 	 Class.forName("com.mysql.jdbc.Driver");
 	 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false", "root", "1234");
 	Statement stmt = conn.createStatement();
-	
+		//게시글 정보 변경
 		stmt.executeUpdate("update post set postit = '"+title+"', poscon = '"+content+"', btype = '"+type+"' where posnum = '"+posnum+"'");
 		
 		stmt.close();

@@ -70,17 +70,22 @@ margin-left : 15%;
 
   #com{
   width : 700px;
- 
+  float : left;
   border-radius: 5px;
-border : 1px solid;
-background-color : #ebf2f7;
+  border : 1px solid;
+  background-color : #ebf2f7;
   
   }
   
   #reply{
-  width : 90%;
-  margin-left : 10%;
+  width : 700px;
+  padding-left : 10%;
+  padding-top : 1%;
+  padding-bottom : 1%;
   float : left;
+  border-radius: 5px;
+  border : 1px solid;
+  background-color : #ebf2f7;
   }
   
   #main{
@@ -444,13 +449,13 @@ a {
 	//게시글 출력
 	request.setCharacterEncoding("UTF-8");
 	String num = request.getParameter("_posnum");    //게시글번호 받아옴
-	String title = "", content = "", name = "", type = "", date = "";
-	int view = 1;
-	int like = 0;
-	int comnum;
-	String userID =  (String) session.getAttribute("__NAME");
+	String title = "", content = "", name = "", type = "", date = "";	//글 제목, 내용, 작성자, 게시판, 날짜 저장할 변수 선언
+	int view = 1;		//조회수 초깃값으로 초기화
+	int like = 0;		//좋아요 수 초깃값으로 초기화
+	int comnum;			//댓글 저장할 변수 선언
+	String userID =  (String) session.getAttribute("__NAME");		//세션에서 로그인중인 닉네임 받아옴
 	
-	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+	if(userID==null){		//로그아웃상태면 오류메시지 메인페이지로 이동
 		out.println("<script>alert('게시글 조회를 하려면 로그인을 하십시오.');</script>");		
 		out.println("<script>location.href='Main.jsp';</script>");
 	} 
@@ -459,13 +464,13 @@ a {
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false","root","1234");
-			Statement stmt = conn.createStatement();
+			Statement stmt = conn.createStatement();		
 			Statement stmt2 = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from post where posnum = '"+num+"'");  	// 클릭한 게시글 번호 받아와서 조회수 받아옴
 				if(rs.next()){
 					view += rs.getInt("views");		// 조회수 +1
 					
-					title = rs.getString("postit");
+					title = rs.getString("postit");		//DB에서 게시글 정보를 받아옴
 					content = rs.getString("poscon");
 					name = rs.getString("posnic");
 					date = rs.getString("posdat");
@@ -473,16 +478,17 @@ a {
 					
 					stmt.executeUpdate("update post set views = '"+view+"'where posnum = '"+num+"'");       // 조회수 저장
 					
-					rs = stmt.executeQuery("select count(posnum) from likes where posnum = '"+num+"'"); //게시글의 좋아요 개수 받아옴
-					if (rs.next()) like = rs.getInt(1);
+					rs = stmt.executeQuery("select count(posnum) from likes where posnum = '"+num+"'"); 
+					if (rs.next()) like = rs.getInt(1); //게시글의 좋아요 개수 받아옴
 					
-				} else{
+				} else{		//게시글 번호에 해당하는 게시글이 존재하지 않을 시 오류 출력
 					out.println("<script>alert('유효하지 않은 게시글입니다.');</script>");	
-					out.println("<script>location.href='WritingPage.jsp';</script>");
+					out.println("<script>location.href='BulletinBoard.jsp';</script>");
 				}
 		
-	
-%><div id = "main">
+	%>
+<div id = "main">
+	<!-- 게시글 기본 정보 출력 -->
 	<div id = "text">
 		<table style = "width : 100%; margin-left : 5%;">
 			<tr> 
@@ -502,6 +508,7 @@ a {
 		</table>
 		
 	</div>
+	<!-- 게시글 내용 출력 -->
 	<div id = "content">
 		<table style = "width : 95%; margin-left : 5%;">
 			<tr>
@@ -520,7 +527,7 @@ a {
 					
 				</td>
 			</tr>
-			<tr>
+			<tr>		<!-- 정상적인 출력을 위해 replace문 사용 -->
 				<td colspan=2><div style = "min-height : 200px;"><%=content.replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></div></td>				
 			</tr>
 			<tr>
@@ -532,12 +539,15 @@ a {
 			</tr>
 		</table>
 	</div>	
+	<!-- 좋아요 버튼, 좋아요 갯수 출력 -->
 	<div id = "like">
+		<!-- 버튼을 누를경우 해당 게시글에 좋아요를 누르는 form태그 -->
 		<form action = "ViewLike.jsp" method = "post">
 			<input type = "hidden" name = "_posnum" value = <%=num %>>
 			<button type = "submit" class = "likeBtn">
 			
 			<%
+				//로그인중인 사용자가 해당 게시글에 좋아요를 누른상태라면 하트가 채워짐
 				rs = stmt.executeQuery("select * from likes where liknic = '"+userID+"' and posnum = '"+num+"'");  
 				if(rs.next()) out.println("♥");
 				else out.println("♡");
@@ -549,32 +559,34 @@ a {
 			<p style = "text-align : center;"> <%=like%> </p>
 		</form>
 	</div>
+	<!-- 댓글, 답글 출력 -->
 	<div id = "comment">
 		<h3>댓글</h3>
 		<hr>
 		<%
-			rs = stmt.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 0");
-			ResultSet rsD = stmt2.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 1");
-			if(!rs.next() && !rsD.next()) out.println("<br><b>&nbsp; &nbsp; &nbsp; &nbsp;작성된 댓글이 없습니다.</b>");
+			rs = stmt.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 0");	//삭제되지 않은 댓글 받아옴
+			ResultSet rsD = stmt2.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 1");		//삭제된 댓글 받아옴
+			if(!rs.next() && !rsD.next()) out.println("<br><b>&nbsp; &nbsp; &nbsp; &nbsp;작성된 댓글이 없습니다.</b>");		//둘 다 없다면 작성된 댓글 없다고 출력
 				else{
-					rs = stmt.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 0");
+					rs = stmt.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 0");		//댓글이 있다면 댓글 정보 받아옴
 					while (rs.next()){
 						String comnic = rs.getString("comnic");
 						String comcon = rs.getString("comcon");
 						String comdate = rs.getString("comdat");
 						comnum = rs.getInt("comnum");
 		%>
+		<!-- 삭제 상태가 아닌 댓글 출력 -->
 		<div id = "com">
-		
 		<table class="table" >
 			<tr> 
 				<td><b>[ <%=comnic%> ]</b></td>
-				<td class = "right"> <a class="a" href="ViewReply.jsp?_comchk=0&_fgnnum=<%=comnum%>&_posnum=<%=num%>">답글</a> 
+				<!-- 댓글 삭제, 답글, 수정 기능을 하는 a태그 -->
+				<td class = "right"> <a class="a" href="ViewReply.jsp?_fgnnum=<%=comnum%>&_posnum=<%=num%>">답글</a> 
 									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_comnum=<%=comnum%>&_comchk=1&_posnum=<%=num%>"> 삭제</a> 
 									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_comnum=<%=comnum%>&_comchk=1&_content=<%=comcon%>&_posnum=<%=num%>"> 수정</a>
 				</td>
 			</tr>
-			<tr>
+			<tr>		<!-- 정상적인 출력을 위해 replace문 사용 -->
 				<td><%=comcon.replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>")%></td>
 				<td class = "right"> <text><%=comdate%></text></td>
 			</tr>
@@ -582,27 +594,28 @@ a {
 		</div>
 		<br>
 			<%
-				ResultSet rsR = stmt2.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 0 and delchk = 0"); 
+				ResultSet rsR = stmt2.executeQuery("select * from comment where fgnnum = '"+comnum+"' and comrepdiv = 0 and delchk = 0"); 
 					while(rsR.next()){
 						String renic = rsR.getString("comnic");
 						String recon = rsR.getString("comcon");
 						String redate = rsR.getString("comdat");
 						String renum = rsR.getString("comnum");
 			%>
+			<!-- 삭제되지 않은 상태의 댓글에 달린 답글 출력 -->
 			<div id = "reply">
-				<table style = "width : 100%">
+				<table style = "width : 98%;">
 				<tr> 
-					<td> ➥ <%=renic %></td>
+					<td> ➥<b>[  <%=renic %> ]</b></td>
+					<!-- 답글 삭제, 수정 기능을 하는 a태그 -->
 					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
 										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>&_posnum=<%=num%>"> 수정</a>
 					</td>
 				</tr>
-				<tr>
+				<tr>			<!-- 정상적인 출력을 위해 replace문 사용 -->
 					<td><div style = "margin-left:3%"><%=recon.replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>")  %></div></td>
 					<td class = "right"> <text><%=redate %></text></td>
 				</tr>
 			</table>
-			<br>
 			
 			</div>
 			<%
@@ -611,15 +624,17 @@ a {
 			
 			%>
 			<%
+				//삭제된 상태인 댓글이 있다면 삭제된 댓글이라고 출력
 				rsD = stmt.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 1");
 				while (rsD.next()){
 					comnum = rsD.getInt("comnum");
 				
 			%>
-			<div id = "com">
+			<!-- 삭제된 댓글 출력 -->
+			<div id = "com" style = "padding-bottom : 3%">
 				<br><b style = "margin-left : 5%;"> &nbsp; &nbsp; &nbsp; &nbsp;삭제된 댓글입니다. </b>
 			</div>
-			<%
+			<%			//삭제된 댓글에 달린 답글의 정보를 가져옴
 						ResultSet rsR = stmt2.executeQuery("select * from comment where fgnnum = '"+comnum+"' and comrepdiv = 0 and delchk = 0"); 
 						while(rsR.next()){
 							String renic = rsR.getString("comnic");
@@ -627,37 +642,39 @@ a {
 							String redate = rsR.getString("comdat");
 							String renum = rsR.getString("comnum");
 			%>
-			
+			<!-- 삭제된 댓글에 달린 답글 출력 -->
 			<div id = "reply">
-				<table style = "width : 100%; margin-top : 3%;">
+				<table style = "width : 98%;">
 				<tr> 
 					<td> ➥ <%=renic %></td>
+					<!-- 답글 삭제, 수정 기능을 하는 a태그 -->
 					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
 										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_comnum=<%=renum%>&_comchk=0&_content=<%=recon%> &_posnum=<%=num%>"> 수정</a>
 					</td>
 				</tr>
-				<tr>
+				<tr>	<!-- 정상적인 출력을 위해 replace문 사용 -->
 					<td><div style = "margin-left:3%"><%=recon.replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>")  %></div></td>
 					<td class = "right"><text> <%=redate %></text></td>
 				</tr>
 			</table>
-			<br>
-			
+		
 			</div>
 			<%
 						}
 		rsR.close();
 			}
 		rs.close();
-		rsD.close();
+		rsD.close();		//사용이 끝난 ResultSet 객체 연결 해제
 				}
 			%>
+		<!-- 댓글 입력하는 form태그 -->
 		<form action = "WriteComment.jsp" method = "post">
 			<input type = "hidden" name = "_comchk" value = 1>
 			<input type = "hidden" name = "_fgnnum" value = <%=num %>>
 			<input type = "hidden" name = "_posnum" value = <%=num %>>
 			<br>
-			<textarea style = "width : 92%; height : 55px;  resize: none;" name = "_content"></textarea>
+			<!-- 댓글 내용은 500글자까지만 입력받고 무조건 입력되어야함 -->
+			<textarea style = "width : 90%; height : 55px; resize: none;" maxlength = "500" name = "_content"></textarea>
 			<span style = "margin-left : 1%; vertical-align : top;">  				<!-- 줄바꿈이 일어나지 않게 함 -->
 			<button type = "submit" class = "writeCom">댓글 작성</button>
 			</span>
@@ -668,8 +685,8 @@ a {
 	</div>
 	<br>
 	<%
-		conn.close();
-		stmt.close();
+		conn.close(); 		//사용이 끝난 Connection 객체 연결 해제
+		stmt.close();		//사용이 끝난 Statement 객체 연결 해제
 		stmt2.close();
 
 		

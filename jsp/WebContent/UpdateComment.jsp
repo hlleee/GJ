@@ -44,6 +44,7 @@ margin-left : 15%;
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false","root","1234");
 		Statement stmt = conn.createStatement();
+		//현재 로그인중인 사용자가 수정할 댓글의 작성자가 아닐 경우 오류 출력
 		ResultSet rs = stmt.executeQuery("select * from comment where comnic = '"+userID+"' and comnum = '"+comnum+"' and comrepdiv = '"+comchk+"'");
 	if(!rs.next()){
 		out.println("<script>alert('권한이 없습니다.');</script>");	
@@ -58,7 +59,8 @@ margin-left : 15%;
 	<input type = "hidden" name = "_comnum" value = <%=comnum%>>
 	<input type = "hidden" name = "_comchk" value = <%=comchk%>>
 	<input type = "hidden" name = "_posnum" value = <%=posnum%>>
-	<textarea style = "width : 700px; height : 50px; resize: none;" name = "_content"><%=content %></textarea>
+	<!-- 댓글 내용은 500글자까지만 입력받고 무조건 입력되어야함 -->
+	<textarea style = "width : 700px; height : 50px; resize: none;" maxlength  = "500" name = "_content"><%=content %></textarea>
 	<span style = "margin-left : 1%; vertical-align : top;">  
 	<button type = "submit" class = "writeCom">댓글 수정</button>
 	</span>

@@ -34,8 +34,15 @@ margin-left : 18%;
 border-radius: 30px;
 border : 1px solid;
 }
+textarea{
 
+width : 100%; 
+height : 400px; 
+margin-top : 5px; 
+resize: none;  
+background-color : rgb(240, 255, 255);
 
+}
   body {
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
@@ -124,25 +131,20 @@ border : 1px solid;
     color: #ffffff;
   }
 
-  .login {
+ .login {
     width: 25%;
     height: 150px;
     background-color: #ffffff;
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
-
+ 
   .myinfo {
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
-    padding-top: 60px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
@@ -151,7 +153,7 @@ border : 1px solid;
   
    .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
@@ -317,8 +319,9 @@ a {
       </form>
       </div>
       <div class="login">
-        <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+         <ul class="myinfo">
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
@@ -372,11 +375,11 @@ a {
     </nav>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String posnum = request.getParameter("_posnum");
-	String title = "", content = "", type = "";
-	String userID =  (String) session.getAttribute("__NAME"); 
+	String posnum = request.getParameter("_posnum");		//업데이트를 위한 게시글 번호를 받아옴
+	String title = "", content = "", type = "";			//게시글 기본 정보 저장을 위한 변수 선언
+	String userID =  (String) session.getAttribute("__NAME"); 	//세션에서 현재 로그인중인 사용자의 닉네임을 받아옴
 	
-	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
+	if(userID==null){		//로그아웃상태면 오류메시지 메인페이지로 이동
 		out.println("<script>alert('접근 오류');</script>");		
 		out.println("<script>location.href='Main.jsp';</script>");
 	}  
@@ -386,15 +389,12 @@ a {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false","root","1234");
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("select * from post where posnic = '"+userID+"' and posnum = '"+posnum+"'");
-		if(rs.next()){
-		rs = stmt.executeQuery("select * from post where posnum = '"+posnum+"'");  	// 클릭한 게시글 번호 받아와서 조회수 받아옴
-			if(rs.next()){
-		
-				title = rs.getString("postit");
+		if(rs.next()){		//현재 로그인중인 사용자가 해당 글의 작성자라면 수행		
+				title = rs.getString("postit");		//게시글의 정보 저장
 				content = rs.getString("poscon");
 				type = rs.getString("btype");
-			} 
-		} else{
+			
+		} else{			//현재 로그인중인 사용자와 글의 작성자가 다를경우 오류메시지
 			out.println("<script>alert('권한이 없습니다.');</script>");	
 			out.println("<script>location.href='View.jsp?_posnum="+posnum+"';</script>");
 		}
@@ -405,10 +405,12 @@ a {
 
 	<div id = "text"><br><h1>글 수정</h1><br></div>
 	<div id = "main">
+		<!-- 글 수정을 위해 값을 넘겨주는 form태그 -->
 		<form action = UpdatePostBack.jsp method = "post">
 			<div id = "input">
+			<!-- 게시글의 정보를 받아와서 원래 값 삽입 해놓음 -->
 				<select name="_type" style = "width : 50%; height : 30px">    
-				
+					
 				   <option <%if(type.equals("자유게시판")) out.println("selected"); %>>자유게시판</option>
 				
 				   <option <%if(type.equals("취업후기게시판")) out.println("selected"); %>>취업후기게시판</option>
@@ -421,8 +423,10 @@ a {
 				   
 				</select>
 				<input type = "hidden" name = "_posnum" value = <%=posnum %>>
-				<input type = "text" name = "_title" style = "width : 100%; height : 30px; margin-top : 5px;"  value=<%=title %> required> 
-				<textarea name = "_content" style = "width : 100%; height : 400px; margin-top : 5px; resize: none;  background-color : rgb(240, 255, 255);" required><%=content %></textarea> 
+				<!-- 최대 30글자까지 입력을 받고 무조건 입력이 되어야함 -->
+				<input type = "text" name = "_title" style = "width : 100%; height : 30px; margin-top : 5px;"  maxlength = "30" value=<%=title %> required> 
+				<!-- 최대 1000글자까지 입력을 받고 무조건 입력이 되어야함 -->
+				<textarea name = "_content" maxlength = "1000" required><%=content %></textarea> 
 			</div>
 			<div id="btn">
 				<input type = "submit" class = "btn" value = "작성" >
@@ -431,9 +435,7 @@ a {
 		</form>
 </div>
 <footer>
-	<br>
    <div class="bottom_box">
-   	<hr>
         <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>

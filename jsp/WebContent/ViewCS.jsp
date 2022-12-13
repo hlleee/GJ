@@ -413,9 +413,9 @@ a {
 <% 
 	//게시글 출력
 	request.setCharacterEncoding("UTF-8");
-	String num = request.getParameter("_inqnum");    //게시글번호 받아옴
-	String title = "", content = "", name = "", type = "", date = "";
-	String userID =  (String) session.getAttribute("__NAME");
+	String num = request.getParameter("_inqnum");    //문의글번호 받아옴
+	String title = "", content = "", name = "", type = "", date = "";	//문의글 기본 정보 받아올 변수 초기화
+	String userID =  (String) session.getAttribute("__ID");
 	int process=0; 
 	
 	if(userID.equals("Admin")){		//로그아웃상태면 오류메시지 로그인페이지로 이동
@@ -429,16 +429,16 @@ a {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false","root","1234");
 			Statement stmt = conn.createStatement();
 			Statement stmt2 = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from inquiry where inqnum = '"+num+"'");  	// 클릭한 게시글 번호 받아와서 조회수 받아옴
+			ResultSet rs = stmt.executeQuery("select * from inquiry where inqnum = '"+num+"'");  	//클릭한 문의글 정보 DB에서 받아옴
 				if(rs.next()){					
-					title = rs.getString("inqtit");
+					title = rs.getString("inqtit");		//게시글 기본 정보 받아옴
 					content = rs.getString("inqcon");
 					name = rs.getString("inqnic");
 					date = rs.getString("inqdat");
 					type = rs.getString("category");
-					process = rs.getInt("process");
+					process = rs.getInt("process");		//게시글 처리여부 받아옴
 					
-				} else{
+				} else{		//해당 문의번호의 문의글이 없다면 오류메시지 출력, 문의내역 페이지로 돌아감
 					out.println("<script>alert('유효하지 않은 문의입니다.');</script>");	
 					out.println("<script>location.href='AllInquiry.jsp';</script>");
 				}
@@ -446,11 +446,13 @@ a {
 	
 %><div id = "main">
 	<div id = "text">
+	<!-- 문의글 기본정보 출력 -->
 		<table style = "width : 100%;">
 			<tr> 
 				<td></td>
 				<td colspan = 2 style = "margin-bottom : 4px"> <font size = "2px"><b><%=type %></b> </font></td> 
-				<td style = "text-align : right;"><B><%if(process==1) out.println("처리완료");
+				<!-- 처리여부 1이면 처리완료 출력, 0이면 미처리 출력 -->
+				<td style = "text-align : right;"><B><%if(process==1) out.println("처리완료"); 
 														    else out.println("미처리");%> </B></td>
 			</tr>
 			<tr>
@@ -466,12 +468,15 @@ a {
 		
 	</div>
 	<div id = "content">
+	<!-- 문의글 내용 출력 -->
 		<table style = "width : 95%; margin-left : 5%; ">
 			
 			<tr>
+				<!-- 정상적인 출력을 위해 replace문 실행 -->
 				<td><div style = "min-height : 200px;"><%=content.replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></div></td>				
 			
 				<td style = "text-align : right; vertical-align : top;"> 
+				<!-- 관리자 문의 목록 페이지로 이동 -->
 					<form action = "AllInquiry.jsp" method = "post">
 						<input type = submit  class = "btn" value = "문의 목록">
 					</form>
@@ -481,6 +486,7 @@ a {
 			<tr>
 				
 				<td colspan = 2 style = "text-align : right; width : 50px;">
+				<!-- 처리완료 버튼을 누르면 처리여부를 1로 바꾸는 form태그 -->
 				<form action = "ViewCSBack.jsp" method = "post">	
 						<input type = "hidden" name = "_process" value = <%=process %>>
 						<input type = "hidden" name = "_inqnum" value = <%=num %>>
