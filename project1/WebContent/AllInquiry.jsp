@@ -9,7 +9,27 @@
 </head>
 <style>
 
-  #header {
+.color {
+	color: white;
+}
+.colors {
+	color: black;
+}
+ body {
+    margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
+    font-family: sans-serif;
+  }
+  /* 기본 밑줄을 제거합니다 */
+   a {
+    text-decoration: none; 
+    
+  }
+  /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
+   a:hover {
+    text-decoration: underline; 
+  } 
+
+   #header {
     margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
     width: 100%;
     height: 160px;
@@ -33,6 +53,7 @@
   
   .logo img {
     right: 20px;
+    padding-top: 37px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -88,18 +109,14 @@
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
+
 
   .myinfo {
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
-    padding-top: 60px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
@@ -108,7 +125,7 @@
   
    .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
@@ -119,14 +136,14 @@
     margin: auto;
     width: 100%;
     height: 20px;
-    /* background-color: #8361d4; */
     padding-right: 120px;
     padding-top: 10px;
    
   }
+  
  /* 메뉴바 */
 	:root {
-   /* --text-color: #eee5e9; */
+  
     --background-color: #3D5F95;
     --accent-color: #6a87b5;
 }
@@ -138,14 +155,7 @@
     box-sizing: border-box;
 }
 
-/* .body {
-    margin: 0;
-  } */
 
-a {
-    text-decoration: none;
-    color: var(--text-color);
-}
 
 .navbar {
     position:sticky;
@@ -235,43 +245,13 @@ a {
     color: black;   
     height: 90px;
     font-size: 12px;
-    background-color: rgb(236, 236, 244);
     position: relative;
     clear: both;
     width:100%;
     bottom: 0;
   }
   
-  .aside_box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #91acd6;
-    padding: 0;
-    margin: 0;
-  }
-  .area_user {
-    flex: 4;
-    line-height: 1em; /* 줄간격 */
-  }
-  .area_user_row {
-    display: flex;
-  }
-  .area_user_row span {
-    flex: 1;
-  }
-  .area_user_row ul {
-    flex: 6;
-  }
-  /* .aur_title {
-    font-size: 13px;
-    font-weight: bold;
-  } */
-  .area_user_row ul > li {
-    display: inline-block; /* li 수평정렬하는 방법 */
-    margin-left: 8px;
-  }
-  
+ 
   .bottom_box {
     
     flex: 2;
@@ -291,32 +271,6 @@ a {
     font-weight: bold;
     font-size: 13px;
   }
-a:link, a:visited {
-
-     padding: 5px;
-     text-align: center;
-     text-decoration: none;
-     display: inline-block;
-}
- a:hover, a:active {
-     display: inline-block;  
-}
-
-		@media (max-width: 600px) {
-			#nav, #section {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		a{text-decoration:none}
-		ul{list-style:none;}
-		.menu{
-	color: black;
-}.menubar{
-color: white;}
-.logininfo{
-color: black;
-}
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -338,7 +292,7 @@ color: black;
 <div id="header">
       <div class="logo">
      <a href="Main_UI.jsp">
-     <img src="images/Logo.png" class="img_logo" style="display: block; width:150px;"/>
+    <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px;"/>
      </a>
       </div>
       <div class="search">
@@ -359,8 +313,8 @@ color: black;
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a class="logininfo" href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
-            <li><a class="logininfo" href="Logout.jsp" class="link_text" >로그아웃</a></li> 
+            <li><a class="colors" href="Adm_Board.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a class="colors" href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
        
@@ -401,20 +355,17 @@ color: black;
     <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a class="menubar" href="BulletinBoard.jsp">전체게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard3.jsp">자유게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard5.jsp">질문게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard4.jsp">면접게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard2.jsp">취업후기</a></li>
-        <li><a class="menubar" href="BulletinBoard6.jsp">채용정보</a></li>
-        <li><a class="menubar" href="Inquiry.jsp?">문의내역</a></li>
+        <li><a class="color" href="Adm_Board.jsp">전체게시글</a></li>
+        <li><a class="color" href="Adm_main.jsp">회원정보</a></li>
+        <li><a class="color" href="AllInquiry.jsp">문의내역</a></li>
+        
       </ul>
      
     </nav>
 	<div id="nav">
 
 		<h1>문의 내역</h1>
-
+	<hr>
 	<div style="border: 1px solid black; height: 250px;width: 70%;">
 	 <div style="overflow: auto; width:100%; height:100%;">
 	<table class="table table-striped" style="overflow-x:scroll" >
@@ -427,14 +378,16 @@ color: black;
                 <th style="background-color: #eeeeee; text-align: center; width:100px">처리여부</th>
             </tr>
         </thead>
+       
         <%
+        //관리자용 문의 내역페이지 전체문의내역 볼수있음
  	try{
  		Class.forName("com.mysql.jdbc.Driver");
  		Connection conn = DriverManager.getConnection(
  				"jdbc:mysql://localhost/gj","root","1234");
  		Statement stmt = conn.createStatement();
  		ResultSet rs = stmt.executeQuery
- 				("select * from inquiry order by inqnum asc"); 		//조건추가해서 해당정보만 출력
+ 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname"); 		//조건추가해서 해당정보만 출력
  		
 		if(rs.next()==false){%>
 			
@@ -443,17 +396,24 @@ color: black;
 	  </tr> 
 	<% 	}
 		rs = stmt.executeQuery
- 				("select * from inquiry order by inqnum asc"); 
+ 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname order by inquiry.inqnum asc"); 
  		while(rs.next()){
  			String inqnum = rs.getString("inqnum");
  			String inqtit = rs.getString("inqtit");
  			String inqnic = rs.getString("inqnic");
  			String inqdat = rs.getString("inqdat");
  			String process = rs.getString("process");
+ 			
+ 			
+ 			if(process.equals("0")){
+ 	             process="미처리";
+ 	          }else{
+ 	             process="처리";
+ 	          }
  			%>
  			
  			<tr> <th style="text-align: center;"><%=inqnum%></th>
- 			<th style="text-align: center;"><%=inqtit%></th>
+ 			<th style="text-align: center;"><a href="ViewCS.jsp?_inqnum='"+ inqnum +"'" ><%=inqtit%></a></th>
  			<th style="text-align: center;"><%=inqnic%></th>
  			<th style="text-align: center;"><%=inqdat%></th>
  			<th style="text-align: center;"><%=process%></th>
@@ -468,27 +428,25 @@ color: black;
         </div>
 </div>
 </div>
-	<div id="section">
- 
-	</div>
+
 	<footer>
-   <div class="bottom_box">
+	<hr>
+	   <div class="bottom_box">
         <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
         <li><p>개인정보처리방침</p></li>
-        <li><p>청소년보호정책</p></li>
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">
      <p>&copy; 굿잡 Corp.</p>
      </div>
-  </footer>
+</footer>
 
 </body>
 </html>

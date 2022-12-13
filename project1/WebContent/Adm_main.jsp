@@ -1,37 +1,45 @@
-
 <%@page import="java.sql.DriverManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="utf-8" import="java.sql.*"%>
+    pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>로그인된 헤더</title>
-</head>
-<style>
-
-.color {
-	color: white;
-}
-.colors {
-	color: black;
-}
-
- body {
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>관리자 메인 화면 - 회원삭제가 메인</title>
+    <link rel="stylesheet" href="main_login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/77e29b57dd.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- defer란 무엇인가?!!!! -->
+    <script src="index.js" defer></script>
+  </head>
+  <style>
+    * {
+    box-sizing: border-box; /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
+  }
+  body {
     margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
     font-family: sans-serif;
   }
-  /* 기본 밑줄을 제거합니다 */
+  
+ /* 기본 밑줄을 제거합니다 */
    a {
     text-decoration: none; 
-    
+    color: #888;
   }
   /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
    a:hover {
     text-decoration: underline; 
-  }  
-  
- #header {
+  } 
+
+ 
+  header {
     margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
     width: 100%;
     height: 160px;
@@ -143,10 +151,10 @@
     padding-top: 10px;
    
   }
-  
- /* 메뉴바 */
+
+	 /* 메뉴바 */
 	:root {
-   
+   /* --text-color: #eee5e9; */
     --background-color: #3D5F95;
     --accent-color: #6a87b5;
 }
@@ -158,7 +166,14 @@
     box-sizing: border-box;
 }
 
+/* .body {
+    margin: 0;
+  } */
 
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
 
 .navbar {
     position:sticky;
@@ -180,7 +195,8 @@
     padding-left: 0px;
     list-style: none;
     font-size: 22px;
-    
+    /* font-family: "Black Han Sans", sans-serif; */
+    color: #ffffff;
 }
 .navbar-menu li {
     padding: 15px 35px;
@@ -191,6 +207,9 @@
     background-color: var(--accent-color);
     border-radius: 5px;
 }
+
+  
+
 
 @media screen and (max-width: 768px) {
     .navbar {
@@ -205,147 +224,75 @@
         text-align: center;
         width: 100%;
     }
-      ￼.navbar-menu > a {
+    ￼ .navbar-menu a {
         display: block;
-        color: #white;
-        
     }
-    
+
+
 
     .navbar-menu.active {
         display: flex;
     }
 
 }
-		
-		#nav {
-			/* 내 정보 */
-			/* 내 정보 */
-			width: 700px;
-			float: center;
-			height: 550px;
-			position: relative;
-			left:550px;
-			overflow-x:hidden;
-			overflow-y:hidden;
-			
-		}
-		
-		
-		hr.hr	{
-	
-			width:700px;
-			background-color: black;
-  			height: 2px;
-		}
-		
-		#section {
-			/* 메뉴 */
-			width: 300px;
-			height: 400px;
-			position: absolute;
-			top: 330px;
-			left:170px;
-			border-radius: 5px;
-			
-			
-		}
-		
-	.menu {
-    	position:sticky;
-   		top:0;
-   		border: 2px solid red;
-    	justify-content: space-between;
-    	display: flex;
-    	align-items: center;
-    	padding: 22px 12px;
-    	background-color:#3D5F95;
-    	width: 300px;
-    	height: 310px;
-    	border : 2px solid var(--background-color);
-    	border-radius: 5px;
-    	color: #ffffff;
-}
+ 
 
-  /* menu */
+  section {
+    height: 450px;
+    float:left;
+    width:100%;
+    padding: 10px;
+  }
 
-.list {
-	
-    display: block;
-    margin: auto;
-    padding-left: 0px;
-    font-size: 22px;
-    background-color: (--background-color);
-    border-radius: 5px;
-    color: #ffffff;
+   article {
+    display: flex;
+    padding: 5px;
+  }
+
+  .container{
+    justify-content: center;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
     
-    
-}
-.list li {
-    padding: 15px 60px;
-    word-spacing: 5px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    border : 2px solid var(--background-color);
-    color: #ffffff;
-}
-
-.list li:hover {
-    background-color: #e4ecf8;
-    border-radius: 10px;
-    color: black;
-}
-
-  
-
-
-@media screen and (max-width: 768px) {
-    .menu{
-        flex-direction: column;
-        align-items: center;
-        padding: 8px 24px;
     }
 
-    .list {
-        display: none;
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-        height: 100%;
-        
-    }
-    .list > a {
-        display: flex;
-         
-        
-    }
-
-
-
-    .list.active {
+    .area{
+        width: 60%;
         display: block;
-         color: black;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 0 1px #000;
     }
 
-}
+	table {
+		width: 800px;
 		
-		
+    	margin-left:13px; 
+    	margin-right:13px;
+		text-align: center;
+	 	background-color: #e6eef9;
+	  	border-collapse: collapse;
+  		border-radius: 5px;
+  		border-style: hidden;
+  		box-shadow: 0 0 0 1px #000;
+	}
 
-		
-footer {
-    color: black;   
-    height: 90px;
+/* 푸터 */
+
+
+  footer {
+    color: black; 
+    width:100%;  
+    height: 60px;
     font-size: 12px;
-    
+    padding: 10px;
     position: relative;
     clear: both;
-    width:100%;
-    bottom: 0;
+    
   }
   
-
   .bottom_box {
-    
     flex: 2;
     font-size: 14px;
     text-align: center;
@@ -363,47 +310,15 @@ footer {
     font-weight: bold;
     font-size: 13px;
   }
-
-
-		
-table{
-width:700px;
-border-collapse: collapse;
-border-radius: 5px;
-text-align: center;}
-
-th {
-	
-	 text-align:center;
-}
-
-a{
-text-decoration:none !important}
-		ul{list-style:none;}
-}
-
-</style>
-	<link rel="stylesheet" href="/css/bootstrap.css">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<!-- 제이쿼리 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-</head>
+  
+    </style>
 <body>
-<input type="hidden" name="_id" value="<%= (String)session.getAttribute("__ID") %>">
-<div id="header">
-       <div class="logo">
-     <a href="Main_UI.jsp">
-     <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px;"/>
+	
+    <header>
+
+      <div class="logo">
+      <a href="Adm_Board.jsp">
+     <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
      </a>
       </div>
       <div class="search">
@@ -423,13 +338,11 @@ text-decoration:none !important}
       </form>
       </div>
       <div class="login">
-         <ul class="myinfo">
-            <li><a class="colors" href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
-            <li><a class="colors" href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
-            <li><a class="colors" href="Logout.jsp" class="link_text" >로그아웃</a></li> 
-        </ul>
+        <ul class="myinfo">
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+           <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
+        </ul> 
         <div class="member">
-       
         
         <%
 	//총 회원수 받아오기, 성공..!
@@ -463,78 +376,93 @@ text-decoration:none !important}
         </div>
       </div>
       
-    </div>
-    <nav class="navbar">
+    </header>
+     <nav class="navbar">
  	  <!-- menu -->
-       <ul class="navbar-menu">
-        <li><a class="color" href="BulletinBoard.jsp">전체게시판</a></li>
-        <li><a class="color" href="BulletinBoard3.jsp">자유게시판</a></li>
-        <li><a class="color" href="BulletinBoard5.jsp">질문게시판</a></li>
-        <li><a class="color" href="BulletinBoard4.jsp">면접게시판</a></li>
-        <li><a class="color" href="BulletinBoard2.jsp">취업후기</a></li>
-        <li><a class="color" href="BulletinBoard6.jsp">채용정보</a></li>
+      <ul class="navbar-menu">
+        <li><a href="Adm_Board.jsp">전체게시글</a></li>
+        <li><a href="Adm_main.jsp">회원정보</a></li>
+        <li><a href="AllInquiry.jsp">문의내역</a></li>
       </ul>
+     
     </nav>
-	<div id="nav">
+  	<hr>
+    <section>
+        <article class="container">
+            <article class="area" style="overflow-y:scroll">
+               
+<%
+	request.setCharacterEncoding("UTF-8");
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
+		
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(
+				"Select * from member ");
+		
+		%>
+		<table border="1">
+		<tr><th>회원번호</th><th>ID</th><th>닉네임</th><th>직업</th></tr>
+			
+		<% 
+		
+		
+		
+		while(rs.next()){
+			String memnum = rs.getString("memnum");
+			String id = rs.getString("id");
+			String pw = rs.getString("pw");
+			String nickname = rs.getString("nickname");
+			String ename = rs.getString("ename");
+			String etype = rs.getString("etype");
+			String joboffdiv = rs.getString("joboffdiv");
+			
+			
+			out.println("<tr>");
+			out.println("<td width='100' height = '40'>" + memnum + "</td>");
+			out.println("<td width='180'>" + id + "</td>");
+			out.println("<td width='180'>" + nickname + "</td>");
+			out.println("<td width='180'>" + joboffdiv + "</td>");
+			//out.println("<td><input type='button' onclick='location.href='Adm_Delete_Query.jsp?memnum="+memnum+"&id="+id+"&nickname="+nickname+"&joboffdiv="+joboffdiv+"' value='삭제''></td>");
+			out.println("<td><a href='Adm_Delete_Query.jsp?memnum="+memnum+"&id="+id+"&nickname="+nickname+"&joboffdiv="+joboffdiv+"'>삭제</td>");
+			
+			out.println("</tr>");
+		}
+		%> </table>
+		<%
+		
+	}catch (SQLException e){
+		
+		
+	}
 
-		<h1>내 정보</h1>
-		<hr class="hr">
-
-<h3><p style=color:red;>닉네임만 수정 가능</p> </h3><br>
-<%	request.setCharacterEncoding("UTF-8");	
-
- 	try{
- 		Class.forName("com.mysql.jdbc.Driver");
- 		Connection conn = DriverManager.getConnection(
- 				"jdbc:mysql://localhost/gj","root","1234");
- 		Statement stmt = conn.createStatement();
- 		ResultSet rs = stmt.executeQuery("select * from member where id='"+(String)session.getAttribute("__ID")+"'");
- 		
- 		while(rs.next()){
- 			
- 			String nickname = rs.getString("nickname");
- 			out.println("<h3>현재 닉네임: <a href = 'Member_Update_UI.jsp?&nickname="+nickname+"'>" + nickname + "</a></h3>");
- 		} //닉네임 누르면 Member_Update_UI로 값넘김
- 		
- 		} catch(SQLException e){
- 		e.printStackTrace();
- 	}
 %>
-	</div>
-	
-	<div id="section">
-	  <div class="menu" style="text-align:center">
-      <ul class="list">      
-        <li><a class="colors" href="MyInfo.jsp">내 정보<br></a></li>
-        <li><a class="colors" href="MyPost.jsp">내가 쓴 글</a></li>
-        <li><a class="colors" href="LikePost.jsp">내가 좋아한글</a></li>
-        <li><a class="colors" href="Inquiry.jsp">문의한 내역</a></li>
-      </ul>
-      <br>
-    </div>
-   </div>
-	
-	<hr>
-	<footer>
+                
+            </article>  
+        </article>
+    </section>
+    <hr>
+    <footer>
    <div class="bottom_box">
-       <ul>
+        <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
         <li><p>개인정보처리방침</p></li>
-        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
+        <li><p>청소년보호정책</p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
+        
         </ul>
     </div>
      <div class="bottom_box">
      <p>&copy; 굿잡 Corp.</p>
      </div>
-  </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-    <script src="js/bootstrap.min.js"></script>
-</body>
+</footer>
 
-</html>
+  </body>
+  </html>
+    

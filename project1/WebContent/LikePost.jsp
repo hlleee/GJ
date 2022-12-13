@@ -9,6 +9,27 @@
 </head>
 <style>
 
+.color {
+	color: white;
+}
+.colors {
+	color: black;
+}
+
+ body {
+    margin: 0; /* body의 기본마진을 없애줍니다(선택사항) */
+    font-family: sans-serif;
+  }
+  /* 기본 밑줄을 제거합니다 */
+   a {
+    text-decoration: none; 
+    
+  }
+  /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
+   a:hover {
+    text-decoration: underline; 
+  }  
+  
   #header {
     margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
     width: 100%;
@@ -33,6 +54,7 @@
   
   .logo img {
     right: 20px;
+    padding-top: 37px;
   }
   
   .visually-hidden { /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
@@ -88,18 +110,14 @@
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
+
 
   .myinfo {
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
-    padding-top: 60px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
@@ -108,7 +126,7 @@
   
    .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
@@ -207,89 +225,132 @@ a {
     }
 
 }
-		#nav {
-			/* 내 정보 */
-			width: 60%;
+		.nav {
+		/* 문의 내역 */
+			width: 700px;
 			float: center;
-			height: 400px;
+			height: 550px;
 			position: relative;
-			left:400px;
+			padding-top:0px;
+			left:550px;
 			overflow-x:hidden;
-			overflow-y:hidden"
+			overflow-y:hidden;
+		}
+		
+		.nav > h1{
+			padding-left:70px;
+		}	
+		
+		 hr.hr	{
+	
+			width:700px;
+			background-color: black;
+  			height: 2px;
+		}
+		
+		/* 사이드바 */
+		#section {
+			
+			width: 300px;
+			height: 400px;
+			position: absolute;
+			top: 330px;
+			left:170px;
+			border-radius: 5px;
+			
 			
 		}
 		
-		#section {
-			/* 메뉴 */
-			width: 200px;
-			float: center;
-			height: 400px;
-			position: absolute;
-			top: 350px;
-			left:100px;
-			
-		}.bd-sidebar {
-  background: #eee;
-  height:350px;
-  
-}a:link, a:visited {
-     padding: 5px;
-     text-align: center;
-     text-decoration: none;
-     display: inline-block;
+	.menu {
+    	position:sticky;
+   		top:0;
+   		border: 2px solid red;
+    	justify-content: space-between;
+    	display: flex;
+    	align-items: center;
+    	padding: 22px 12px;
+    	background-color:#3D5F95;
+    	width: 300px;
+    	height: 310px;
+    	border : 2px solid var(--background-color);
+    	border-radius: 5px;
+    	color: #ffffff;
 }
- a:hover, a:active {
-    display: inline-block;  
-}
-a{
-text-decoration:none !important}
 
-.list-group-item:hover{
-background-color: #4479db;
+  /* menu */
+
+.list {
+	
+    display: block;
+    margin: auto;
+    padding-left: 0px;
+    font-size: 22px;
+    background-color: (--background-color);
+    border-radius: 5px;
+    color: #ffffff;
+    
+    
 }
-.list-group-item:active{
-background-color: aqua;
+.list li {
+    padding: 15px 60px;
+    word-spacing: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border : 2px solid var(--background-color);
+    color: #ffffff;
 }
+
+.list li:hover {
+    background-color: #e4ecf8;
+    border-radius: 10px;
+    color: black;
+}
+
+  
+
+
+@media screen and (max-width: 768px) {
+    .menu{
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 24px;
+    }
+
+    .list {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        
+        
+    }
+    .list > a {
+        display: flex;
+         
+        
+    }
+
+
+
+    .list.active {
+        display: block;
+         color: black;
+    }
+
+}
+
+
 footer {
     color: black;   
     height: 90px;
     font-size: 12px;
-    background-color: rgb(236, 236, 244);
     position: relative;
     clear: both;
     width:100%;
     bottom: 0;
   }
   
-  .aside_box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #91acd6;
-    padding: 0;
-    margin: 0;
-  }
-  .area_user {
-    flex: 4;
-    line-height: 1em; /* 줄간격 */
-  }
-  .area_user_row {
-    display: flex;
-  }
-  .area_user_row span {
-    flex: 1;
-  }
-  .area_user_row ul {
-    flex: 6;
-  }
-  /* .aur_title {
-    font-size: 13px;
-    font-weight: bold;
-  } */
-  .area_user_row ul > li {
-    display: inline-block; /* li 수평정렬하는 방법 */
-    margin-left: 8px;
-  }
   
   .bottom_box {
     
@@ -310,20 +371,21 @@ footer {
     font-weight: bold;
     font-size: 13px;
   }
-		@media (max-width: 600px) {
-			#nav, #section {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		a{text-decoration:none}
+  
+table{
+width:700px;
+border-collapse: collapse;
+border-radius: 5px;
+text-align: center;}
+
+th {
+	
+	 text-align:center;
+}
+
+a{
+text-decoration:none !important}
 		ul{list-style:none;}
-		.menu{
-	color: black;
-}.menubar{
-color: white;}
-.logininfo{
-color: black;
 }
 	</style>
 	<link rel="stylesheet" href="/css/bootstrap.css">
@@ -346,7 +408,7 @@ color: black;
 <div id="header">
       <div class="logo">
      <a href="Main_UI.jsp">
-     <img src="images/Logo.png" class="img_logo" style="display: block; width:150px;"/>
+     <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px;"/>
      </a>
       </div>
       <div class="search">
@@ -367,8 +429,9 @@ color: black;
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a class="logininfo" href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
-            <li><a class="logininfo" href="Logout.jsp" class="link_text" >로그아웃</a></li> 
+            <li><a class="colors" href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a class="colors" href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
+            <li><a class="colors" href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
        
@@ -409,19 +472,18 @@ color: black;
     <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a class="menubar" href="BulletinBoard.jsp">전체게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard3.jsp">자유게시판</a></li>
-        <li><a class="menubar"  href="BulletinBoard5.jsp">질문게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard4.jsp">면접게시판</a></li>
-        <li><a class="menubar" href="BulletinBoard2.jsp">취업후기</a></li>
-        <li><a class="menubar" href="BulletinBoard6.jsp">채용정보</a></li>
+        <li><a class="color" href="BulletinBoard.jsp">전체게시판</a></li>
+        <li><a class="color" href="BulletinBoard3.jsp">자유게시판</a></li>
+        <li><a class="color" href="BulletinBoard5.jsp">질문게시판</a></li>
+        <li><a class="color" href="BulletinBoard4.jsp">면접게시판</a></li>
+        <li><a class="color" href="BulletinBoard2.jsp">취업후기</a></li>
+        <li><a class="color" href="BulletinBoard6.jsp">채용정보</a></li>
       </ul>
      
     </nav>
-	<div id="nav">
-	
-		<h1>좋아요 누른 글</h1>
-		
+	<div class="nav">
+		<h1>내가 좋아한 글</h1>
+		<hr class="hr">
 	<table class="table table-striped">
       <thead>
           <tr>
@@ -437,20 +499,15 @@ color: black;
  		Connection conn = DriverManager.getConnection(
  				"jdbc:mysql://localhost/gj","root","1234");
  		Statement stmt = conn.createStatement();
- 		ResultSet rs=stmt.executeQuery("select post.postit, post.poscon from likes, post where post.posnum = likes.posnum and likes.liknic = '"+(String)session.getAttribute("__ID")+"'");
+ 		ResultSet rs=stmt.executeQuery("select post.postit, post.poscon from likes, post where post.posnum = likes.posnum and likes.liknic = '"+(String)session.getAttribute("__NAME")+"'");
  		if(rs.next()==false){%>
-			
+		<!--  좋아요 누른 글 없을 시 -->
  		<tr align="center" bgcolor="#FFFFFF" height="30">
  			    <td colspan="4" >좋아요 누른 글이 없습니다.</td> 	  
  			  </tr> 
  			<% 	}
  		
-		//rs = stmt.executeQuery
- 				//("select * from post left join likes on likes.posnum=post.posnum left join member on post.posnic=member.nickname where post.posnum=likes.posnum and member.id='"+(String)session.getAttribute("__ID")+"'");//
- 		//좋아요 눌러진글 
- 		//좋아요누른글번호랑 게시글번호조인해서 값가져옴 liknic 좋아요누른사람
- 		//rs=stmt.executeQuery("select * from likes left join post on likes.likposnum=post.posnum left join member on likes.liknic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"' ");
- 			rs=stmt.executeQuery("select post.postit, post.poscon from likes, post where post.posnum = likes.posnum and likes.liknic = '"+(String)session.getAttribute("__ID")+"'");		
+			rs=stmt.executeQuery("select post.postit, post.poscon from likes, post where post.posnum = likes.posnum and likes.liknic = '"+(String)session.getAttribute("__NAME")+"'");		
  			while(rs.next()){
  			String postit = rs.getString("postit");
  			String poscon = rs.getString("poscon");		
@@ -471,17 +528,17 @@ color: black;
 
 
 	<div id="section">
-  <div class="row flex-nowrap" style="text-align:center">
-    <ul class="list-group">      
-      
-        <li class="list-group-item"><h3><a class="menu" href = "MyInfo.jsp?">내 정보<br></a></h3></li>
-        <li class="list-group-item"><h3><a class="menu" href="MyPost.jsp?">내가 쓴 글</a></h3></li>
-        <li class="list-group-item"><h3><a class="menu" href="LikePost.jsp">좋아요 누른 글</a></h3></li>
-        <li class="list-group-item"><h3><a class="menu" href="Inquiry.jsp">문의 내역</a></h3></li>
+	  <div class="menu" style="text-align:center">
+      <ul class="list">      
+        <li><a class="colors" href="MyInfo.jsp">내 정보<br></a></li>
+        <li><a class="colors" href="MyPost.jsp">내가 쓴 글</a></li>
+        <li><a class="colors" href="LikePost.jsp">내가 좋아한글</a></li>
+        <li><a class="colors" href="Inquiry.jsp">문의한 내역</a></li>
       </ul>
+      
+    </div>
    </div>
-	</div>
-	
+	<hr>
 	<footer>
    <div class="bottom_box">
         <ul>
@@ -490,10 +547,9 @@ color: black;
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
         <li><p>개인정보처리방침</p></li>
-        <li><p>청소년보호정책</p></li>
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">
