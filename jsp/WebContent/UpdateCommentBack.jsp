@@ -19,7 +19,7 @@
 	
 	try{
 			 Class.forName("com.mysql.jdbc.Driver");
-		 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false", "root", "1234");
+		 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false", "root", "1234");
 			Statement stmt = conn.createStatement();   
 			
 			stmt.executeUpdate("update comment set comcon = '"+content+"' where comrepdiv = '"+comchk+"' and comnum = '"+comnum+"'");

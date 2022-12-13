@@ -340,7 +340,7 @@ a {
 		
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp","root", "1234");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
 		
 		Statement stmt = conn.createStatement();
 		

@@ -25,7 +25,7 @@
 
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false", "root", "1234");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false", "root", "1234");
 		Statement stmt = conn.createStatement();
 		int result = stmt.executeUpdate("insert into post (postit, poscon, posdat, posnic, views, btype) values ('" + title + "','"+content+"', '" + date + "', '"+userID+"', 0, '"+type+"')");
 		if(result!=0){

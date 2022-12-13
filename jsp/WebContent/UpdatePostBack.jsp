@@ -16,7 +16,7 @@
 	String content = request.getParameter("_content");
 try{
 	 Class.forName("com.mysql.jdbc.Driver");
-	 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false", "root", "1234");
+	 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false", "root", "1234");
 	Statement stmt = conn.createStatement();
 	
 		stmt.executeUpdate("update post set postit = '"+title+"', poscon = '"+content+"', btype = '"+type+"' where posnum = '"+posnum+"'");

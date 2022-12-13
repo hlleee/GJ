@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="BulletinStyle.css">
-<title>게시판 - 전체글</title>
+<title>면접게시판</title>
 <script type="text/javascript"></script>
 </head>
 <body>
@@ -33,7 +33,7 @@
       </form>
       </div>
       <div class="login">
-       <ul class="myinfo">
+        <ul class="myinfo">
             <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
             <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
@@ -87,12 +87,14 @@
      
     </nav>
 
+
 <nav class="nav2">
 	<div class="box">
 	<% //<%=는 프린트임
 	request.setCharacterEncoding("UTF-8");
 	int state = 0;
 	int comnum = 0;			//댓글 번호 저장할 변수 초기화
+	
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(
@@ -100,23 +102,22 @@
 		Statement stmt = conn.createStatement();
 		Statement stmt2 = conn.createStatement();		//반복문 안에 stmt 객체는 하나밖에 존재할 수 없기 때문에 2중으로 사용하기 위한 statement 객체 생성
 		ResultSet rsC = null; //반복문 안에서 선언이 불가하기 때문에 미리 선언하고 초기화
-		ResultSet rs = stmt.executeQuery("Select * from post where posnum < 11");
-		%>
-		 <table border = "1" width="1200px"> 
+		ResultSet rs = stmt.executeQuery("Select * from post where btype='면접'");
+		%> <table border = "1" width="1200px" > 
 			<tr height="30px"><th width="55">번호</th><th width="150">게시판</th><th width="500">제목</th><th width="100">작성자</th><th width="90">조회수</th><th width="120">작성일</th ><th width="60">댓글</th><th width="60">좋아요</th></tr>
 			
-		<% 	
-	if(rs.next())	{
-		do {
-			int likesCnt = 0;							//좋아요 수 저장할 변수 초기화
-			int commentCnt = 0;							//댓글 수 저장할 변수 초기화
-			int posnum = rs.getInt("posnum");			//게시글번호
-			String btype = rs.getString("btype");		//게시판유형
-			String postit = rs.getString("postit");		//게시글제목
-			String posnic = rs.getString("posnic");		//작성자
-			int views = rs.getInt("views");				//조회수
-			String posdat = rs.getString("posdat");		//날짜
-
+		<% 		
+		if(rs.next())	{
+			do {
+				int likesCnt = 0;							//좋아요 수 저장할 변수 초기화
+				int commentCnt = 0;							//댓글 수 저장할 변수 초기화
+				int posnum = rs.getInt("posnum");			//게시글번호
+				String btype = rs.getString("btype");		//게시판유형
+				String postit = rs.getString("postit");		//게시글제목
+				String posnic = rs.getString("posnic");		//작성자
+				int views = rs.getInt("views");				//조회수
+				String posdat = rs.getString("posdat");		//날짜
+				
 				out.println("<tr height = '40'>");
 				out.println("<td>" + posnum + "</td>");
 				out.println("<td>" + btype + "</td>");
@@ -150,12 +151,12 @@
 		if(rsC != null) rsC.close();
 		if(stmt2 != null) stmt2.close();
 		
-		
 		%> </table> <%
 	} catch(SQLException e) {
 		e.printStackTrace();
 	}
 %>
+			
 	</div>
 </nav>
 
@@ -165,45 +166,14 @@
 	</div>
 </section>
 
+
 <section class="center3">
 	<div class="box">
-	<a href="BulletinBoard.jsp" class="btn-gradient blue mini">◁</a>
-	<a href="BulletinBoard.jsp" class="btn-gradient blue mini">1</a>
-			
-<%
-	request.setCharacterEncoding("UTF-8");
-	try {
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection(
-			"jdbc:mysql://localhost/gj", "root", "1234");
-	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery("Select posnum from post"); 
-	
-	if(rs.next())	{
-		while(rs.next()){
-			int postnum = rs.getInt("posnum");			//게시글번호
-			
-			if(postnum > 10) {
-				out.println("<a href='BulletinBoardPage2.jsp' class='btn-gradient blue mini'>2</a>");
-				out.println("<a href='BulletinBoardPage2.jsp' class='btn-gradient blue mini'>▷</a>");
-				state = 1;
-				break;
-			} else {
-				out.println("<a href='BulletinBoard.jsp' class='btn-gradient blue mini'>▷</a>");
-			}
-		} 
-	}		
-	conn.close();
-	stmt.close();
-	rs.close();
-	
-} catch(SQLException e) {
-	e.printStackTrace();
-}
-%>
+	<a href="BulletinBoard3.jsp" class="btn-gradient blue mini">◁</a>
+	<a href="BulletinBoard3.jsp" class="btn-gradient blue mini">1</a>
+	<a href="BulletinBoard3.jsp" class="btn-gradient blue mini">▷</a>
 	</div>
 </section>
-
 <hr>
  <footer>
 	  <div class="bottom_box">

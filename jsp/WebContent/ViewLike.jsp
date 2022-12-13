@@ -19,7 +19,7 @@ if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로
 try{
 	
 	 Class.forName("com.mysql.jdbc.Driver");
-	 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false", "root", "1234");
+	 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false", "root", "1234");
 	Statement stmt = conn.createStatement();
 	
 	ResultSet rs = stmt.executeQuery("select * from likes where liknic='"+userID+"' and posnum = '"+posnum+"'");   //me2 세션으로 아이디 받아와야함

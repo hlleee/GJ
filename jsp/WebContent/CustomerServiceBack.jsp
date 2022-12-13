@@ -18,7 +18,7 @@
 
 try{
 	 Class.forName("com.mysql.jdbc.Driver");
-	 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp", "root", "1234");
+	 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj", "root", "1234");
 	Statement stmt = conn.createStatement();
 		stmt.executeUpdate("insert into inquiry(category, inqtit, inqnic, inqdat, inqcon, process) values ('"+ type +"', '" + title + "','"+userID+"', '" + date + "', '"+content+"', 0)");
 		out.println("<script>alert('문의가 완료되었습니다.');</script>");	

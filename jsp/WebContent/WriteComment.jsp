@@ -28,7 +28,7 @@
 	
 	try{
 		 Class.forName("com.mysql.jdbc.Driver");
-		 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false", "root", "1234");
+		 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false", "root", "1234");
 		Statement stmt = conn.createStatement();
 		
 			stmt.executeUpdate("insert into comment (comnic, comcon, comdat, comrepdiv, fgnnum, delchk) values ('"+userID+"','"+comcon+"', '"+date+"', '"+comchk+"', '"+fgnnum+"', 0)");

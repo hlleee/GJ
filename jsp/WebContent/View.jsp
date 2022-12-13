@@ -406,7 +406,7 @@ a {
 		
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp","root", "1234");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
 		
 		Statement stmt = conn.createStatement();
 		
@@ -464,7 +464,7 @@ a {
 		try{
 			
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false","root","1234");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false","root","1234");
 			Statement stmt = conn.createStatement();
 			Statement stmt2 = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from post where posnum = '"+num+"'");  	// 클릭한 게시글 번호 받아와서 조회수 받아옴
@@ -484,7 +484,7 @@ a {
 					
 				} else{
 					out.println("<script>alert('유효하지 않은 게시글입니다.');</script>");	
-					out.println("<script>location.href='WritingPage.jsp';</script>");
+					out.println("<script>location.href='BulletinBoard.jsp';</script>");
 				}
 		
 	

@@ -329,7 +329,7 @@ a {
 		
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp","root", "1234");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
 		
 		Statement stmt = conn.createStatement();
 		
@@ -383,7 +383,7 @@ a {
 
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/jsp?useSSL=false","root","1234");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false","root","1234");
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("select * from post where posnic = '"+userID+"' and posnum = '"+posnum+"'");
 		if(rs.next()){

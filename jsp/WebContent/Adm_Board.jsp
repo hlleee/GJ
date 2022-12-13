@@ -35,7 +35,6 @@
       <div class="login">
        <ul class="myinfo">
             <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
-            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
@@ -77,12 +76,9 @@
     <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a href="BulletinBoard.jsp">전체게시판</a></li>
-        <li><a href="BulletinBoard3.jsp">자유게시판</a></li>
-        <li><a href="BulletinBoard5.jsp">질문게시판</a></li>
-        <li><a href="BulletinBoard4.jsp">면접게시판</a></li>
-        <li><a href="BulletinBoard2.jsp">취업후기</a></li>
-        <li><a href="BulletinBoard6.jsp">채용정보</a></li>
+        <li><a href="Adm_Board.jsp">전체게시글</a></li>
+        <li><a href="Adm_main.jsp">회원정보</a></li>
+        <li><a href="AllInquiry.jsp">문의내역</a></li>
       </ul>
      
     </nav>
@@ -147,8 +143,9 @@
 			out.println("<td height = '420' colspan = '8'>" + su + "</td>");
 			out.println("</tr>");
 			}
-		if(rsC != null) rsC.close();
-		if(stmt2 != null) stmt2.close();
+		if(rsC!=null) rsC.close();
+		if(stmt2!=null)stmt2.close();
+		
 		
 		
 		%> </table> <%
@@ -159,11 +156,6 @@
 	</div>
 </nav>
 
-<section class="center2">
-	<div class="box">
-		 <a href="WritingPage.jsp" class="normal btn-gradient blue">🖍글쓰기</a>
-	</div>
-</section>
 
 <section class="center3">
 	<div class="box">
