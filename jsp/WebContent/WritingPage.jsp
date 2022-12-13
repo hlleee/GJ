@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글 작성</title>
+<title>게시글 작성</title>
 </head>
 <style type ="text/css">
 

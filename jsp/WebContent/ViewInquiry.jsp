@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 조회</title>
+<title>회원 문의글 조회</title>
 </head>
 <style type="text/css">
 
