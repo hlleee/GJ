@@ -25,7 +25,7 @@ try{
 	ResultSet rs = stmt.executeQuery("select * from likes where liknic='"+userID+"' and posnum = '"+posnum+"'");   //me2 세션으로 아이디 받아와야함
 	if(rs.next()) {
 		out.println("<script>alert('좋아요는 한 번만 누를 수 있습니다.');</script>");
-		
+		out.println("<script>history.back()</script>");
 	}
 						
 	else {

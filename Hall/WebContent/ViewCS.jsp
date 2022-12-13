@@ -382,8 +382,8 @@ background-color : rgb(240, 255, 255);
 <% 
 	//문의글 출력
 	request.setCharacterEncoding("UTF-8");
-//	String inqnum = request.getParameter("_inqnum");    //게시글번호 받아옴
-	String inqnum = "1";
+	String inqnum = request.getParameter("_inqnum");    //게시글번호 받아옴
+
 	String title = "", content = "", name = "", type = "", date = "";
 	String userID =  "Admin";
 
@@ -411,7 +411,7 @@ background-color : rgb(240, 255, 255);
 					rs.close();
 				} else{
 					out.println("<script>alert('유효하지 않은 게시글입니다.');</script>");	
-					out.println("<script>location.href='WritingPage.jsp';</script>");
+					out.println("<script>history.back()';</script>");
 				}
 			}catch(Exception e){
 				e.printStackTrace();
@@ -460,7 +460,7 @@ background-color : rgb(240, 255, 255);
 	</div>
 		<%
 	}
-	ViewDAO.close();
+	
 
 	%>
 	

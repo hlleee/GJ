@@ -189,7 +189,7 @@
 				state = 1;
 				break;
 			} else {
-				out.println("<a href='BulletinBoard.jsp' class='btn-gradient blue mini'>▷</a>");
+				
 			}
 		} 
 	}		

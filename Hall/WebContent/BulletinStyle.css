@@ -158,7 +158,7 @@ a {
 	margin: 0 50px;
 }
 .nav2 { 
-	height: 800px;
+	height: 570px;
 	text-align: center;
 	align-content: center;
 	align-items: center;
@@ -166,12 +166,13 @@ a {
 
 .center2 {
 	float: right;
-	margin-top: 40px;
+	margin-top: 10px;
 	height: 100px;
 }
 
 .center3 {
 	height: 100px;
+	margin:auto;
 	text-align: center;
 	clear: both;
 }

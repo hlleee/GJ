@@ -11,7 +11,8 @@
 #text{
 width:80%;
 float : left;
-margin-top : 1%
+margin-top : 1%;
+margin-left: 0%;
 }
 
 #like{
@@ -28,7 +29,7 @@ margin-top : 3%;
 padding : 1%;
 border-radius: 15px;
 border : 1px solid;
-background-color : rgb(240, 255, 255);
+background-color : #ebf2f7;
 }
 
 #comment{
@@ -39,7 +40,8 @@ margin-left : 15%;
 
 .table {
     width:100%; 
-    margin-left:5%; 
+    padding : 10px;
+    margin-left:auto; 
 }
 .right {
     text-align : right;
@@ -62,12 +64,17 @@ margin-left : 15%;
 }
 .a{
 	text-decoration: none; 
-	font-size : 5px;
+	font-size : 10px;
 	color : black;
 }
 
   #com{
-  width : 95%;
+  width : 700px;
+ 
+  border-radius: 5px;
+border : 1px solid;
+background-color : #ebf2f7;
+  
   }
   
   #reply{
@@ -77,10 +84,11 @@ margin-left : 15%;
   }
   
   #main{
-  width:80%;
-float : left;
-margin-left : 10%;
-border-radius: 30px;
+  width:65%;
+height:950px;
+align-items: center;
+margin:auto;
+border-radius: 15px;
 border : 1px solid;
 padding-top : 3%;
 padding-bottom : 3%;
@@ -208,7 +216,6 @@ padding-bottom : 3%;
     margin: auto;
     width: 100%;
     height: 20px;
-    /* background-color: #8361d4; */
     padding-right: 120px;
     padding-top: 10px;
    
@@ -227,10 +234,6 @@ padding-bottom : 3%;
     padding: 0;
     box-sizing: border-box;
 }
-
-/* .body {
-    margin: 0;
-  } */
 
 a {
     text-decoration: none;
@@ -329,7 +332,7 @@ a {
     font-size: 13px;
   }
   text{
-  font-size : 3px;
+  font-size : 5px;
   color : rgb(200, 200, 200);
   vertical-align : center;
   }
@@ -484,12 +487,12 @@ a {
 		<table style = "width : 100%; margin-left : 5%;">
 			<tr> 
 				<td></td>
-				<td style = "margin-bottom : 4px"> <font size = "2px"><b><%=type %></b> </font></td> 
+				<td style = "margin-bottom : 4px"> <font size = "4px"><b><%=type %></b> </font></td> 
 				<td style = "text-align : right;"><text>조회수 | <%=view %></text> </td>
 			</tr>
 			<tr>
 				<td style = "text-align : right;"><text> 제목 | &nbsp;</text></td>
-				<td colspan = 2 ><font size = "6px"><b><%=title %></b></font></td>
+				<td colspan = 2 ><font size = "4px"><b><%=title %></b></font></td>
 			</tr>
 			<tr>
 				<td style = "text-align : right;"><text> 작성자 |&nbsp; </text></td>
@@ -562,10 +565,10 @@ a {
 						comnum = rs.getInt("comnum");
 		%>
 		<div id = "com">
-		<br>
-		<table class="table">
+		
+		<table class="table" >
 			<tr> 
-				<td> <%=comnic%></td>
+				<td><b>[ <%=comnic%> ]</b></td>
 				<td class = "right"> <a class="a" href="ViewReply.jsp?_id=me2&_comchk=0&_fgnnum=<%=comnum%>&_posnum=<%=num%>">답글</a> 
 									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=comnum%>&_comchk=1&_posnum=<%=num%>"> 삭제</a> 
 									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=comnum%>&_comchk=1&_content=<%=comcon%>"> 수정</a>
@@ -679,19 +682,20 @@ a {
 	%>
 	
 <!--풋터-->
-	<hr>
+	
    <footer>
+   <br>
+   <hr>
    <div class="bottom_box">
         <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
-        <li><p><a>문의하기</a></p></li>
-        <li><p>청소년보호정책</p></li>
+        <li><p>개인정보처리방침</p></li>
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">

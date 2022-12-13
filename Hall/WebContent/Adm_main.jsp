@@ -317,7 +317,7 @@ a {
     <header>
 
       <div class="logo">
-      <a href="Main_UI.jsp">
+      <a href="Adm_Board.jsp">
      <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
      </a>
       </div>

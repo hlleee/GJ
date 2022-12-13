@@ -245,43 +245,13 @@
     color: black;   
     height: 90px;
     font-size: 12px;
-    background-color: rgb(236, 236, 244);
     position: relative;
     clear: both;
     width:100%;
     bottom: 0;
   }
   
-  .aside_box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #91acd6;
-    padding: 0;
-    margin: 0;
-  }
-  .area_user {
-    flex: 4;
-    line-height: 1em; /* 줄간격 */
-  }
-  .area_user_row {
-    display: flex;
-  }
-  .area_user_row span {
-    flex: 1;
-  }
-  .area_user_row ul {
-    flex: 6;
-  }
-  /* .aur_title {
-    font-size: 13px;
-    font-weight: bold;
-  } */
-  .area_user_row ul > li {
-    display: inline-block; /* li 수평정렬하는 방법 */
-    margin-left: 8px;
-  }
-  
+ 
   .bottom_box {
     
     flex: 2;
@@ -343,7 +313,7 @@
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a class="colors" href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a class="colors" href="Adm_Board.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
             <li><a class="colors" href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
@@ -395,7 +365,7 @@
 	<div id="nav">
 
 		<h1>문의 내역</h1>
-
+	<hr>
 	<div style="border: 1px solid black; height: 250px;width: 70%;">
 	 <div style="overflow: auto; width:100%; height:100%;">
 	<table class="table table-striped" style="overflow-x:scroll" >
@@ -416,7 +386,7 @@
  				"jdbc:mysql://localhost/gj","root","1234");
  		Statement stmt = conn.createStatement();
  		ResultSet rs = stmt.executeQuery
- 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"'"); 		//조건추가해서 해당정보만 출력
+ 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname"); 		//조건추가해서 해당정보만 출력
  		
 		if(rs.next()==false){%>
 			
@@ -425,17 +395,24 @@
 	  </tr> 
 	<% 	}
 		rs = stmt.executeQuery
- 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"'order by inquiry.inqnum asc"); 
+ 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname order by inquiry.inqnum asc"); 
  		while(rs.next()){
  			String inqnum = rs.getString("inqnum");
  			String inqtit = rs.getString("inqtit");
  			String inqnic = rs.getString("inqnic");
  			String inqdat = rs.getString("inqdat");
  			String process = rs.getString("process");
+ 			
+ 			
+ 			if(process.equals("0")){
+ 	             process="미처리";
+ 	          }else{
+ 	             process="처리";
+ 	          }
  			%>
  			
  			<tr> <th style="text-align: center;"><%=inqnum%></th>
- 			<th style="text-align: center;"><%=inqtit%></th>
+ 			<th style="text-align: center;"><a href="ViewCS.jsp?_inqnum='"+ inqnum +"'" ><%=inqtit%></a></th>
  			<th style="text-align: center;"><%=inqnic%></th>
  			<th style="text-align: center;"><%=inqdat%></th>
  			<th style="text-align: center;"><%=process%></th>
@@ -451,6 +428,8 @@
 </div>
 </div>
 
+	<footer>
+	<hr>
 	   <div class="bottom_box">
         <ul>
         <li><p>회사소개</p></li>
@@ -458,10 +437,9 @@
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
         <li><p>개인정보처리방침</p></li>
-        <li><p>청소년보호정책</p></li>
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">
