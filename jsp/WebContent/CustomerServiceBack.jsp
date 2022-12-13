@@ -23,7 +23,7 @@ try{
 		//inquiry 테이블에 문의글 저장
 		stmt.executeUpdate("insert into inquiry(category, inqtit, inqnic, inqdat, inqcon, process) values ('"+ type +"', '" + title + "','"+userID+"', '" + date + "', '"+content+"', 0)");
 		out.println("<script>alert('문의가 완료되었습니다.');</script>");	
-		out.println("<script>location.href='Inquiey.jsp';</script>");	//문의완료 메시지 출력 후 내 문의내역 페이지로 이동
+		out.println("<script>location.href='Inquiry.jsp';</script>");	//문의완료 메시지 출력 후 내 문의내역 페이지로 이동
 	stmt.close();
 	conn.close();
  }catch(Exception e){

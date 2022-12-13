@@ -415,11 +415,11 @@ a {
 	request.setCharacterEncoding("UTF-8");
 	String num = request.getParameter("_inqnum");    //문의글번호 받아옴
 	String title = "", content = "", name = "", type = "", date = "";	//문의글 기본 정보 받아올 변수 초기화
-	String userID =  (String) session.getAttribute("__ID");		//세션에서 현재 로그인중인 사용자 ID를 받아옴
+	String userID =  (String) session.getAttribute("__NAME");		//세션에서 현재 로그인중인 사용자 닉네임을 받아옴
 	int process=0; 
 	
-	if(!userID.equals("Admin")){		//로그인 한 사용자가 관리자가 아닐 경우 오류메시지, 메인페이지로 이동
-		out.println("<script>alert('관리자만 접근이 가능합니다.');</script>");		
+	if(userID == null){		//로그인 상태가 아니라면 오류메시지 출력, 메인페이지로 이동
+		out.println("<script>alert('잘못된 접근입니다.');</script>");		
 		out.println("<script>location.href='Main.jsp';</script>");
 	} 
 	else{
@@ -440,7 +440,7 @@ a {
 					
 				} else{		//해당 문의번호의 문의글이 없다면 오류메시지 출력, 문의내역 페이지로 돌아감
 					out.println("<script>alert('유효하지 않은 문의입니다.');</script>");	
-					out.println("<script>location.href='AllInquiry.jsp';</script>");
+					out.println("<script>location.href='Inquiry.jsp';</script>");
 				}
 		
 	
@@ -476,24 +476,14 @@ a {
 				<td><div style = "min-height : 200px;"><%=content.replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></div></td>				
 			
 				<td style = "text-align : right; vertical-align : top;"> 
-				<!-- 관리자 문의 목록 페이지로 이동 -->
-					<form action = "AllInquiry.jsp" method = "post">
+				<!-- 문의 목록 페이지로 이동 -->
+					<form action = "Inquiry.jsp" method = "post">
 						<input type = submit  class = "btn" value = "문의 목록">
 					</form>
 					
 				</td>			
 			</tr>
-			<tr>
-				
-				<td colspan = 2 style = "text-align : right; width : 50px;">
-				<!-- 처리완료 버튼을 누르면 처리여부를 1로 바꾸는 form태그 -->
-				<form action = "ViewCSBack.jsp" method = "post">	
-						<input type = "hidden" name = "_process" value = <%=process %>>
-						<input type = "hidden" name = "_inqnum" value = <%=num %>>
-						<button class = "btn">처리완료</button>
-					</form>
-				</td>
-			</tr>
+			
 		</table>
 	</div>
 	

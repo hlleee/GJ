@@ -22,10 +22,11 @@
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj?useSSL=false","root","1234");
 			Statement stmt = conn.createStatement();
+			Statement stmt2 = conn.createStatement();	//두 가지 쿼리문을 같이 쓰기 위해 Statement 객체 생성
 			
 			//삭제를 원하는 댓글이 댓글인지 답글인지 확인
 			ResultSet rs = stmt.executeQuery("select * from comment where comnic = '"+userID+"' and comnum = '"+comnum+"' and comrepdiv = 1");
-			ResultSet rsR = stmt.executeQuery("select * from comment where comnic = '"+userID+"' and comnum = '"+comnum+"' and comrepdiv = 0");
+			ResultSet rsR = stmt2.executeQuery("select * from comment where comnic = '"+userID+"' and comnum = '"+comnum+"' and comrepdiv = 0");
 			
 			if(rs.next()){		//댓글 작성자가 댓글 삭제를 원할경우 (댓글은 삭제하지 않고 delchk만 0으로 만들어서 삭제된 댓글의 답글도 출력)
 				stmt.executeUpdate("update comment set delchk = 1 where comnic = '"+userID+"' and comnum = '"+comnum+"' and comrepdiv = 1");
@@ -33,7 +34,7 @@
 				out.println("<script>location.href='View.jsp?_posnum="+posnum+"';</script>");
 				
 			} else if(rsR.next()) {		//답글 작성자가 답글 삭제를 원할경우 답글은 DB에서 삭제
-				stmt.executeUpdate("delete from comment where comnic = '"+userID+"' and comnum = '"+comnum+"' and comrepdiv = 0");
+				stmt2.executeUpdate("delete from comment where comnic = '"+userID+"' and comnum = '"+comnum+"' and comrepdiv = 0");
 				out.println("<script>alert('답글 삭제가 완료되었습니다.');</script>");	
 				out.println("<script>location.href='View.jsp?_posnum="+posnum+"';</script>");
 			}
@@ -42,6 +43,7 @@
 				out.println("<script>location.href='View.jsp?_posnum="+posnum+"';</script>");
 			}
 			stmt.close();
+			if(stmt2 != null) stmt2.close();	//stmt2는 조건문에 사용해서 만약 사용하지 않을 시 NullPointerException에 걸리기 때문에 null이 아닐때만 close
 			conn.close();
 			rs.close();
 		} catch(Exception e){
