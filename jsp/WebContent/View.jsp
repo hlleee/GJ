@@ -9,9 +9,10 @@
 <style type="text/css">
 
 #text{
-width:85%;
+width:80%;
 float : left;
-margin-top : 1%
+margin-top : 1%;
+margin-left: 0%;
 }
 
 #like{
@@ -28,7 +29,7 @@ margin-top : 3%;
 padding : 1%;
 border-radius: 15px;
 border : 1px solid;
-background-color : rgb(240, 255, 255);
+background-color : #ebf2f7;
 }
 
 #comment{
@@ -38,8 +39,9 @@ margin-left : 15%;
 }
 
 .table {
-    width:95%; 
-    margin-left:5%; 
+    width:100%; 
+    padding : 10px;
+    margin-left:auto; 
 }
 .right {
     text-align : right;
@@ -49,7 +51,8 @@ margin-left : 15%;
 
 .likeBtn {
   background-color: rgb(240, 255, 255);
-  border-color : red;
+  border: 0.5px soild;
+  border-color : rgb(220, 220, 220);
   color: red;
   padding: 5px 20px;
   text-align: center;
@@ -61,32 +64,31 @@ margin-left : 15%;
 }
 .a{
 	text-decoration: none; 
-	font-size : 5px;
+	font-size : 10px;
 	color : black;
 }
 
   #com{
-  width : 100%;
-  border : 1px solid;
-  float:left;
-  padding-right : 3%;
-   border-color : rgb(220, 220, 220);
+  width : 700px;
+ 
+  border-radius: 5px;
+border : 1px solid;
+background-color : #ebf2f7;
+  
   }
   
   #reply{
-  width : 100%;
-  padding-left : 10%;
+  width : 90%;
+  margin-left : 10%;
   float : left;
-  border : 1px solid;
-  border-color : rgb(220, 220, 220);
-   padding-right : 3%;
   }
   
   #main{
-  width:80%;
-float : left;
-margin-left : 10%;
-border-radius: 30px;
+  width:65%;
+height:950px;
+align-items: center;
+margin:auto;
+border-radius: 15px;
 border : 1px solid;
 padding-top : 3%;
 padding-bottom : 3%;
@@ -181,25 +183,20 @@ padding-bottom : 3%;
     color: #ffffff;
   }
 
-  .login {
+ .login {
     width: 25%;
     height: 150px;
     background-color: #ffffff;
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
-
+ 
   .myinfo {
     justify-content: flex-end;
     display: flex;
     list-style: none;
-    padding-right: 160px;
-    padding-top: 60px;
+    padding-right: 130px;
+    padding-top: 50px;
     font-size: 12px;
     width: 100%;
     height: 80px;
@@ -208,7 +205,7 @@ padding-bottom : 3%;
   
    .myinfo li {
     font-size: 17px;
-    padding: 5px 12px;
+    padding: 5px 10px;
    
   }
   .myinfo li:hover{
@@ -219,14 +216,14 @@ padding-bottom : 3%;
     margin: auto;
     width: 100%;
     height: 20px;
-    /* background-color: #8361d4; */
     padding-right: 120px;
     padding-top: 10px;
    
   }
+  
  /* 메뉴바 */
 	:root {
-   /* --text-color: #eee5e9; */
+ 
     --background-color: #3D5F95;
     --accent-color: #6a87b5;
 }
@@ -237,10 +234,6 @@ padding-bottom : 3%;
     padding: 0;
     box-sizing: border-box;
 }
-
-/* .body {
-    margin: 0;
-  } */
 
 a {
     text-decoration: none;
@@ -339,7 +332,7 @@ a {
     font-size: 13px;
   }
   text{
-  font-size : 3px;
+  font-size : 5px;
   color : rgb(200, 200, 200);
   vertical-align : center;
   }
@@ -394,8 +387,9 @@ a {
       </form>
       </div>
       <div class="login">
-        <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+         <ul class="myinfo">
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
@@ -484,21 +478,21 @@ a {
 					
 				} else{
 					out.println("<script>alert('유효하지 않은 게시글입니다.');</script>");	
-					out.println("<script>location.href='BulletinBoard.jsp';</script>");
+					out.println("<script>location.href='WritingPage.jsp';</script>");
 				}
 		
 	
 %><div id = "main">
 	<div id = "text">
-		<table style = "width : 100%;">
+		<table style = "width : 100%; margin-left : 5%;">
 			<tr> 
 				<td></td>
-				<td style = "margin-bottom : 4px"> <font size = "2px"><b><%=type %></b> </font></td> 
+				<td style = "margin-bottom : 4px"> <font size = "4px"><b><%=type %></b> </font></td> 
 				<td style = "text-align : right;"><text>조회수 | <%=view %></text> </td>
 			</tr>
 			<tr>
 				<td style = "text-align : right;"><text> 제목 | &nbsp;</text></td>
-				<td colspan = 2 ><font size = "6px"><b><%=title %></b></font></td>
+				<td colspan = 2 ><font size = "4px"><b><%=title %></b></font></td>
 			</tr>
 			<tr>
 				<td style = "text-align : right;"><text> 작성자 |&nbsp; </text></td>
@@ -556,7 +550,8 @@ a {
 		</form>
 	</div>
 	<div id = "comment">
-		<h3>댓글</h3><br>
+		<h3>댓글</h3>
+		<hr>
 		<%
 			rs = stmt.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 0");
 			ResultSet rsD = stmt2.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 1 and delchk = 1");
@@ -568,17 +563,15 @@ a {
 						String comcon = rs.getString("comcon");
 						String comdate = rs.getString("comdat");
 						comnum = rs.getInt("comnum");
-						
 		%>
-		
 		<div id = "com">
-		<br>
-		<table class="table">
+		
+		<table class="table" >
 			<tr> 
-				<td> <%=comnic%></td>
-				<td class = "right"> <a class="a" href="ViewReply.jsp?_id=me2&_comchk=0&_fgnnum=<%=comnum%>&_posnum=<%=num%>">답글</a> 
-									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=<%=userID %>&_comnum=<%=comnum%>&_comchk=1&_posnum=<%=num%>"> 삭제</a> 
-									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=<%=userID %>&_comnum=<%=comnum%>&_comchk=1&_content=<%=comcon%>"> 수정</a>
+				<td><b>[ <%=comnic%> ]</b></td>
+				<td class = "right"> <a class="a" href="ViewReply.jsp?_comchk=0&_fgnnum=<%=comnum%>&_posnum=<%=num%>">답글</a> 
+									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_comnum=<%=comnum%>&_comchk=1&_posnum=<%=num%>"> 삭제</a> 
+									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_comnum=<%=comnum%>&_comchk=1&_content=<%=comcon%>&_posnum=<%=num%>"> 수정</a>
 				</td>
 			</tr>
 			<tr>
@@ -586,11 +579,10 @@ a {
 				<td class = "right"> <text><%=comdate%></text></td>
 			</tr>
 		</table>
-		<br>
 		</div>
-		
+		<br>
 			<%
-				ResultSet rsR = stmt2.executeQuery("select * from comment where fgnnum = '"+comnum+"' and comrepdiv = 0 and delchk = 0"); 
+				ResultSet rsR = stmt2.executeQuery("select * from comment where fgnnum = '"+num+"' and comrepdiv = 0 and delchk = 0"); 
 					while(rsR.next()){
 						String renic = rsR.getString("comnic");
 						String recon = rsR.getString("comcon");
@@ -598,12 +590,11 @@ a {
 						String renum = rsR.getString("comnum");
 			%>
 			<div id = "reply">
-			<br>
-				<table style = "width : 100%;">
+				<table style = "width : 100%">
 				<tr> 
 					<td> ➥ <%=renic %></td>
-					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=<%=userID %>&_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
-										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=<%=userID %>&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
+					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
+										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>&_posnum=<%=num%>"> 수정</a>
 					</td>
 				</tr>
 				<tr>
@@ -641,8 +632,8 @@ a {
 				<table style = "width : 100%; margin-top : 3%;">
 				<tr> 
 					<td> ➥ <%=renic %></td>
-					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=<%=userID %>&_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
-										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=<%=userID %>&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
+					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
+										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_comnum=<%=renum%>&_comchk=0&_content=<%=recon%> &_posnum=<%=num%>"> 수정</a>
 					</td>
 				</tr>
 				<tr>
@@ -691,21 +682,20 @@ a {
 	%>
 	
 <!--풋터-->
-
+	
    <footer>
    <br>
+   <hr>
    <div class="bottom_box">
-	<hr>
         <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
-        <li><p><a>문의하기</a></p></li>
-        <li><p>청소년보호정책</p></li>
+        <li><p>개인정보처리방침</p></li>
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">

@@ -30,11 +30,11 @@ margin-left : 15%;
 </head>
 <body>
 <%
-	String comnum = request.getParameter("_comnum");
-	String content = request.getParameter("_content");
-	String comchk = request.getParameter("_comchk");
-	String posnum = request.getParameter("_posnum");
-	String userID =  (String) session.getAttribute("__NAME");   		//세션에서 로그인중인 id 받아옴
+	String comnum = request.getParameter("_comnum");		//수정할 댓글의 댓글번호를 받아옴
+	String content = request.getParameter("_content");		//수정할 댓글의 원래 내용을 받아옴
+	String comchk = request.getParameter("_comchk");		//수정을 원하는 댓글이 댓글인지 답글인지 여부를 받아옴
+	String posnum = request.getParameter("_posnum");		//다시 원래 게시글로 돌아가기 위한 게시글 번호를 받아옴
+	String userID =  (String) session.getAttribute("__NAME");   		//세션에서 로그인중인 닉네임 받아옴
 
 	if(userID==null){		//로그아웃상태면 오류메시지 로그인페이지로 이동
 		out.println("<script>alert('접근 오류');</script>");		
@@ -53,7 +53,8 @@ margin-left : 15%;
 <div id="comment">
 	<h3>댓글 수정</h3>
 	<hr><br>
-	<form action = UpdateCommentBack.jsp method = "post">
+	<!-- UpdateCommentBack.jsp에 댓글번호, 댓,답글 여부, 게시글 번호, 수정할 내용 전달 -->
+	<form action = UpdateCommentBack.jsp method = "post">	
 	<input type = "hidden" name = "_comnum" value = <%=comnum%>>
 	<input type = "hidden" name = "_comchk" value = <%=comchk%>>
 	<input type = "hidden" name = "_posnum" value = <%=posnum%>>

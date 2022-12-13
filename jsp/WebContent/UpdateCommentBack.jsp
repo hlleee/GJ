@@ -11,11 +11,11 @@
 <body>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String userID =  (String) session.getAttribute("__NAME");
-	String comchk = request.getParameter("_comchk");
+	String userID =  (String) session.getAttribute("__NAME");		//세션에서 닉네임 값을 받아옴
+	String comchk = request.getParameter("_comchk");		
 	String content = request.getParameter("_content"); 
 	String comnum = request.getParameter("_comnum");	
-	String posnum = request.getParameter("_posnum");// 세션으로 아이디도 받아와야함
+	String posnum = request.getParameter("_posnum");
 	
 	try{
 			 Class.forName("com.mysql.jdbc.Driver");
