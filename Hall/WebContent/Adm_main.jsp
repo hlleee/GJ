@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>관리자 메인 화면 - 회원삭제가 메인</title>
+    <title>관리자 메인 화면 -회원삭제</title>
     <link rel="stylesheet" href="main_login.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
@@ -166,10 +166,6 @@
     box-sizing: border-box;
 }
 
-/* .body {
-    margin: 0;
-  } */
-
 a {
     text-decoration: none;
     color: var(--text-color);
@@ -313,7 +309,7 @@ a {
   
     </style>
 <body>
-	
+	<!-- 관리자가 회원을 삭제하기 위한 페이지  -->
     <header>
 
       <div class="logo">
@@ -339,7 +335,7 @@ a {
       </div>
       <div class="login">
         <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
+            <li><a href="Main_UI.jsp"><b><%= %></b></a>님</li>
            <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul> 
         <div class="member">
@@ -378,7 +374,7 @@ a {
       
     </header>
      <nav class="navbar">
- 	  <!-- menu -->
+ 	  <!-- 관리자용 페이지 메뉴바 -->
       <ul class="navbar-menu">
         <li><a href="Adm_Board.jsp">전체게시글</a></li>
         <li><a href="Adm_main.jsp">회원정보</a></li>
@@ -425,7 +421,7 @@ a {
 			out.println("<td width='180'>" + id + "</td>");
 			out.println("<td width='180'>" + nickname + "</td>");
 			out.println("<td width='180'>" + joboffdiv + "</td>");
-			//out.println("<td><input type='button' onclick='location.href='Adm_Delete_Query.jsp?memnum="+memnum+"&id="+id+"&nickname="+nickname+"&joboffdiv="+joboffdiv+"' value='삭제''></td>");
+			//관리자가 회원을 삭제하기 위해
 			out.println("<td><a href='Adm_Delete_Query.jsp?memnum="+memnum+"&id="+id+"&nickname="+nickname+"&joboffdiv="+joboffdiv+"'>삭제</td>");
 			
 			out.println("</tr>");
@@ -435,15 +431,13 @@ a {
 		
 	}catch (SQLException e){
 		
-		
 	}
-
 %>
-                
             </article>  
         </article>
     </section>
     <hr>
+    <!-- 푸터 부분 -->
     <footer>
    <div class="bottom_box">
         <ul>
@@ -452,10 +446,10 @@ a {
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
         <li><p>개인정보처리방침</p></li>
-        <li><p>청소년보호정책</p></li>
+        <!-- 문의하기 링크를 누르면 문의창으로 넘어감 -->
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">

@@ -102,7 +102,7 @@
 		Statement stmt = conn.createStatement();
 		Statement stmt2 = conn.createStatement();		//반복문 안에 stmt 객체는 하나밖에 존재할 수 없기 때문에 2중으로 사용하기 위한 statement 객체 생성
 		ResultSet rsC = null; //반복문 안에서 선언이 불가하기 때문에 미리 선언하고 초기화
-		ResultSet rs = stmt.executeQuery("Select * from post where btype= '자유'");
+		ResultSet rs = stmt.executeQuery("Select * from post where btype= '자유게시판'");
 		%> <table border = "1" width="1200px" > 
 			<tr height="30px"><th width="55">번호</th><th width="150">게시판</th><th width="500">제목</th><th width="100">작성자</th><th width="90">조회수</th><th width="120">작성일</th ><th width="60">댓글</th><th width="60">좋아요</th></tr>
 			

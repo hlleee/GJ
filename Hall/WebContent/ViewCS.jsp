@@ -14,16 +14,10 @@ float : left;
 margin-top : 1%
 }
 
-#inqCheck{
-width:65%;
-float : left; 
-margin-left : 15%;
-text-align : center;
-}
 #content{
-width:70%;
+width:80%;
 float : left; 
-margin-left : 15%;
+margin-left : 10%;
 margin-top : 3%;
 padding : 1%;
 border-radius: 15px;
@@ -56,12 +50,12 @@ background-color : rgb(240, 255, 255);
 
  
   #main{
-  width:80%;
+  width:65%;
 float : left;
-margin-left : 10%;
+margin-left : 18%;
 border-radius: 30px;
 border : 1px solid;
-padding-top : 3%;
+
 padding-bottom : 3%;
   }
 
@@ -367,8 +361,8 @@ a {
       </form>
       </div>
       <div class="login">
-        <ul class="myinfo">
-            <li><a href="Main_UI.jsp"><%= (String)session.getAttribute("__NAME") %></a>님</li>
+       <ul class="myinfo">
+            <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
@@ -387,15 +381,15 @@ a {
 	    ResultSet rs = stmt.executeQuery(strQuery);
 
 	    String Countrun="";
-	      while(rs.next()){
-	      Countrun = rs.getString(1);
+	      while(rs.next())  Countrun = rs.getString(1);
 	      
-	       } 
 	      
 	      out.println("<p style='text-align: center;'>"+"총 회원수 : <b>"+ Countrun + "명</b></p>");
-	      conn.close();
-	      stmt.close();
-	      rs.close();
+	      
+		rs.close();
+		stmt.close();
+		conn.close();
+		
 	} catch(Exception e) {
 		e.printStackTrace();
 	}
@@ -405,19 +399,16 @@ a {
       </div>
       
     </header>
-    
-     <nav class="navbar">
+    <nav class="navbar">
  	  <!-- menu -->
       <ul class="navbar-menu">
-        <li><a href="BulletinBoard.jsp">전체게시판</a></li>
-        <li><a href="BulletinBoard3.jsp">자유게시판</a></li>
-        <li><a href="BulletinBoard5.jsp">질문게시판</a></li>
-        <li><a href="BulletinBoard4.jsp">면접게시판</a></li>
-        <li><a href="BulletinBoard2.jsp">취업후기</a></li>
-        <li><a href="BulletinBoard6.jsp">채용정보</a></li>
+        <li><a href="Adm_Board.jsp">전체게시글</a></li>
+        <li><a href="Adm_main.jsp">회원정보</a></li>
+        <li><a href="AllInquiry.jsp">문의내역</a></li>
       </ul>
      
     </nav>
+
     <br>
 <% 
 	//게시글 출력
@@ -425,6 +416,7 @@ a {
 	String num = request.getParameter("_inqnum");    //게시글번호 받아옴
 	String title = "", content = "", name = "", type = "", date = "";
 	String userID =  (String) session.getAttribute("__NAME");
+	int process=0; 
 	
 	if(userID.equals("Admin")){		//로그아웃상태면 오류메시지 로그인페이지로 이동
 		out.println("<script>alert('관리자만 접근이 가능합니다.');</script>");		
@@ -444,6 +436,7 @@ a {
 					name = rs.getString("inqnic");
 					date = rs.getString("inqdat");
 					type = rs.getString("category");
+					process = rs.getInt("process");
 					
 				} else{
 					out.println("<script>alert('유효하지 않은 문의입니다.');</script>");	
@@ -457,6 +450,8 @@ a {
 			<tr> 
 				<td></td>
 				<td colspan = 2 style = "margin-bottom : 4px"> <font size = "2px"><b><%=type %></b> </font></td> 
+				<td style = "text-align : right;"><B><%if(process==1) out.println("처리완료");
+														    else out.println("미처리");%> </B></td>
 			</tr>
 			<tr>
 				<td style = "text-align : right;"><text> 제목 | &nbsp;</text></td>
@@ -464,14 +459,14 @@ a {
 			</tr>
 			<tr>
 				<td style = "text-align : right;"><text> 작성자 |&nbsp; </text></td>
-				<td > <%=name %></td>
-				<td style = "text-align : right;"><text> <%=date %></text></td>
+				<td> <%=name %></td>
+				<td colspan = 2 style = "text-align : right;"><text> <%=date %></text></td>
 			</tr>
 		</table>
 		
 	</div>
 	<div id = "content">
-		<table style = "width : 95%; margin-left : 5%;">
+		<table style = "width : 95%; margin-left : 5%; ">
 			
 			<tr>
 				<td><div style = "min-height : 200px;"><%=content.replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></div></td>				
@@ -487,6 +482,8 @@ a {
 				
 				<td colspan = 2 style = "text-align : right; width : 50px;">
 				<form action = "ViewCSBack.jsp" method = "post">	
+						<input type = "hidden" name = "_process" value = <%=process %>>
+						<input type = "hidden" name = "_inqnum" value = <%=num %>>
 						<button class = "btn">처리완료</button>
 					</form>
 				</td>
@@ -509,15 +506,17 @@ a {
 	%>
 	
 <!--풋터-->
-	<hr>
+	
    <footer>
+   <br>
    <div class="bottom_box">
+   <hr>
         <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
-        <li><p><a>문의하기</a></p></li>
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>청소년보호정책</p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>

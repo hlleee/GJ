@@ -6,17 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="BulletinStyle.css">
-<title>게시판 - 전체글</title>
+<title>관리자 전체글 열람 페이지</title>
 <script type="text/javascript"></script>
 </head>
 <body>
  <header>
       <div class="logo">
-     <a href="Main_UI.jsp">
+     <a href="Main_UI.jsp"> <!-- 로고를 누를 경우 메인 페이지로 이동한다 -->
      <img src="GJ_Logo.png" class="img_logo" style="display: block; width:300px; "/>
      </a>
       </div>
-      <div class="search">
+      <div class="search"><!-- 검색창에서 키워드를 검색할 경우 해당 게시글이 나타난다 -->
       <form name="search" action="Search_UI.jsp" method="post" >
         <fieldset>
           <legend class="visually-hidden">검색</legend>
@@ -33,11 +33,11 @@
       </form>
       </div>
       <div class="login">
-       <ul class="myinfo">
+       <ul class="myinfo"><!-- 로그인 정보를 가져온다 - 관리자 -->
             <li><a href="Adm_Board.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
-            <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
+            <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> <!-- 로그아웃을 누르면 로그인 안된 헤더를 가진 메인 페이지로 이동 -->
         </ul>
-        <div class="member">
+        <div class="member"><!-- 본 웹사이트에 가입한 총 회원수를 받아온다 -->
        
         
         <%
@@ -85,10 +85,10 @@
 
 <nav class="nav2">
 	<div class="box">
-	<% //<%=는 프린트임
+	<% //
 	request.setCharacterEncoding("UTF-8");
 	int state = 0;
-	int comnum = 0;			//댓글 번호 저장할 변수 초기화
+	int comnum = 0;		//댓글 번호 저장할 변수 초기화
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(
@@ -114,12 +114,14 @@
 			String posdat = rs.getString("posdat");		//날짜
 
 				out.println("<tr height = '40'>");
-				out.println("<td>" + posnum + "</td>");
-				out.println("<td>" + btype + "</td>");
-				out.println("<td><a href='View.jsp?_posnum="+posnum+"' class='a2'>" + postit + "</a></td>");
-				out.println("<td>" + posnic + "</td>");
-				out.println("<td>" + views + "</td>");
-				out.println("<td>" + posdat + "</td>");
+				out.println("<td>" + posnum + "</td>"); //테이블에 게시글 번호
+				out.println("<td>" + btype + "</td>");	//테이블에 개시판 유형
+				//테이블에 게시판제목을 넘겨주고 게시글번호를 View.jsp에 넘겨준다
+				out.println("<td><a href='View.jsp?_posnum="+posnum+"' class='a2'>" + postit + "</a></td>");	
+				out.println("<td>" + posnic + "</td>");		//테이블에 작성자 
+				out.println("<td>" + views + "</td>");		//테이블에 조회수
+				out.println("<td>" + posdat + "</td>");		//테이블에 작성날짜
+				
 				
 				rsC = stmt2.executeQuery("select comnum from comment where fgnnum = '"+posnum+"' and comrepdiv = 1");	//해당 게시글에 달린 댓글들의 번호를 구함
 				

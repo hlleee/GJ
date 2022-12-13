@@ -386,7 +386,7 @@
  				"jdbc:mysql://localhost/gj","root","1234");
  		Statement stmt = conn.createStatement();
  		ResultSet rs = stmt.executeQuery
- 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname"); 		//조건추가해서 해당정보만 출력
+ 				("select * from inquiry"); 		//조건추가해서 해당정보만 출력
  		
 		if(rs.next()==false){%>
 			
@@ -395,7 +395,7 @@
 	  </tr> 
 	<% 	}
 		rs = stmt.executeQuery
- 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname order by inquiry.inqnum asc"); 
+ 				("select * from inquiry order by inquiry.inqnum asc"); 
  		while(rs.next()){
  			String inqnum = rs.getString("inqnum");
  			String inqtit = rs.getString("inqtit");
@@ -412,7 +412,7 @@
  			%>
  			
  			<tr> <th style="text-align: center;"><%=inqnum%></th>
- 			<th style="text-align: center;"><a href="ViewCS.jsp?_inqnum='"+ inqnum +"'" ><%=inqtit%></a></th>
+ 			<th style="text-align: center;"><a href="ViewCS.jsp?_inqnum=<%=inqnum %>" ><%=inqtit%></a></th>
  			<th style="text-align: center;"><%=inqnic%></th>
  			<th style="text-align: center;"><%=inqdat%></th>
  			<th style="text-align: center;"><%=process%></th>

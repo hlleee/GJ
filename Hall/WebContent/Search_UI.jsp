@@ -38,17 +38,8 @@
     text-decoration: underline; 
   } 
 
-   .navbar {
-    /* position:sticky; */
-    top:0;
-    justify-content: space-between;
-    display: block;
-    align-items: center;
-    /* padding: 22px 12px; */
-    background-color: var(--background-color);
-    width: 100%;
-  }
-
+   
+/* 헤더 부분 */
   header {
     margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
     width: 100%;
@@ -130,11 +121,7 @@
     padding: 0px;
   }
 
-  /* .myinfo {
-    width: 100%;
-    height: 80px;
-    background-color: #4479db;
-  } */
+ 
 
   .myinfo {
     justify-content: flex-end;
@@ -170,7 +157,6 @@
   }
  /* 메뉴바 */
 	:root {
-   /* --text-color: #eee5e9; */
     --background-color: #3D5F95;
     --accent-color: #6a87b5;
 }
@@ -182,15 +168,12 @@
     box-sizing: border-box;
 }
 
-/* .body {
-    margin: 0;
-  } */
-
 a {
     text-decoration: none;
     color: var(--text-color);
 }
 
+ /* 메뉴바 css*/
 .navbar {
     position:sticky;
     top:0;
@@ -202,8 +185,6 @@ a {
     width: 100%;
     border-radius: 5px;
 }
-
-  /* menu */
 
 .navbar-menu {
     display: flex;
@@ -224,8 +205,6 @@ a {
     border-radius: 5px;
 }
 
-  
-
 
 @media screen and (max-width: 768px) {
     .navbar {
@@ -245,14 +224,13 @@ a {
     }
 
 
-
     .navbar-menu.active {
         display: flex;
     }
 
 }
 
- 
+ /*  */ 
   section {
     height: 450px;
     float:left;
@@ -297,9 +275,9 @@ a {
 	table > th {
 	height: 50px;
 	}
+	
+	
 /* 푸터 */
-
-
   footer {
     color: black; 
     width:100%;  
@@ -330,6 +308,7 @@ a {
   
     </style>
 <body>
+	 <!-- 아이디값 -->
 	<input type="hidden" name="_id" value="<%= (String)session.getAttribute("__ID") %>">
      <header>
       <div class="logo">
@@ -353,24 +332,25 @@ a {
         
       </form>
       </div>
+       <!-- 로그인한 정보를 표시 -->
       <div class="login">
         <ul class="myinfo">
             <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
-            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
+            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> <!-- 내정보를 누르면 내정보 페이지로 이동--> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
        
         
         <%
-	//총 회원수 받아오기, 성공..!
-		
+      //웹사이트 총 가입 회원수
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
 		
 		Statement stmt = conn.createStatement();
 		
+		//모든 가입자의 수 받아오기
 		String strQuery = "Select count(id) from member";
 	    ResultSet rs = stmt.executeQuery(strQuery);
 
@@ -397,7 +377,7 @@ a {
     </header>
     
      <nav class="navbar">
- 	  <!-- menu -->
+ 	  <!-- 메뉴바 -->
       <ul class="navbar-menu">
         <li><a href="BulletinBoard.jsp">전체게시판</a></li>
         <li><a href="BulletinBoard3.jsp">자유게시판</a></li>
@@ -425,12 +405,13 @@ a {
 		
 		Statement stmt = conn.createStatement();
 		
+		//검색창에 키워드를 넣어 게시글 검색. 키워드를 넣으면 제목이나 글내용 출력
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where postit LIKE '%" + keyword + "%'");
+				"Select * from post where postit LIKE '%" + keyword + "%' AND poscon LIKE '%" + keyword + "%' ");
 		
 		%>
 		<table border="1">
-		<tr><th>번호</th><th>제목</th><th>내용</th><th>조회수</th><th>게시일자</th><th>게시판</th><th>작성자</th></tr>
+		<tr><th>번호</th><th>제목</th><th>조회수</th><th>게시일자</th><th>게시판</th><th>작성자</th></tr>
 			
 		<% 
 		
@@ -450,20 +431,21 @@ a {
 				
 					out.println("<tr height = '40'>");
 					out.println("<td>" + posnum + "</td>");
-					out.println("<td>" + btype + "</td>");
 					out.println("<td><a href='View.jsp' class='a2'>" + postit + "</a></td>");
-					out.println("<td>" + posnic + "</td>");
 					out.println("<td>" + views + "</td>");
 					out.println("<td>" + posdat + "</td>");
-					
+					out.println("<td>" + btype + "</td>");
+					out.println("<td>" + posnic + "</td>");
 					out.println("</tr>");
 					
 				} while(rs.next());
 		}		
 			else{
-				String su = "등록된 글이 없습니다.";
+				
+				//등록된 글이 없으면 문자열 출력
+				String no = "등록된 글이 없습니다.";
 				out.println("<tr>");
-				out.println("<td height = '300' colspan = '8'>" + su + "</td>");
+				out.println("<td height = '300' colspan = '8'>" + no + "</td>");
 				out.println("</tr>");
 					
 			}
@@ -483,16 +465,15 @@ a {
     <hr>
     <footer>
    <div class="bottom_box">
-        <ul>
+       <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
         <li><p>이용약관</p></li>
         <li><p>개인정보처리방침</p></li>
-        <li><p>청소년보호정책</p></li>
+        <li><p><a href = "CustomerService.jsp">문의하기</a></p></li>
         <li><p>굿잡 정책</p></li>
         <li><p>고객센터</p></li>
-        
         </ul>
     </div>
      <div class="bottom_box">
