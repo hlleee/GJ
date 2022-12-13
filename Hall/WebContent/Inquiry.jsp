@@ -497,7 +497,7 @@ text-decoration:none !important}
  				"jdbc:mysql://localhost/gj","root","1234");
  		Statement stmt = conn.createStatement();
  		ResultSet rs = stmt.executeQuery
- 				("select * from inquiry order by inqnum asc"); 		//조건추가해서 해당정보만 출력
+ 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"'"); 		//조건추가해서 해당정보만 출력
  		
 		if(rs.next()==false){%>
 			
@@ -506,7 +506,7 @@ text-decoration:none !important}
 	  </tr> 
 	<% 	}
 		rs = stmt.executeQuery
- 				("select * from inquiry order by inqnum asc"); 
+ 				("select * from inquiry inner join member on inquiry.inqnic=member.nickname where member.id='"+(String)session.getAttribute("__ID")+"'order by inquiry.inqnum asc"); 
  		while(rs.next()){
  			String inqnum = rs.getString("inqnum");
  			String inqtit = rs.getString("inqtit");
