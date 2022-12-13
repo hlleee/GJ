@@ -80,35 +80,41 @@
     </nav>
     
 <script type="text/javascript">
-	function loginCheck(obj) {
-		if(!obj.id.value || obj.id.value.trim().length == 0) {
+	function loginCheck(obj) {		//로그인 체크 - 미입력값 있을시
+		if(!obj.id.value || obj.id.value.trim().length == 0) {	//아이디 미입력시
 			alert("아이디를 입력해주세요.");
 			obj.id.value = "";
 			obj.id.focus();
 			return false;
 		}
-		else if(!obj.nickname.value ||  obj.nickname.value.trim().length == 0) {
+		else if(!obj.nickname.value ||  obj.nickname.value.trim().length == 0) {	//닉네임 미입력시
 			alert("닉네임을 입력해주세요.");
 			obj.nickname.value = "";
 			obj.nickname.focus();
 			return false;
 		} 
-		else if(!obj.pw.value ||  obj.pw.value.trim().length == 0) {
+		else if(!obj.pw.value ||  obj.pw.value.trim().length == 0) {	//비밀번호 미입력시
 			alert("비밀번호를 입력해주세요.");
 			obj.pw.value = "";
 			obj.pw.focus();
 			return false;
 		} 
-		else if(obj.pw.value != obj.pwcon.value) {
+		else if(obj.pw.value != obj.pwcon.value) {	//비밀번호 불일치시
 			alert("비밀번호가 일치하지 않습니다.");
 			obj.pwcon.value = "";
 			obj.pwcon.focus();
 			return false;
 		}   
-		else if(!obj.email.value ||  obj.email.value.trim().length == 0) {
+		else if(!obj.email.value ||  obj.email.value.trim().length == 0) {	//이메일 미입력시
 			alert("이메일을 입력해주세요.");
 			obj.email.value = "";
 			obj.email.focus();
+			return false;
+		} 
+	
+		//회원등급 직장인인데 기업 구분 미선택시
+		if(obj.job.value == "직장인" && obj.etype.value == "------") {	
+			alert("기업 구분을 해주세요.");
 			return false;
 		} 
 		
@@ -161,13 +167,13 @@
 					
 					<tr height="30">
 						<td bgcolor="efefef">등급 선택</td>
-						<td>직장인<input type="radio" name="_joboffdiv" value="직장인" checked="checked">
+						<td>직장인<input type="radio" name="_joboffdiv" id="job" value="직장인" checked="checked">
 							일반회원<input type="radio" name="_joboffdiv" value="일반회원" ></td>
 					</tr>
 					
 					<tr height="30">
 						<td bgcolor="efefef">기업 형태</td>
-						<td><select name="_etype">
+						<td><select name="_etype" id="etype">
 								<option value="------">------</option>
 								<option value="대기업">대기업</option>
 								<option value="중견기업">중견기업</option>
@@ -194,29 +200,29 @@
     	var _width = '450'; //창 크기 지정
         var _height = '300';
      
-        // 팝업을 가운데 위치시키기 위해 값 구하기
+        // 팝업을 가운데 위치시키기 위해 중앙값 구하기
         var _left = Math.ceil(( window.screen.width - _width )/2);
         var _top = Math.ceil(( window.screen.height - _height )/2); 
         window.open("idCheckForm.jsp", 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );    }
     
 	
+  	//닉네임 중복확인할 창 띄우기
     function nickCheck(){	
     	var _width = '450'; 
         var _height = '300';
      
         var _left = Math.ceil(( window.screen.width - _width )/2);
         var _top = Math.ceil(( window.screen.height - _height )/2); 
-     
         window.open("nickCheckForm.jsp", 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );    }
     
 	
 	
-    //자식 창에서 아이디 값 받아오는 함수
+    //자식 창에서 중복확인 후 적용한 아이디 값 받아오는 함수
     function setChildValue1(name){
         document.getElementById("id").value = name;
   }
 
-    //자식 창에서 닉네임값 받아오는 함수
+    //자식 창에서 중복확인 후 적용한  닉네임값 받아오는 함수
     function setChildValue2(name){
         document.getElementById("nickname").value = name;
   }

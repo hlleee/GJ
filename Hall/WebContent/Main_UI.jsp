@@ -243,7 +243,7 @@ a {
     }
 
 .banner img{
-    width: 1400px;
+    width:100%;
     height: 300px;
     margin: auto;
    
@@ -442,24 +442,25 @@ a {
         
       </form>
       </div>
+      <!-- 로그인한 정보를 표시 -->
       <div class="login">
         <ul class="myinfo">
             <li><a href="Main_UI.jsp"><b><%= (String)session.getAttribute("__NAME") %></b></a>님</li>
-            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> 
+            <li><a href="MyInfo.jsp" class="link_text" ><b>내정보</b></a></li> <!-- 내정보를 누르면 내정보 페이지로 이동--> 
             <li><a href="Logout.jsp" class="link_text" >로그아웃</a></li> 
         </ul>
         <div class="member">
        
         
         <%
-	//총 회원수 받아오기, 성공..!
-		
+	//웹사이트 총 가입 회원수 받아오기
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/gj","root", "1234");
 		
 		Statement stmt = conn.createStatement();
 		
+		//총 회원수를 count로 세서 헤더에 나타낸다
 		String strQuery = "Select count(id) from member";
 	    ResultSet rs = stmt.executeQuery(strQuery);
 
@@ -485,8 +486,9 @@ a {
       
     </header>
     
-     <nav class="navbar">
- 	  <!-- menu -->
+    
+ 	   <!-- 메뉴바 -->
+    <nav class="navbar">
       <ul class="navbar-menu">
         <li><a href="BulletinBoard.jsp">전체게시판</a></li>
         <li><a href="BulletinBoard3.jsp">자유게시판</a></li>
@@ -497,6 +499,7 @@ a {
       </ul>
      
     </nav>
+    <!-- 배너 -->
      <div class="banner">
     <img src="future2.jpg">
    </div>
@@ -504,7 +507,7 @@ a {
         <article class="container">
             <article class="area1">
                 <div class="gesipan">
-                    <P style="text-align: center; font-size: 20px;"><a href="BulletinBoard3.jsp"><b>자유게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="자유게시판.jsp"><b>자유게시판</b></a></P>
                     <div class = "gesipan_in">
                         <%
 	
@@ -519,27 +522,26 @@ a {
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where btype = '자유'LIMIT 4");
+				"Select * from post where btype = '자유게시판'LIMIT 4");	//메인화면에 자유게시판 4개까지 나타내기
 		
 		
 		%>
+		<!-- 자유게시판 테이블 -->
 		<table border="1">
 		<tr><th>번호</th><th>제목</th><th>작성날짜</th><th>작성자</th></tr>	
 		<% 
 		
 		
-		while(rs.next()){
-			String posnum = rs.getString("posnum");
-			String postit = rs.getString("postit");
-			
-			String posdat = rs.getString("posdat");
-			
-			String posnic = rs.getString("posnic");
+		while(rs.next()){	
+			String posnum = rs.getString("posnum");	//게시글번호
+			String postit = rs.getString("postit");	//게시글제목
+			String posdat = rs.getString("posdat");	//게시 날짜
+			String posnic = rs.getString("posnic");	//글 작성자
 			
 			
 			out.println("<tr>");
-			out.println("<td width='30'>" + posnum + "</td>");
-			out.println("<td width='150' height='36'>" + postit + "</td>");
+			out.println("<td width='30' height='36'>" + posnum + "</td>");
+			out.println("<td width='150'>" + postit + "</td>");
 			out.println("<td width='100'>" + posdat + "</td>");
 			out.println("<td width='70'>" + posnic + "</td>");
 			out.println("</tr>");
@@ -552,11 +554,13 @@ a {
 		
 	}
 
-%>
-                    </div>
-                </div>
+		%>
+            </div>
+          </div>
+                
+                <!-- 질문게시판 -->
                 <div class="question">
-                    <P style="text-align: center; font-size: 20px;"><a href="BulletinBoard5.jsp"><b>질문게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="게시판.jsp"><b>질문게시판</b></a></P>
                     <div class = "gesipan_in">
                         <%
 	try{
@@ -566,7 +570,7 @@ a {
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where btype = '질문' LIMIT 4");
+				"Select * from post where btype = '질문게시판' LIMIT 4"); //메인화면에 질문게시판 4개까지 나타내기
 	
 		
 		%>
@@ -576,12 +580,10 @@ a {
 		
 		
 		while(rs.next()){
-			String posnum = rs.getString("posnum");
-			String postit = rs.getString("postit");
-			
-			String posdat = rs.getString("posdat");
-			
-			String posnic = rs.getString("posnic");
+			String posnum = rs.getString("posnum");	//게시글번호
+			String postit = rs.getString("postit");	//게시글제목
+			String posdat = rs.getString("posdat");	//게시 날짜
+			String posnic = rs.getString("posnic");	//글 작성자
 			
 			
 			out.println("<tr>");
@@ -604,10 +606,10 @@ a {
                     </div>
                 </div>
             </article>
-
+			<!-- 면접게시판 -->
             <article class="area2">
                 <div class="interview">
-                    <P style="text-align: center; font-size: 20px ;"><a href="BulletinBoard4.jsp"><b>면접게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px ;"><a href="게시판.jsp"><b>면접게시판</b></a></P>
                     <div class = "gesipan_in">
                          <%
 	try{
@@ -617,22 +619,21 @@ a {
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where btype = '면접' LIMIT 4");
+				"Select * from post where btype = '면접게시판' LIMIT 4"); //메인화면에 면접게시판 최대 4개까지 나타내기
 	
 		
 		%>
+		<!-- 면접게시판 테이블 -->
 		<table border="1">
 			<tr><th>번호</th><th>제목</th><th>작성날짜</th><th>작성자</th></tr>	
 		<% 
 		
 		
 		while(rs.next()){
-			String posnum = rs.getString("posnum");
-			String postit = rs.getString("postit");
-			
-			String posdat = rs.getString("posdat");
-			
-			String posnic = rs.getString("posnic");
+			String posnum = rs.getString("posnum");	//게시글번호
+			String postit = rs.getString("postit");	//게시글제목
+			String posdat = rs.getString("posdat");	//게시 날짜
+			String posnic = rs.getString("posnic");	//글 작성자
 			
 			
 			out.println("<tr>");
@@ -654,8 +655,9 @@ a {
 %>
                     </div>
                 </div>
+                <!-- 취업후기 게시판 -->
                 <div class="job_review">
-                    <P style="text-align: center; font-size: 20px;"><a href="BulletinBoard2.jsp"><b>취업후기게시판</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="자유게시판.jsp"><b>취업후기게시판</b></a></P>
                     <div class = "gesipan_in">
                          <%
 	try{
@@ -665,7 +667,7 @@ a {
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where btype = '취업후기' LIMIT 4");
+				"Select * from post where btype = '취업후기게시판' LIMIT 4");	//메인화면에 취업후기게시판 최대 4개까지 나타내기
 	
 		
 		%>
@@ -675,12 +677,10 @@ a {
 		
 		
 		while(rs.next()){
-			String posnum = rs.getString("posnum");
-			String postit = rs.getString("postit");
-			
-			String posdat = rs.getString("posdat");
-			
-			String posnic = rs.getString("posnic");
+			String posnum = rs.getString("posnum");	//게시글번호
+			String postit = rs.getString("postit");	//게시글제목
+			String posdat = rs.getString("posdat");	//게시 날짜
+			String posnic = rs.getString("posnic");	//글 작성자
 			
 			
 			out.println("<tr>");
@@ -703,9 +703,10 @@ a {
                 </div>
         
             </article>
+            <!-- 채용게시판 -->
             <article class="area3">
                 <div class="hire">
-                    <P style="text-align: center; font-size: 20px;"><a href="BulletinBoard6.jsp"><b>채용정보</b></a></P>
+                    <P style="text-align: center; font-size: 20px;"><a href="자유게시판.jsp"><b>채용정보</b></a></P>
                     <div class = "gesipan_in2">
                          <%
 	try{
@@ -715,7 +716,7 @@ a {
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(
-				"Select * from post where btype = '채용' LIMIT 7");
+				"Select * from post where btype = '채용게시판' LIMIT 7");	//메인화면에 채용게시판 최대 7개까지 보이기
 	
 		
 		%>
@@ -725,18 +726,15 @@ a {
 		
 		
 		while(rs.next()){
-			String posnum = rs.getString("posnum");
-			String postit = rs.getString("postit");
-			
-			String posdat = rs.getString("posdat");
-			
-			String posnic = rs.getString("posnic");
+			String posnum = rs.getString("posnum"); //게시글번호
+			String postit = rs.getString("postit"); //게시글제목
+			String posdat = rs.getString("posdat"); //게시날짜
+			String posnic = rs.getString("posnic"); //작성자
 			
 			
 			out.println("<tr>");
 			out.println("<td width='30'>" + posnum + "</td>");
 			out.println("<td width='150' height='50'>" + postit + "</td>");
-			
 			out.println("<td width='100'>" + posdat + "</td>");
 			out.println("<td width='70'>" + posnic + "</td>");
 			out.println("</tr>");
@@ -745,23 +743,18 @@ a {
 		<%
 		
 	}catch (SQLException e){
-		
-		
 	}
-
 %>
                     </div>
                 </div>
             </article>
-            
         </article>
-        
-        
     </section>
     <hr>
+    <!-- 푸터 부분 -->
     <footer>
    <div class="bottom_box">
-         <ul>
+        <ul>
         <li><p>회사소개</p></li>
         <li><p>인재채용</p></li>
         <li><p>제휴제안</p></li>
@@ -776,7 +769,5 @@ a {
      <p>&copy; 굿잡 Corp.</p>
      </div>
 </footer>
-
   </body>
   </html>
-    

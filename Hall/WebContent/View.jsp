@@ -52,7 +52,7 @@ margin-left : 15%;
 .likeBtn {
   background-color: rgb(240, 255, 255);
   border: 0.5px soild;
-  border-color : rgb(220, 220, 220) rgb(220, 220, 220);
+  border-color : rgb(220, 220, 220);
   color: red;
   padding: 5px 20px;
   text-align: center;
@@ -569,9 +569,9 @@ a {
 		<table class="table" >
 			<tr> 
 				<td><b>[ <%=comnic%> ]</b></td>
-				<td class = "right"> <a class="a" href="ViewReply.jsp?_id=me2&_comchk=0&_fgnnum=<%=comnum%>&_posnum=<%=num%>">답글</a> 
-									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=comnum%>&_comchk=1&_posnum=<%=num%>"> 삭제</a> 
-									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=comnum%>&_comchk=1&_content=<%=comcon%>"> 수정</a>
+				<td class = "right"> <a class="a" href="ViewReply.jsp?_comchk=0&_fgnnum=<%=comnum%>&_posnum=<%=num%>">답글</a> 
+									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_comnum=<%=comnum%>&_comchk=1&_posnum=<%=num%>"> 삭제</a> 
+									<a class="a">|</a><a class="a" onclick = "return confirm('댓글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_comnum=<%=comnum%>&_comchk=1&_content=<%=comcon%>&_posnum=<%=num%>"> 수정</a>
 				</td>
 			</tr>
 			<tr>
@@ -593,8 +593,8 @@ a {
 				<table style = "width : 100%">
 				<tr> 
 					<td> ➥ <%=renic %></td>
-					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
-										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
+					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
+										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>&_posnum=<%=num%>"> 수정</a>
 					</td>
 				</tr>
 				<tr>
@@ -632,8 +632,8 @@ a {
 				<table style = "width : 100%; margin-top : 3%;">
 				<tr> 
 					<td> ➥ <%=renic %></td>
-					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
-										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_id=me2&_comnum=<%=renum%>&_comchk=0&_content=<%=recon%>"> 수정</a>
+					<td class = "right">  <a class="a" onclick = "return confirm('답글을 정말 삭제하시겠습니까?')" href="DeleteComment.jsp?_comnum=<%=renum%>&_comchk=0&_posnum=<%=num%>"> 삭제</a> 
+										<a class="a">|</a><a class="a" onclick = "return confirm('답글을 수정 하시겠습니까?')" href="UpdateComment.jsp?_comnum=<%=renum%>&_comchk=0&_content=<%=recon%> &_posnum=<%=num%>"> 수정</a>
 					</td>
 				</tr>
 				<tr>
